@@ -5,4 +5,13 @@
 @source "../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php";
 @source "../../storage/framework/views/*.php";
 
-@plugin "daisyui";
+@plugin "daisyui" {
+    themes: all;
+}
+
+@theme {
+    --color-primary: #919499;
+    --color-secondary-light: #58606a;
+    --color-secondary-dark: #F4C615;
+    --color-navbar: #0b5793;
+}
