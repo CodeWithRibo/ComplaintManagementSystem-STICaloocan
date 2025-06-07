@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('complaints', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('title');
+            $table->text('description');
+            $table->string('categorySelection');
+            $table->string('priorityLevel');
+            $table->dateTime('timeIncident');
         });
     }
 
