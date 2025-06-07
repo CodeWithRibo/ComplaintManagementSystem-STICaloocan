@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Complaint;
 use Illuminate\Http\Request;
 
 class ComplaintController extends Controller
@@ -11,7 +12,9 @@ class ComplaintController extends Controller
      */
     public function index()
     {
-        //
+        $complaint = Complaint::orderBy('created_at','asc')->paginate(20);
+        return view('welcome',['complaints' => $complaint]);
+
     }
 
     /**

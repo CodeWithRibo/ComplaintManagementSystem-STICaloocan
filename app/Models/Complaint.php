@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Complaint extends Model
 {
+
     protected $fillable = ['title', 'description', 'categorySelection', 'priorityLevel', 'timeIncident'];
     protected $table = "complaints";
     protected $guarded = "id";
+
 
     /** @use HasFactory<\Database\Factories\ComplaintFactory> */
     use HasFactory;

@@ -21,8 +21,8 @@ class ComplaintFactory extends Factory
         return [
             'title'=>fake()->word(),
             'description'=>fake()->realText(),
-            'categorySelection'=>fake()->address(),
-            'priorityLevel'=>fake()->randomElement(['low','mid','high']),
+            'categorySelection'=>fake()->randomElement(['Facilities','Faculty','Admission','Cashier','Registrar']),
+            'priorityLevel'=>fake()->randomElement(['Low','Mid','High']),
             'timeIncident'=>fake()->dateTime(),
         ];
     }
