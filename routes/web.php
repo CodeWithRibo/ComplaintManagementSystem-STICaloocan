@@ -10,3 +10,10 @@ Route::get('SubmitForm',[ComplaintController::class, 'create'])->name('create');
 Route::post('SubmitForm',[ComplaintController::class, 'store'])->name('store');
 
 Route::get('View/{complaint}',[ComplaintController::class, 'show'])->name('show');
+
+
+#EDIT COMPLAINT
+Route::get('/{complaint}', [ComplaintController::class,'edit'])->name('edit');
+Route::put('/{complaint}', [ComplaintController::class,'update'])->name('update');
+
+Route::delete('Delete/{complaint}',[ComplaintController::class,'destroy'])->name('destroy');
