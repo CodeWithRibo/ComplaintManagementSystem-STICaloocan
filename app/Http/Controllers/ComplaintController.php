@@ -9,9 +9,6 @@ use Illuminate\Support\Facades\DB;
 
 class ComplaintController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
 
     public function index()
     {
@@ -27,19 +24,18 @@ class ComplaintController extends Controller
         return view('ComplaintForm');
     }
 
-    public function store(Request $request)
+    public function store(Request $request) : RedirectResponse
     {
         $validate = $request->validate([
-            'title' => 'required|string|max:255',
-            'description'=>'required|string|min:10|max:300',
-            'categorySelection' => 'required',
-            'priorityLevel' => 'required',
-            'timeIncident' => 'required'
+         'title' => 'required|string|max:255',
+         'description'=>'required|string|min:10|max:300',
+         'categorySelection' => 'required',
+         'priorityLevel' => 'required',
+         'timeIncident' => 'required'
         ]);
-        $query = Complaint::query();
-        $query -> create($validate);
-
-        redirect('/');
+         $query = Complaint::query();
+         $query->create($validate);
+        return redirect()->route('index');
     }
 
 
@@ -48,19 +44,28 @@ class ComplaintController extends Controller
         return view('View',['lists' => $complaint]);
     }
 
-    public function edit(string $id)
+    public function edit(Complaint $complaint)
     {
-        //
+        return view('Update',['lists'=>$complaint]);
     }
 
-
-    public function update(Request $request, string $id)
+    public function update(Request $request, Complaint $complaint) : RedirectResponse
     {
-        //
+        $validate = $request->validate([
+            'title' => 'required|string|max:255',
+            'description'=>'required|string|min:10|max:300',
+            'categorySelection' => 'required',
+            'priorityLevel' => 'required',
+            'timeIncident' => 'required'
+        ]);
+
+        $complaint->update($validate);
+        return redirect()->route('index');
     }
 
-    public function destroy(string $id)
+    public function destroy(Complaint $complaint): RedirectResponse
     {
-        //
+        $complaint->delete();
+        return redirect()->route('index');
     }
 }
