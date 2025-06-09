@@ -19,22 +19,50 @@
             @enderror
 
             <select name="categorySelection" class="input">
-               <option value="" disabled {{ old('categorySelection') ? '' : 'selected' }}>Select Category</option>
-               <option value="Admission" {{ old('categorySelection') == 'Admission' ? 'selected' : '' }}>Admission</option>
-               <option value="Facilities" {{ old('categorySelection') == 'Facilities' ? 'selected' : '' }}>Facilities</option>
-               <option value="Faculties" {{ old('categorySelection') == 'Faculties' ? 'selected' : '' }}>Faculties</option>
-               <option value="Cashier"  {{ old('categorySelection') == 'Cashier' ? 'selected' : '' }}>Cashier</option>
-               <option value="Registrar" {{ old('categorySelection') == 'Registrar' ? 'selected' : '' }}>Registrar</option>
+                <option value="" disabled selected>Select Category</option>
+                <option value="Admission" @selected(old('categorySelection') === 'Admission') >Admission</option>
+                <option value="Facilities" @selected(old('categorySelection') === 'Facilities')>Facilities</option>
+                <option value="Faculties" @selected(old('categorySelection') === 'Faculties')>Faculties</option>
+                <option value="Cashier" @selected(old('categorySelection') === 'Cashier')>Cashier</option>
+                <option value="Registrar" @selected(old('categorySelection') === 'Registrar')>Registrar</option>
             </select>
+
+            <input type="text" name="locationDetails" id="locationDetails" class="input mt-2 hidden"
+                   placeholder="Enter location details">
+            <input type="text" name="facultyName" id="facultyName" class="input mt-2 hidden"
+                   placeholder="Enter faculty name">
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const categorySelect = document.querySelector("[name='categorySelection']");
+                    const facilitiesField = document.getElementById("locationDetails");
+                    const facultiesField = document.getElementById("facultyName");
+
+                    categorySelect.addEventListener("change", function () {
+                        const selectedCategory = categorySelect.value;
+
+                        facilitiesField.style.display = "none";
+                        facultiesField.style.display = "none";
+
+
+                        if (selectedCategory === "Facilities") {
+                            facilitiesField.style.display = "block";
+                        } else if (selectedCategory === "Faculties") {
+                            facultiesField.style.display = "block";
+                        }
+                    });
+                });
+            </script>
+
+
             @error('categorySelection')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
 
             <select name="priorityLevel" class="input mt-2">
-                <option value="{{ old('priorityLevel') }}" disabled selected>Select Priority Level</option>
-                <option value="Low">Low</option>
-                <option value="Mid">Mid</option>
-                <option value="High">High</option>
+                <option value="" disabled selected>Select Priority Level</option>
+                <option value="Low" @selected(old('priorityLevel') === 'Low')>Low</option>
+                <option value="Mid" @selected(old('priorityLevel') === 'Mid')>Mid</option>
+                <option value="High" @selected(old('priorityLevel') === 'High')>High</option>
             </select>
             @error('priorityLevel')
             <div class="alert alert-danger">{{ $message }}</div>

@@ -1,7 +1,6 @@
 <x-layout>
     <div class="">
         <table class="table">
-            <!-- head -->
             <thead>
             <tr>
                 <th></th>
