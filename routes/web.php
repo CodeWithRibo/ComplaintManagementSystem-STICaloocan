@@ -4,7 +4,15 @@ use App\Models\Complaint;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ComplaintController;
 
-Route::get('/', [ComplaintController::class, 'index'])->name('index');
+Route::get('Navigation', function () {
+    return view('Components.NavigationBar');
+});
+
+Route::get('/', function () {
+    return view('dashboard');
+});
+
+Route::get('index', [ComplaintController::class, 'index'])->name('index');
 
 Route::get('SubmitForm',[ComplaintController::class, 'create'])->name('create');
 Route::post('SubmitForm',[ComplaintController::class, 'store'])->name('store');
