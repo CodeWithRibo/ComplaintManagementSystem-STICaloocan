@@ -10,8 +10,10 @@
 }
 
 @theme {
-    --color-primary-gray: #919499;
+    --color-primary-gray: #BFC3C6;
     --color-secondary-gray: #58606a;
     --color-secondary-yellow: #F4C615;
-    --color-navbar: #0b5793;
+    --color-header: #212529;
+    --color-button: #0B5793;
+    --font-display: "sans", "sans-serif";
 }

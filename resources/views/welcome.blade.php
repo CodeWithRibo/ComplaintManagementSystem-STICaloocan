@@ -21,7 +21,7 @@
                     <td>{{$complaint->description}}</td>
                     <td>{{$complaint->categorySelection}}</td>
                     <td>{{$complaint->priorityLevel}}</td>
-                    <td><a href="{{route('show', $complaint->id)}}" class="btn btn-primary">Show</a></td>
+                    <td><a href="{{route('show', $complaint->id)}}" class="btn btn-secondary">Show</a></td>
                     <td>
                         <a href="{{route('edit',$complaint->id)}}">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -31,7 +31,7 @@
                     </td>
                     <td>
                         <form action="{{route('destroy',$complaint->id)}}" method="post">
-                           @csrf
+                            @csrf
                             @method('DELETE')
                             <a href="">
                                 <button type="submit">

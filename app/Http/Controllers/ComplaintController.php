@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Complaint;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-
 class ComplaintController extends Controller
 {
 
@@ -46,7 +44,7 @@ class ComplaintController extends Controller
 
     public function edit(Complaint $complaint)
     {
-        return view('Update',['lists'=>$complaint]);
+        return view('Update',['data'=>$complaint]);
     }
 
     public function update(Request $request, Complaint $complaint) : RedirectResponse
