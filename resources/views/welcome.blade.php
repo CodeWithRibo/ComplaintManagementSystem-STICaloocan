@@ -8,10 +8,10 @@
                 <th>Title</th>
                 <th>Description</th>
                 <th>Category Selection</th>
+                <th>Priority Level</th>
                 <th>Show</th>
                 <th>Edit</th>
                 <th>Delete</th>
-
             </tr>
             </thead>
             <tbody>
@@ -21,6 +21,7 @@
                     <td>{{$complaint->title}}</td>
                     <td>{{$complaint->description}}</td>
                     <td>{{$complaint->categorySelection}}</td>
+                    <td>{{$complaint->priorityLevel}}</td>
                     <td><a href="{{route('show', $complaint->id)}}" class="btn btn-primary">Show</a></td>
                     <td>
                         <a href="{{route('edit',$complaint->id)}}">
@@ -42,7 +43,6 @@
                             </a>
                         </form>
                     </td>
-
                 </tr>
             @endforeach
             </tbody>

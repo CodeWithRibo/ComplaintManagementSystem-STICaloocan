@@ -21,6 +21,7 @@
             <select name="categorySelection" class="input">
                <option value="" disabled {{ old('categorySelection') ? '' : 'selected' }}>Select Category</option>
                <option value="Admission" {{ old('categorySelection') == 'Admission' ? 'selected' : '' }}>Admission</option>
+               <option value="Facilities" {{ old('categorySelection') == 'Facilities' ? 'selected' : '' }}>Facilities</option>
                <option value="Faculties" {{ old('categorySelection') == 'Faculties' ? 'selected' : '' }}>Faculties</option>
                <option value="Cashier"  {{ old('categorySelection') == 'Cashier' ? 'selected' : '' }}>Cashier</option>
                <option value="Registrar" {{ old('categorySelection') == 'Registrar' ? 'selected' : '' }}>Registrar</option>
@@ -31,9 +32,9 @@
 
             <select name="priorityLevel" class="input mt-2">
                 <option value="{{ old('priorityLevel') }}" disabled selected>Select Priority Level</option>
-                <option value="low">Low</option>
-                <option value="mid">Mid</option>
-                <option value="high">High</option>
+                <option value="Low">Low</option>
+                <option value="Mid">Mid</option>
+                <option value="High">High</option>
             </select>
             @error('priorityLevel')
             <div class="alert alert-danger">{{ $message }}</div>
