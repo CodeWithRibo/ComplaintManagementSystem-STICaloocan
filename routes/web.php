@@ -4,10 +4,6 @@ use App\Models\Complaint;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ComplaintController;
 
-Route::get('Navigation', function () {
-    return view('Components.NavigationBar');
-});
-
 Route::get('/', function () {
     return view('dashboard');
 });
