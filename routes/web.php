@@ -7,6 +7,12 @@ use App\Http\Controllers\ComplaintController;
 Route::get('/', function () {
     return view('dashboard');
 });
+Route::get('Login', function () {
+    return view('Login');
+});
+Route::get('Register', function () {
+    return view('Register');
+});
 
 Route::get('index', [ComplaintController::class, 'index'])->name('index');
 

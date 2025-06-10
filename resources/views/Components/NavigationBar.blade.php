@@ -15,13 +15,11 @@
         </div>
         <!-- Mobile Dropdown Menu -->
         <div class="w-full bg-white absolute top-16 left-0 shadow-md flex flex-col p-4 space-y-4 lg:hidden z-50" x-show="open" x-transition>
-            <a href="#" class="text-header text-xl">FAQ</a>
             <button class="btn bg-button border-none text-white rounded-full px-5 text-base">Log in</button>
         </div>
         <!-- Desktop Menu -->
         <div class="flex-none ">
             <span class="flex flex-row items-center gap-3.5 pr-5 hidden lg:block z-50">
-                <a href="#" class="text-header py-5 px-7 transition-all duration-200 text-xl">FAQ</a>
                 <button class="btn bg-button border-none text-white rounded-full px-5 text-base">Log in</button>
             </span>
         </div>

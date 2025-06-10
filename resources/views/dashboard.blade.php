@@ -1,5 +1,6 @@
 <x-layout>
-    <x-NavigationBar class="">
+    <x-NavigationBar>
+{{--Carousel--}}
         <div class="carousel w-full relative h-[700px] overflow-hidden" x-data="{ slide: 1 }" x-init="setInterval(() => slide = slide === 3 ? 1 : slide + 1, 5000)">
             <div class="relative flex transition-transform duration-500 ease-in-out" :class="{
         '-translate-x-0': slide === 1,
@@ -16,14 +17,14 @@
                     <img src="{{asset('image/banner_3.jpg')}}" class="w-full" alt="STI PROPERTY" />
                 </div>
             </div>
-            <!-- Buttons -->
             <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
                 <button class="btn btn-circle" @click="slide = slide === 1 ? 3 : slide - 1">❮</button>
                 <button class="btn btn-circle" @click="slide = slide === 3 ? 1 : slide + 1">❯</button>
             </div>
         </div>
         <section class="relative z-20 mt-24 bg-white p-0 xl:p-10 ">
-            <div class="grid lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 grid-rows-1 justify-center items-center  gap-y-5  sm:gap-5 ">
+{{-- Card Layout--}}
+            <div class="grid lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 grid-rows-1 justify-center items-center  gap-y-5  sm:gap-5 pb-10 xl:pb-0 ">
                 <div class="lg:pl-28 xl:p-0">
                     <x-card attribute="{{asset('image/submit_complaint.png')}}" title="Easily file your concern">
                        Student can submit their complaints anytime with just a few clicks-quick, simple, and secure.
@@ -47,19 +48,25 @@
             </div>
         </section>
 {{--About--}}
-        <section class="bg-[#0C3057] relative z-50">
-            <div class="mx-auto max-w-7xl flex justify-center items-center flex-row gap-10">
-                <div class="flex-1 p-5 ">
-                    <img src="{{asset('image/testing.png')}}" class="w-full rounded-xl" alt="STI PROPERTY">
+        <section class="bg-[#0C3057]">
+            <div class="mx-auto max-w-7xl flex justify-center items-center flex-col lg:flex-row gap-10 sm:p-20">
+                <div class="flex-1 p-10 lg:p-5 ">
+                    <img src="{{asset('image/about_complaint.png')}}" class="w-full rounded-xl" alt="STI PROPERTY">
                 </div>
-                <div class="flex-none w-1/2 ">
-                    <p class="text-[19px] text-white">
-                        For more than 4 years, STI's blended learning approach using eLearning Management System (eLMS) makes education effective and accessible anytime, anywhere.
+                <div class="flex-none w-full lg:w-1/2 lg:p-5 px-10 ">
+                    <p class="text-base text-white leading-7">
+                        The Complaint Management System – STI Caloocan is designed to give students a secure and easy way
+                        to voice their concerns on campus. It makes sure every complaint is received, recorded, and handled by
+                        the authorities people. We aim to build a more responsive and supportive school environment where student
+                        feedback is truly valued.
                     </p>
-                    <button class="btn border bg-transparent hover:text-gray-300 hover:border-gray-300 transition-all duration-300 border-white rounded-full text-white mt-14 ">Learn more</button>
+                   <div class=" my-10 ">
+                       <span class="text-base text-white pr-2">Ready to Submit a Concern? Click here to submit a new complaint. We’ve got you covered!</span>
+                       <button class="btn border bg-transparent hover:text-gray-300 hover:border-gray-300 transition-all duration-300 border-white rounded-full text-white mt-2">Submit Complaint</button>
+                   </div>
                 </div>
             </div>
         </section>
     </x-NavigationBar>
+        <x-Footer></x-Footer>
 </x-layout>
-
