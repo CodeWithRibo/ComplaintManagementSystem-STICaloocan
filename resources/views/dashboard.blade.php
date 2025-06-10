@@ -46,6 +46,20 @@
                 </div>
             </div>
         </section>
+{{--About--}}
+        <section class="bg-[#0C3057] relative z-50">
+            <div class="mx-auto max-w-7xl flex justify-center items-center flex-row gap-10">
+                <div class="flex-1 p-5 ">
+                    <img src="{{asset('image/testing.png')}}" class="w-full rounded-xl" alt="STI PROPERTY">
+                </div>
+                <div class="flex-none w-1/2 ">
+                    <p class="text-[19px] text-white">
+                        For more than 4 years, STI's blended learning approach using eLearning Management System (eLMS) makes education effective and accessible anytime, anywhere.
+                    </p>
+                    <button class="btn border bg-transparent hover:text-gray-300 hover:border-gray-300 transition-all duration-300 border-white rounded-full text-white mt-14 ">Learn more</button>
+                </div>
+            </div>
+        </section>
     </x-NavigationBar>
 </x-layout>
 
