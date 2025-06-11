@@ -9,14 +9,12 @@
                        <h2 class="text-2xl text-base-content font-semibold">Login</h2>
                        <p class="text-base-content"> Doesn’t have an account yet? <a href="#" class="underline">Signup</a> </p>
                    </div>
-                    <label class="label">
-                        <span class="label-text">Email</span>
-                    </label>
-                    <input type="email" class="input input-bordered w-full" placeholder="Email" />
-                    <label class="label mt-4">
-                        <span class="label-text">Password</span>
-                    </label>
-                    <input type="password" class="input input-bordered w-full" placeholder="Password" />
+                    <x-FormLayout type="email" placeholder="Email">
+                        Email
+                    </x-FormLayout>
+                    <x-FormLayout type="password" placeholder="Password">
+                        Password
+                    </x-FormLayout>
                     <button class="btn btn-neutral mt-6 w-full">Login</button>
                 </fieldset>
             </form>
