@@ -4,12 +4,14 @@ use App\Models\Complaint;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ComplaintController;
 
-Route::get('Navigation', function () {
-    return view('Components.NavigationBar');
-});
-
 Route::get('/', function () {
     return view('dashboard');
+});
+Route::get('Login', function () {
+    return view('Login');
+});
+Route::get('Register', function () {
+    return view('Register');
 });
 
 Route::get('index', [ComplaintController::class, 'index'])->name('index');
