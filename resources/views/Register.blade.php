@@ -12,33 +12,33 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             {{-- First Name --}}
-                           <x-FormLayout type="input" placeholder="First Name">
+                           <x-FormLayout type="input" placeholder="Enter First Name">
                                First Name
                            </x-FormLayout>
                             {{-- Last Name --}}
-                            <x-FormLayout type="input" placeholder="Last Name">
+                            <x-FormLayout type="input" placeholder="Enter Last Name">
                                 Last Name
                             </x-FormLayout>
                             {{-- Email --}}
-                            <x-FormLayout type="email" placeholder="Email">
+                            <x-FormLayout type="email" placeholder="Enter Email">
                                 Email
                             </x-FormLayout>
                             {{-- Password --}}
-                            <x-FormLayout type="password" placeholder="Password">
+                            <x-FormLayout type="password" placeholder="Enter Password">
                                 Password
                             </x-FormLayout>
                             {{-- Confirm Password --}}
-                            <x-FormLayout type="password" placeholder="Confirm Password">
+                            <x-FormLayout type="password" placeholder="Enter Confirm Password">
                                 Confirm Password
                             </x-FormLayout>
                         </div>
                         <div>
                             {{-- Student ID Number --}}
-                            <x-FormLayout type="input" placeholder="Student ID Number">
+                            <x-FormLayout type="input" placeholder="Enter Student ID Number">
                                 Student ID Number
                             </x-FormLayout>
                             {{-- Grade Level --}}
-                            <x-FormLayout type="input" placeholder="Grade Level">
+                            <x-FormLayout type="input" placeholder="Enter Grade Level">
                                 Grade Level
                             </x-FormLayout>
                             {{-- Program --}}
@@ -55,7 +55,7 @@
                                 </select>
                             </div>
                             {{-- Contact Number --}}
-                            <x-FormLayout type="input" placeholder="Contact Number">
+                            <x-FormLayout type="input" placeholder="Enter Contact Number">
                                 Contact Number
                             </x-FormLayout>
                         </div>
