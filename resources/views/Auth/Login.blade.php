@@ -1,7 +1,7 @@
 <x-layout>
     <x-AuthNavigationBar>
         <div class="flex items-center justify-center min-h-screen py-10 lg:p-0 ">
-            <form action="#" method="post">
+            <form action="#" method="POST">
                 <fieldset class="fieldset bg-base-200 border border-base-300 rounded-box w-80 p-6">
                    <div class="flex items-center justify-center text-center flex-col">
                        <img src="{{asset('image/STI_LOGO_for_eLMS.png')}}" class="w-20" alt="">
