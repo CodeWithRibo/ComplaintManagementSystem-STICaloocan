@@ -6,7 +6,7 @@
                     <div class="flex items-center justify-center text-center flex-col">
                         <img src="{{asset('image/STI_LOGO_for_eLMS.png')}}" class="w-20" alt="">
                         <div class="w-full border-t-2 border-base-300 my-3"></div>
-                        <h2 class="text-2xl text-header font-semibold">Signup</h2>
+                        <h2 class="text-2xl text-base-content font-semibold">Signup</h2>
                     </div>
                     <div class="p-6 max-w-7xl mx-auto">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
