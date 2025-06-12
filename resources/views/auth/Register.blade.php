@@ -38,9 +38,18 @@
                                 Student ID Number
                             </x-FormLayout>
                             {{-- Grade Level --}}
-                            <x-FormLayout type="input" placeholder="Enter Grade Level">
-                                Grade Level
-                            </x-FormLayout>
+                            <div class="mb-2">
+                                <label class="label">
+                                    <span class="label-text">Grade Level</span>
+                                </label>
+                                <select name="gradeLevel" class="select select-bordered w-full" required>
+                                    <<option disabled selected>Select your Grade Level</option>
+                                <option value="1st Year">1st Year</option>
+                                <option value="2nd Year">2nd Year</option>
+                                <option value="3rd Year">3rd Year</option>
+                                <option value="4th Year">4th Year</option>
+                                </select>
+                            </div>
                             {{-- Program --}}
                             <div class="mb-2">
                                 <label class="label">
