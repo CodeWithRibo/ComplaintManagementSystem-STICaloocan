@@ -1,20 +1,12 @@
-{{--@props(['type' => null, 'placeholder' => null, 'layout' => true])--}}
-
-{{--@if($layout)--}}
-{{--    <div class="mb-4">--}}
-{{--        <label class="label">--}}
-{{--            <span class="label-text">{{ $slot }}</span>--}}
-{{--        </label>--}}
-{{--        {{ $slot }}--}}
-{{--    </div>--}}
-{{--@else--}}
-{{--    {{ $slot }}--}}
-{{--@endif--}}
-
+@props(['name', 'placeholder' => 'Enter text'])
 <div class="mb-2">
     <label class="label">
         <span class="label-text">{{ $slot }}</span>
     </label>
-    <input type="{{$type}}" {{ $attributes  }} class="input input-bordered w-full" placeholder="{{$placeholder}}" />
+    <input {{$attributes}} name="{{ $name }}" class="@error($name) is-invalid @enderror input input-bordered w-full " placeholder="{{$placeholder}}" />
+    @error($name)
+    <div role="alert" class=" mt-2 alert alert-error alert-soft"> {{ $message }}</div>
+    @enderror
 </div>
+
 
