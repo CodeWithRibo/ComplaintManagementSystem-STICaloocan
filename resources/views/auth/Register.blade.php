@@ -12,15 +12,6 @@
                     <div class="p-6 max-w-7xl mx-auto">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            @if($errors->any())
-                                <div role="alert" class="alert alert-error">
-                                    <ul>
-                                        @foreach($errors->all() as $error)
-                                            <li>{{$error}}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
                             {{-- First Name --}}
                            <x-FormLayout type="input" value="{{old('first_name')}}" name="first_name" placeholder="Enter First Name">
                                First Name
