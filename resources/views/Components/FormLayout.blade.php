@@ -15,6 +15,6 @@
     <label class="label">
         <span class="label-text">{{ $slot }}</span>
     </label>
-    <input type="{{$type}}" class="input input-bordered w-full" placeholder="{{$placeholder}}" />
+    <input type="{{$type}}" {{ $attributes  }} class="input input-bordered w-full" placeholder="{{$placeholder}}" />
 </div>
 
