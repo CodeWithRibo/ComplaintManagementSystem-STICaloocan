@@ -24,7 +24,7 @@ class AuthRequest extends FormRequest
     {
         return [
             'first_name' => ['required', 'string', 'min:3', 'max:50', 'regex:/^[a-zA-Z\s]+$/'],
-            'last_name' => ['required', 'string', 'min:3',  'max:50', 'regex:/^[a-zA-Z\s]+$/'],
+            'last_name' => ['required', 'string', 'min:3',  'max:50', 'regex:/^[a-zA-Z\s.-]+$/'],
             'email' => ['required', 'email', 'unique:users', 'regex:/^[a-zA-Z0-9]+(?:[._-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/'],
             'password' => [
                 'required',
