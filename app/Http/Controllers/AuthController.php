@@ -19,12 +19,6 @@ class AuthController extends Controller
         return view('auth.Register');
     }
 
-    public function showLogin()
-    {
-        return view('auth.Login');
-
-    }
-
     public  function register(AuthRequest $request) : RedirectResponse
     {
         $validated = $request->validated();
@@ -35,7 +29,11 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-    public  function login(Request $request)
+    public function showLogin()
+    {
+        return view('auth.Login');
+    }
+    public  function login(Request $request) : RedirectResponse
     {
         $credentials = $request -> validate([
             'student_id_number' => ['required','regex:/^02000[0-9]{6}$/']
@@ -45,6 +43,17 @@ class AuthController extends Controller
             $request->session()->regenerate();
             return redirect()->route('index');
         }
-        return back()->withErrors(['student_id_number' => 'Your student ID number or password is incorrect.']);
+        return back()->withErrors(['credential' => 'Your student ID number or password is incorrect.']);
+    }
+
+    public function logout(Request $request) : RedirectResponse
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+       return redirect('/');
     }
 }
+
+
