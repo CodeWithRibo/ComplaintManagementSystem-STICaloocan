@@ -35,9 +35,16 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-
-    public  function login()
+    public  function login(Request $request)
     {
+        $credentials = $request -> validate([
+            'student_id_number' => ['required','regex:/^02000[0-9]{6}$/']
+            ,'password' => ['required']]);
 
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->route('index');
+        }
+        return back()->withErrors(['student_id_number' => 'Your student ID number or password is incorrect.']);
     }
 }
