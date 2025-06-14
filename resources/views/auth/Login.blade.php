@@ -10,7 +10,7 @@
                        <h2 class="text-2xl text-base-content font-semibold">Login</h2>
                        <p class="text-base-content"> Doesn’t have an account yet? <a href="{{route('show.register')}}" class="underline">Signup</a> </p>
                    </div>
-                    <x-FormLayout type="text" value="{{old('studentIdNumber')}}" name="studentIdNumber" placeholder="Enter Student ID Number">
+                    <x-FormLayout type="text" value="{{old('student_id_number')}}" name="student_id_number" placeholder="Enter Student ID Number">
                         Student ID Number
                     </x-FormLayout>
                     <x-FormLayout type="password"  name="password"  placeholder="Enter Password">
