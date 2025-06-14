@@ -20,7 +20,8 @@
         <!-- Desktop Menu -->
         <div class="flex-none ">
             <span class="flex flex-row items-center gap-3.5 pr-5 hidden lg:block z-50">
-                <a href="{{route('show.login')}}" class="btn bg-button border-none text-white rounded-full px-5 text-base">Log in</a>
+              @props(['login','logout'])
+                {{Auth::check() ? $logout : $login}}
             </span>
         </div>
     </div>

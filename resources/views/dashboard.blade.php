@@ -1,5 +1,8 @@
 <x-layout>
     <x-NavigationBar>
+        <x-slot name="login">
+            <x-LoginButton />
+        </x-slot>
 {{--Carousel--}}
         <div class="carousel w-full relative h-[700px] overflow-hidden" x-data="{ slide: 1 }" x-init="setInterval(() => slide = slide === 3 ? 1 : slide + 1, 5000)">
             <div class="relative flex transition-transform duration-500 ease-in-out" :class="{
