@@ -8,6 +8,6 @@
        {{$slot}}
     </select>
     @error($name)
-    <div role="alert" class=" mt-2 alert alert-error alert-soft"> {{ $message }}</div>
+    <div role="alert" class="mt-2 alert alert-error alert-soft"> {{ $message }}</div>
     @enderror
 </div>

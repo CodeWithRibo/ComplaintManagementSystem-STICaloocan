@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Complaint;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\AuthController;
@@ -14,7 +13,10 @@ Route::get('/Register',[AuthController::class, 'showRegister'])->name('show.regi
 Route::post('Login',[AuthController::class, 'login'])->name('login');
 Route::post('/Register',[AuthController::class, 'register'])->name('register');
 
-
+//Homepage
+Route::get('/home', function () {
+    return view('Homepage');
+});
 
 Route::get('index', [ComplaintController::class, 'index'])->name('index');
 Route::get('SubmitForm',[ComplaintController::class, 'create'])->name('create');
