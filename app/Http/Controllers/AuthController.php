@@ -8,9 +8,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rules\Password;
-use Illuminate\Validation\ValidationException;
+
 
 class AuthController extends Controller
 {
@@ -41,9 +39,9 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->route('index');
+            return redirect()->route('home');
         }
-        return back()->withErrors(['credential' => 'Your student ID number or password is incorrect.']);
+        return back()->withErrors(['student_id_number' => 'Your student ID number or password is incorrect.']);
     }
 
     public function logout(Request $request) : RedirectResponse
@@ -52,7 +50,7 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-       return redirect('/');
+       return redirect()->route('show.login');
     }
 }
 
