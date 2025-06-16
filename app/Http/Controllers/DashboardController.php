@@ -6,8 +6,13 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function homePage()
+    public function home()
     {
-        return view('Homepage');
+        return view('dashboard.home');
+    }
+
+    public function welcome()
+    {
+        return view('welcome');
     }
 }
