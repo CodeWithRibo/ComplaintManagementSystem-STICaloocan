@@ -1,52 +1,77 @@
-<x-layout>
-    <div class="">
-        <table class="table">
-            <thead>
-            <tr>
-                <th></th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Category Selection</th>
-                <th>Priority Level</th>
-                <th>Show</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach($complaints as $complaint)
-                <tr>
-                    <th>{{$complaint->id}}</th>
-                    <td>{{$complaint->title}}</td>
-                    <td>{{$complaint->description}}</td>
-                    <td>{{$complaint->categorySelection}}</td>
-                    <td>{{$complaint->priorityLevel}}</td>
-                    <td><a href="{{route('show', $complaint->id)}}" class="btn btn-secondary">Show</a></td>
-                    <td>
-                        <a href="{{route('edit',$complaint->id)}}">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
-                            </svg>
-                        </a>
-                    </td>
-                    <td>
-                        <form action="{{route('destroy',$complaint->id)}}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <a href="">
-                                <button type="submit">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
-                                    </svg>
-                                </button>
-                            </a>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
-        {{ $complaints->links() }}
-        <a href="{{route('create')}}" class="btn btn-primary">Click here</a>
-    </div>
-</x-layout>
+<x-Layout>
+    <x-NavigationBar>
+        @if(Auth::guest())
+            <x-slot name="login">
+                <x-LoginButton />
+            </x-slot>
+        @endif
+        {{--Carousel--}}
+        <div class="carousel w-full relative h-[700px] overflow-hidden" x-data="{ slide: 1 }" x-init="setInterval(() => slide = slide === 3 ? 1 : slide + 1, 5000)">
+            <div class="relative flex transition-transform duration-500 ease-in-out" :class="{
+        '-translate-x-0': slide === 1,
+        '-translate-x-full': slide === 2,
+        '-translate-x-[200%]': slide === 3
+    }">
+                <div class="carousel-item w-full flex-shrink-0 bg-cover">
+                    <img src="{{asset('image/banner_1.jpg')}}" class="w-full" alt="STI PROPERTY" />
+                </div>
+                <div class="carousel-item w-full flex-shrink-0">
+                    <img src="{{asset('image/banner_2.jpg')}}" class="w-full" alt="STI PROPERTY"/>
+                </div>
+                <div class="carousel-item w-full flex-shrink-0">
+                    <img src="{{asset('image/banner_3.jpg')}}" class="w-full" alt="STI PROPERTY" />
+                </div>
+            </div>
+            <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+                <button class="btn btn-circle" @click="slide = slide === 1 ? 3 : slide - 1">❮</button>
+                <button class="btn btn-circle" @click="slide = slide === 3 ? 1 : slide + 1">❯</button>
+            </div>
+        </div>
+        <section class="relative z-20 mt-24 bg-white p-0 xl:p-10 ">
+            {{-- Card Layout--}}
+            <div class="grid lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 grid-rows-1 justify-center items-center  gap-y-5  sm:gap-5 pb-10 xl:pb-0 ">
+                <div class="lg:pl-28 xl:p-0">
+                    <x-Card attribute="{{asset('image/submit_complaint.png')}}" title="Easily file your concern">
+                        Student can submit their complaints anytime with just a few clicks-quick, simple, and secure.
+                    </x-Card>
+                </div>
+                <div class="lg:pl-10 xl:p-0">
+                    <x-Card attribute="{{asset('image/view_complaint.png')}}" title="Track your complaint">
+                        Check the progress of your complaint to see if it's been received, reviewed, or resolved
+                    </x-Card>
+                </div>
+                <div class="lg:pl-28 xl:p-0">
+                    <x-Card attribute="{{asset('image/student_support.png')}}" title="Get the help you need">
+                        Our support team is ready to assist you and ensure your voice is heard and addressed properly
+                    </x-Card>
+                </div>
+                <div class="xl:col-start-2 2xl:col-start-auto lg:pl-10 xl:p-0">
+                    <x-Card attribute="{{asset('image/report_feedback.png')}}" title="See improvements made ">
+                        View summarized reports and how your feedback is helping make the school better
+                    </x-Card>
+                </div>
+            </div>
+        </section>
+        {{--About--}}
+        <section class="bg-[#0C3057]">
+            <div class="mx-auto max-w-7xl flex justify-center items-center flex-col lg:flex-row gap-10 sm:p-20">
+                <div class="flex-1 p-10 lg:p-5 ">
+                    <img src="{{asset('image/about_complaint.png')}}" class="w-full rounded-xl" alt="STI PROPERTY">
+                </div>
+                <div class="flex-none w-full lg:w-1/2 lg:p-5 px-10 ">
+                    <p class="text-base text-white leading-7">
+                        The Complaint Management System – STI Caloocan is designed to give students a secure and easy way
+                        to voice their concerns on campus. It makes sure every complaint is received, recorded, and handled by
+                        the authorities people. We aim to build a more responsive and supportive school environment where student
+                        feedback is truly valued.
+                    </p>
+                    <div class=" my-10 ">
+                        <span class="text-base text-white pr-2">Ready to Submit a Concern? Click here to submit a new complaint. We’ve got you covered!</span>
+                        <button class="btn border bg-transparent hover:text-gray-300 hover:border-gray-300 transition-all duration-300 border-white rounded-full text-white mt-2">Submit Complaint</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </x-NavigationBar>
+    <x-Footer></x-Footer>
+</x-Layout>
