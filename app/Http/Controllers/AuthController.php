@@ -14,22 +14,20 @@ class AuthController extends Controller
 {
     public  function  showRegister()
     {
-        return view('auth.Register');
+        return view('auth.register');
     }
 
     public  function register(AuthRequest $request) : RedirectResponse
     {
         $validated = $request->validated();
         $query = User::query();
-        $user = $query -> create($validated);
-        Auth::login($user);
-
-        return redirect('/');
+        $query -> create($validated);
+        return redirect()->route('show.login');
     }
 
     public function showLogin()
     {
-        return view('auth.Login');
+        return view('auth.login');
     }
     public  function login(Request $request) : RedirectResponse
     {
@@ -39,7 +37,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->route('home');
+            return redirect()->route('dashboard.home');
         }
         return back()->withErrors(['student_id_number' => 'Your student ID number or password is incorrect.']);
     }
@@ -50,7 +48,7 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-       return redirect()->route('show.login');
+       return redirect('/');
     }
 }
 

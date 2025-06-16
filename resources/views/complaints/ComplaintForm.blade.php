@@ -1,4 +1,4 @@
-<x-layout>
+<x-Layout>
     <form action="{{route('store')}}" method="POST">
         <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
             @csrf
@@ -71,5 +71,5 @@
             <button class="btn btn-neutral mt-4">Submit</button>
         </fieldset>
     </form>
-</x-layout>
+</x-Layout>
 
