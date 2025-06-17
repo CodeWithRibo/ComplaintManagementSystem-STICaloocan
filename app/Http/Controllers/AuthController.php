@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthRequest;
 use App\Models\User;
+use Flasher\Laravel\Facade\Flasher;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,6 +23,11 @@ class AuthController extends Controller
         $validated = $request->validated();
         $query = User::query();
         $query -> create($validated);
+
+        noty()
+            ->timeout(2000)
+            ->theme('relax')
+            ->success('Registration complete! You can now log in to your account.');
         return redirect()->route('show.login');
     }
 
@@ -37,6 +43,11 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+            $name = $request->user()->first_name;
+            noty()
+                ->timeout(2000)
+                ->theme('relax')
+                ->success("Hello $name, you're now logged in.");
             return redirect()->route('dashboard.home');
         }
         return back()->withErrors(['student_id_number' => 'Your student ID number or password is incorrect.']);
