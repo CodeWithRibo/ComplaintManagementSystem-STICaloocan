@@ -53,33 +53,6 @@ Client-Side (User Perspective)
 
     Real-time statistics (total complaints, resolved, pending, etc.)
 
-🧭 Sidebar Features
-
-Information Panel
-
-    Search bar for finding previous complaints
-
-    Complaint list with:
-
-        Status indicators (Pending, Resolved)
-
-        Sorting and filtering options (Category, Priority, Status)
-
-    Detailed view of each complaint:
-
-        Full complaint information
-
-        Option to update/edit a complaint
-
-        Admin responses and notifications
-
-General Information
-
-    Frequently Asked Questions (FAQ)
-
-    About the system
-
-    Contact Us page
 
 📝 Complaint Submission Page
 
@@ -107,3 +80,20 @@ Form Fields:
     Priority level (Low, Medium, High)
 
     Optional image/screenshot upload
+
+Sidebar Navigation Bar Layout
+------------------------------
+| 📂  My Complaints           |
+|   • All Complaints         |
+|   • Pending Complaints     |
+|   • Resolved Complaints    |
+|                            |
+| 📝  Complaint Details       |
+|   • View / Edit Complaint  |
+|   • Admin Responses        |
+|                            |
+| 📖  General Information     |
+|   • FAQ                    |
+|   • About the System       |
+|   • Contact Us             |
+------------------------------
