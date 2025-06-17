@@ -1,79 +1,109 @@
-<p align="center"><a href="#" target="_blank"><img src="public/image/images.png" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="#" target="_blank"><img src="public/image/STI_LOGO_for_eLMS.png" width="400" alt="STI PROPERTY"></a></p>
 
+📌 About the Complaint Management System – STI Caloocan
+The Complaint Management System – STI Caloocan is designed to give students a secure and easy way to voice their concerns on campus. It makes sure every complaint is received, recorded, and handled by the authorities people. We aim to build a more responsive and supportive school environment where student feedback is truly valued..
+🔧 Key Features
+👤 User Section
 
-## About Complaint Management System – STI Caloocan
+    Intuitive complaint submission form
 
+    Perform full CRUD (Create, Read, Update, Delete) operations
 
+    Upload supporting images/screenshots
 
+    View all submitted complaints (pending and resolved)
 
-## Features in Complaint Management System – STI Caloocan
+    Filter complaint list specific to the logged-in user
 
-## Progress in Complaint Management System – STI Caloocan
+🙍‍♂️ User Profile
 
-Side Project Start May 12, 2025 to June 20, 2025
+    Update personal profile details
 
-Client Side / User Perspective
+    Upload or change profile picture
 
-Logout Overview -
-Navigation bar with login button 
-Dashboard interface -> carousel design
-About interface -> card layout
-footer interface
- 
-Home/Dashboard 
-- Welcome interface / Overview of complaint
-- Quick access buttons to submit a new complaint -> (Complaint Submission Page)
-- Statistic (number of complaint, resolved problem, pending, etc...)
+⚙️ Enhanced Features
 
-Welcome to the Complaint Management System – STI Caloocan!
-Here, you can quickly track your complaints, check their status, and stay updated. We’re committed to resolving your concerns as efficiently as possible.
+    Limit of three (3) complaint submissions per user per day
 
-Ready to Submit a Concern?
-Click here to submit a new complaint. We’ve got you covered!
+    All complaints go through an administrative review process
 
-About
-– The Complaint Management System – STI Caloocan is designed to give students a secure and easy way to voice their concerns on campus. It makes sure every complaint is received, recorded, and handled by the authorities people. We aim to build a more responsive and supportive school environment where student feedback is truly valued.
+👨‍💼 Admin Section
 
-Contact
-Address : 109 Samson Rd, Caloocan, 1400 Metro Manila
-Email : stotomas.41149@caloocan.sti.edu.ph
-Phone Number: 0993304417
+    View and monitor complaints using data visualization (charts)
 
-Aside Bar
-   (INFORMATION)
-- Search Bar (find past complaints faster)
-- Complaint List
-* Display all complaints submitted by the user
-* Each complaint has status indicator (pending, resolved)
-* Sorting & filtering option (category, priority, status)
-- Complaint Details 
-* Shows complete information about a complaint
-* User can edit/update their complaint if needed
-* Displays admin responses or updates. (Notification dashboard)
+    Perform full CRUD operations on submitted complaints
 
-   (GENERAL DETAILS)
-- FAQ
-- About
-- Contact Us
+🚧 Under Development
+Client-Side (User Perspective)
+🔐 Logout & Navigation
 
-    (SETTINGS/PROFILE PAGE)
-- User can update their profile info (name, email, password)
-- User can updater their profile picture
+    Navigation bar with login/logout functionality
 
+    Dynamic dashboard interface using carousel design
 
-Complaint Submission Page
-   (FORM)
-- Title
-- Description
-- Time incident
-- Category Selection (facilities, faculty, admission, cashier, registrar)
-* require question depending on category selected (facilities, location details)
-- Priority level (Low, Medium, High)
-- Upload Image/Screenshot (optional)
+    Informational “About” section using card layout
 
+    Responsive footer with essential links
 
-Enhanced Features 
-Limit Complaint Submissions Per Day (3 times per day) 
-Reviews process by admin
+🏠 Home / Dashboard
 
+    Welcome message and system overview
 
+    Quick-access buttons for submitting new complaints
+
+    Real-time statistics (total complaints, resolved, pending, etc.)
+
+🧭 Sidebar Features
+
+Information Panel
+
+    Search bar for finding previous complaints
+
+    Complaint list with:
+
+        Status indicators (Pending, Resolved)
+
+        Sorting and filtering options (Category, Priority, Status)
+
+    Detailed view of each complaint:
+
+        Full complaint information
+
+        Option to update/edit a complaint
+
+        Admin responses and notifications
+
+General Information
+
+    Frequently Asked Questions (FAQ)
+
+    About the system
+
+    Contact Us page
+
+📝 Complaint Submission Page
+
+Form Fields:
+
+    Title of the complaint
+
+    Description of the issue
+
+    Date and time of the incident
+
+    Category selection:
+
+        Facilities
+
+        Faculty
+
+        Admission
+
+        Cashier
+
+        Registrar
+        Additional fields may appear depending on the selected category (e.g., location details for facilities)
+
+    Priority level (Low, Medium, High)
+
+    Optional image/screenshot upload
