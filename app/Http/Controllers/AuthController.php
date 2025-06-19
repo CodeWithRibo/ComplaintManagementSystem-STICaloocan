@@ -13,16 +13,16 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public  function  showRegister()
+    public function showRegister()
     {
         return view('auth.register');
     }
 
-    public  function register(AuthRequest $request) : RedirectResponse
+    public function register(AuthRequest $request): RedirectResponse
     {
         $validated = $request->validated();
         $query = User::query();
-        $query -> create($validated);
+        $query->create($validated);
 
         noty()
             ->timeout(2000)
@@ -35,11 +35,12 @@ class AuthController extends Controller
     {
         return view('auth.login');
     }
-    public  function login(Request $request) : RedirectResponse
+
+    public function login(Request $request): RedirectResponse
     {
-        $credentials = $request -> validate([
-            'student_id_number' => ['required','regex:/^02000[0-9]{6}$/']
-            ,'password' => ['required']]);
+        $credentials = $request->validate([
+            'student_id_number' => ['required', 'regex:/^02000[0-9]{6}$/']
+            , 'password' => ['required']]);
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
@@ -53,13 +54,13 @@ class AuthController extends Controller
         return back()->withErrors(['student_id_number' => 'Your student ID number or password is incorrect.']);
     }
 
-    public function logout(Request $request) : RedirectResponse
+    public function logout(Request $request): RedirectResponse
     {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-       return redirect('/');
+        return redirect('/');
     }
 }
 
