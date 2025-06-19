@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Complaint;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 class ComplaintController extends Controller
 {
 
@@ -14,12 +16,12 @@ class ComplaintController extends Controller
           $complaint = $query
               ->orderBy('title','ASC')
               ->paginate(20);
-          return view('welcome',['complaints' => $complaint]);
+          return view('complaints.data',['complaints' => $complaint]);
     }
 
     public function create()
     {
-        return view('ComplaintForm');
+        return view('complaints.ComplaintForm');
     }
 
     public function store(Request $request) : RedirectResponse
@@ -32,7 +34,8 @@ class ComplaintController extends Controller
          'timeIncident' => 'required'
         ]);
          $query = Complaint::query();
-         $query->create($validate);
+         //UNDER DEVELOPMENT
+         $query->create([$validate]);
         return redirect()->route('index');
     }
 

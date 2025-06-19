@@ -19,6 +19,11 @@ return new class extends Migration
             $table->string('categorySelection');
             $table->string('priorityLevel');
             $table->dateTime('timeIncident');
+            $table->foreignId('user_id')
+                ->nullable()
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
         });
     }
 
