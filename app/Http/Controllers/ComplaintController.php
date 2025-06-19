@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Complaint;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,8 +35,10 @@ class ComplaintController extends Controller
          'timeIncident' => 'required'
         ]);
          $query = Complaint::query();
-         //UNDER DEVELOPMENT
-         $query->create([$validate]);
+         $query->create([
+             'user_id' => auth()->id(),
+             ...$validate
+         ]);
         return redirect()->route('index');
     }
 
