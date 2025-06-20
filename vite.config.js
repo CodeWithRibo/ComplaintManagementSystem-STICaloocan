@@ -10,4 +10,15 @@ export default defineConfig({
         }),
         tailwindcss(),
     ],
+    optimizeDeps: {
+        exclude: ['moment'],
+        include: ['axios'],
+    },
+    server: {
+        watch: {
+            usePolling: false,
+            ignored: ['**/storage/**', '**/node_modules/**'],
+        },
+    },
+    cacheDir: 'node_modules/.vite',
 });
