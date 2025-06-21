@@ -14,14 +14,9 @@ Route::get('/', function () {
 //Homepage
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard/home',[DashboardController::class, 'home'])->name('dashboard.home');
+    Route::get('complaints/submit-form', [ComplaintController::class, 'create'])->name('complaints.create');
+    Route::post('complaints/submit-form', [ComplaintController::class, 'store'])->name('complaints.store');
 
-    Route::get('index', [ComplaintController::class, 'index'])->name('index');
-    Route::get('SubmitForm',[ComplaintController::class, 'create'])->name('create');
-    Route::post('SubmitForm',[ComplaintController::class, 'store'])->name('store');
-//    Route::get('View/{complaint}',[ComplaintController::class, 'show'])->name('show');
-//    Route::get('/{complaint}', [ComplaintController::class,'edit'])->name('edit');
-//    Route::put('/{complaint}', [ComplaintController::class,'update'])->name('update');
-//    Route::delete('Delete/{complaint}',[ComplaintController::class,'destroy'])->name('destroy');
 
 });
 
