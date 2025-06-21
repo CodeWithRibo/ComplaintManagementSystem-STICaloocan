@@ -13,11 +13,21 @@ class Complaint extends Model
     protected $table = 'complaints';
     protected $guarded = "id";
     protected $fillable = [
+        'category',
+        'location',
         'title',
         'description',
-        'categorySelection',
-        'priorityLevel',
-        'timeIncident',
+        'incident_time',
+        'priority',
+        'image_path',
+        'is_anonymous',
+        'type_submit',
+        'full_name',
+        'student_id_number',
+        'email',
+        'phone_number',
+        'year_section',
+        'consent_given',
         'user_id',
     ];
     public function user() :BelongsTo
