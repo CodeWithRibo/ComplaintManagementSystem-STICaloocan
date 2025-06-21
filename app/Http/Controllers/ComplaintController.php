@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ComplaintRequest;
 use App\Models\Complaint;
-use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,63 +13,46 @@ class ComplaintController extends Controller
 
     public function index()
     {
-          $query = Complaint::query();
-          $complaint = $query
-              ->orderBy('title','ASC')
-              ->paginate(20);
-          return view('complaints.data',['complaints' => $complaint]);
+        //
     }
 
     public function create()
     {
-        return view('complaints.ComplaintForm');
+        return view('complaints.submit-form');
     }
 
-    public function store(Request $request) : RedirectResponse
+    public function store(ComplaintRequest $request): RedirectResponse
     {
-        $validate = $request->validate([
-         'title' => 'required|string|max:255',
-         'description'=>'required|string|min:10|max:300',
-         'categorySelection' => 'required',
-         'priorityLevel' => 'required',
-         'timeIncident' => 'required'
-        ]);
-         $query = Complaint::query();
-         $query->create([
-             'user_id' => auth()->id(),
-             ...$validate
-         ]);
-        return redirect()->route('index');
+        $validated = $request->validated();
+
+        $imageName = time() . '.' . $request->image_path->extension();
+        $request->image_path->move(public_path('student_complaint_image'), $imageName);
+
+        $query = Complaint::query();
+        $query->create([
+            'user_id' => auth()->id(),
+            'image_path' => $imageName,
+            ...$validated]);
+        return redirect()->route('dashboard.home');
     }
 
-
-    public function show(Complaint $complaint)
+    public function show(string $id)
     {
-        return view('View',['lists' => $complaint]);
+        //
     }
 
-    public function edit(Complaint $complaint)
+    public function edit(string $id)
     {
-        return view('Update',['data'=>$complaint]);
+        //
     }
 
-    public function update(Request $request, Complaint $complaint) : RedirectResponse
+    public function update(Request $request, string $id)
     {
-        $validate = $request->validate([
-            'title' => 'required|string|max:255',
-            'description'=>'required|string|min:10|max:300',
-            'categorySelection' => 'required',
-            'priorityLevel' => 'required',
-            'timeIncident' => 'required'
-        ]);
-
-        $complaint->update($validate);
-        return redirect()->route('index');
+        //
     }
 
-    public function destroy(Complaint $complaint): RedirectResponse
+    public function destroy(string $id)
     {
-        $complaint->delete();
-        return redirect()->route('index');
+        //
     }
 }
