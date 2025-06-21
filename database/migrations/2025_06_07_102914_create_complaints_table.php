@@ -14,11 +14,22 @@ return new class extends Migration
         Schema::create('complaints', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('category');
+            $table->string('location')->nullable();   //Additional Question, Location Details for Facilities
             $table->string('title');
             $table->text('description');
-            $table->string('categorySelection');
-            $table->string('priorityLevel');
-            $table->dateTime('timeIncident');
+            $table->dateTime('incident_time');
+            $table->string('priority');
+            $table->string('image_path')->nullable();
+            //Contact Information either Identified Or Anonymous
+            $table->boolean('is_anonymous')->default(false);
+            $table->string('type_submit');
+            $table->string('full_name')->nullable();
+            $table->string('student_id_number')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->string('year_section')->nullable();
+            $table->boolean('consent_given');
             $table->foreignId('user_id')
                 ->nullable()
                 ->constrained()
