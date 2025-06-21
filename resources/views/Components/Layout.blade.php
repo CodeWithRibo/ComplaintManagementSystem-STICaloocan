@@ -10,7 +10,7 @@
 {{--    <script src="https://cdn.tailwindcss.com"></script>--}}
     <title>STI COMPLAINT SYSTEM PRACTICE</title>
 </head>
-<body class="">
+<body class="font-display">
     <div>
         {{ $slot }}
     </div>
