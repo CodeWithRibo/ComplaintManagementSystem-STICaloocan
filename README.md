@@ -69,8 +69,8 @@ The Complaint Management System – STI Caloocan is designed to give students a 
 &emsp;&emsp;– Registrar <br/>
 &emsp;&emsp;&emsp;*Additional fields may appear depending on the selected category (e.g., location details for facilities)* <br/>
 &emsp;• Priority level (Low, Medium, High) <br/>
-&emsp;• Optional image/screenshot upload <br/><br/>
-&emsp;• Optional Select type, identified or Anonymous <br/><br/>
+&emsp;• Optional image/screenshot upload <br/>
+&emsp;• Optional Select type, identified or Anonymous <br/>
 &emsp;&emsp;&emsp;*Additional fields may appear depending on the Selecty type. if Identifed select (e.g., Contact Information)* <br/>
 
 
