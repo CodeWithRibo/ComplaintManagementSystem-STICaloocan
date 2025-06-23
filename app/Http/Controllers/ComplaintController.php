@@ -25,14 +25,18 @@ class ComplaintController extends Controller
     {
         $validated = $request->validated();
 
-        $imageName = time() . '.' . $request->image_path->extension();
-        $request->image_path->move(public_path('student_complaint_image'), $imageName);
+        //Dump image to public storage
+        if ($request->hasFile('image_path')) {
+            $imageName = time() . '.' . $request->image_path->extension();
+            $request->image_path->move(public_path('student_complaint_image'), $imageName);
+            $validated['image_path'] = $imageName;
+        }
 
         $query = Complaint::query();
         $query->create([
             'user_id' => auth()->id(),
-            'image_path' => $imageName,
             ...$validated]);
+
         return redirect()->route('dashboard.home');
     }
 

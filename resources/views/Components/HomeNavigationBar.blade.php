@@ -35,8 +35,8 @@ $asideMenu = [
 ],
 ];
 @endphp
-<div x-data="{ open: false }">
-    <div class="navbar fixed z-40 bg-button shadow-sm">
+<div x-data="{ open: false }" class="">
+    <div class="navbar fixed z-40 bg-button shadow-sm h-16">
         <div class=" px-5 sm:px-7 order-3 md:order-none">
        <span class="text-white" @click="open = ! open">
            <i class="fa-solid fa-bars"></i>
@@ -76,7 +76,7 @@ $asideMenu = [
     {{--Aside Desktop--}}
     <div x-show="open"
          x-transition
-         class="bg-white shadow-lg w-[300px] h-screen hidden md:block overflow-y-auto">
+         class="bg-white shadow-lg w-[300px] h-screen hidden md:block overflow-y-auto fixed">
         <div class="text-button flex flex-col">
             <ul class="flex flex-col p-3 pt-20  space-y-3">
                 @foreach($asideMenu as $header => $items)
@@ -124,4 +124,5 @@ $asideMenu = [
             </ul>
         </div>
     </div>
+    {{$slot}}
 </div>

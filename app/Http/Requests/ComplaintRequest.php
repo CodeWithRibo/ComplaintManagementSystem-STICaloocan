@@ -20,19 +20,27 @@ class ComplaintRequest extends FormRequest
     {
         return [
             'category' => ['required', 'string'],
-            'location' => ['nullable', 'string', 'min:6', 'max:50', 'regex:/^[a-zA-Z\s]+$/'],
+            'location' => ['nullable', 'string', 'min:6', 'max:50', 'regex:/^[a-zA-Z0-9\s]+$/'],
             'title' => ['required', 'string', 'min:6', 'max:30', 'regex:/^[a-zA-Z0-9\s]+$/'],
             'description' => ['required', 'string', 'min:10', 'max:300'],
-            'incident_time' => ['required', 'date', 'before_or_equal:today'],
+            'incident_time' => ['required', 'date', 'before_or_equal:' . now()->format('Y-m-d H:i:s') ],
             'priority' => ['required', 'string'],
-            'image_path' =>  ['nullable', 'image', 'max:3000', 'mimes:jpg,png,jpeg'],
+            'image_path' =>  ['nullable', 'image', 'max:5000', 'mimes:jpg,png,jpeg'],
             'type_submit' => ['required', 'string'],
             'full_name' => ['nullable', 'string', 'min:2', 'max:50', 'regex:/^[a-zA-Z\s]+$/'],
             'student_id_number' => ['nullable', 'string', 'regex:/^02000[0-9]{6}$/'],
-            'email' => ['nullable', 'email', 'regex:/^[a-zA-Z0-9]+(?:[._-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/'],
+            'email' => ['nullable', 'email', 'regex:/^[a-zA-Z0-9]+(?:[._-][a-zA-Z0-9]+)*@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/'],
             'phone_number' => ['nullable', 'max:11', 'regex:/^[0-9]+$/'],
             'year_section' => ['nullable','string', 'regex:/^\d{1}(st|nd|rd|th)\s*Year\s*-\s*[A-Z]{2,}-\d{3}$/i'],
             'consent_given' => ['required', 'boolean']
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'year_section.regex' => 'The format must follow: Year and Section (e.g., 1st Year - BT-207).',
+            'incident_time.before_or_equal' => 'Please enter the actual date and time the incident occurred — future dates are not allowed.',
         ];
     }
 }

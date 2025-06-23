@@ -70,12 +70,6 @@
                         where student
                         feedback is truly valued.
                     </p>
-                    <div class=" my-10 ">
-                        <span class="text-base text-white pr-2">Ready to Submit a Concern? Click here to submit a new complaint. We’ve got you covered!</span>
-                        <button
-                            class="btn border bg-transparent hover:text-gray-300 hover:border-gray-300 transition-all duration-300 border-white rounded-full text-white mt-2">
-                            <a href="{{route('show.login')}}">Submit Complaint</a></button>
-                    </div>
                 </div>
             </div>
         </section>

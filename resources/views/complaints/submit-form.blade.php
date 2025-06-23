@@ -1,4 +1,4 @@
-<x-layout>
+<x-Layout>
     <x-HomeNavigationBar>
         <section :class="open ? 'md:ml-[300px]' : 'md:ml-20'" class="transition-all duration-300">
             <div class="flex items-center justify-center min-h-screen py-20 sm:p-20 mx-auto max-w-5xl ">
@@ -13,84 +13,117 @@
                         <div class="p-6">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div x-data=" {open: false } ">
-{{--Category--}}
+                                    {{--Category--}}
                                     <x-SelectionLayout type="select" name="category" label="Category"
                                                        disabledOption="Select Category">
-                                        <option value="Facilities" @click="open = true">Facilities</option>
-                                        <option value="Faculty" @click="open = false">Faculty</option>
-                                        <option value="Admission" @click="open = false">Admission</option>
-                                        <option value="Cashier" @click="open = false">Cashier</option>
-                                        <option value="Registrar" @click="open = false">Registrar</option>
+                                        <option value="Facilities"
+                                                @click="open = true" @selected(old('category') === 'Facilities')>
+                                            Facilities
+                                        </option>
+                                        <option value="Faculty"
+                                                @click="open = false" @selected(old('category ') === 'Faculty')>Faculty
+                                        </option>
+                                        <option value="Admission"
+                                                @click="open = false" @selected(old('category') === 'Admissions')>
+                                            Admission
+                                        </option>
+                                        <option value="Cashier"
+                                                @click="open = false" @selected(old('category') ===  'Cashier')>Cashier
+                                        </option>
+                                        <option value="Registrar"
+                                                @click="open = false" @selected(old('category') === 'Registrar')>
+                                            Registrar
+                                        </option>
                                     </x-SelectionLayout>
-{{--Additional Quesiton, Location Details--}}
+                                    {{--Additional Quesiton, Location Details--}}
                                     <span x-show="open">
                                     <x-FormLayout type="text" name="location"
                                                   placeholder="e.g., Computer Laboratory 601"
                                                   label="Location Details">
                                     </x-FormLayout>
                                     </span>
-{{--Title--}}
+                                    {{--Title--}}
                                     <x-FormLayout type="text" value="{{old('title')}}" name="title"
                                                   placeholder="e.g., Broken Chair in Room 405"
                                                   label="Title of the Complaint">
                                     </x-FormLayout>
-{{--Desciption--}}
-                                    <x-FormLayout inputField="textarea" value="{{old('description')}}"
+                                    {{--Desciption--}}
+                                    <x-FormLayout inputField="textarea"
                                                   name="description"
                                                   placeholder="Describe the issue in detail..."
                                                   label="Detailed Description">
                                     </x-FormLayout>
-{{--Incident Time--}}
+                                    {{--Incident Time--}}
                                     <x-FormLayout type="datetime-local" value="{{old('incident_time')}}"
                                                   name="incident_time" label="Date and Time of the Incident">
                                     </x-FormLayout>
                                 </div>
                                 <div x-data="{open: false}">
-{{--Priority--}}
+                                    {{--Priority--}}
                                     <x-SelectionLayout type="select" name="priority" label="Priority Level"
                                                        disabledOption="Select priority level">
-                                        <option value="Low">Low - Minor issue, not urgent</option>
-                                        <option value="Medium">Medium - Need attention, moderate urgency</option>
-                                        <option value="High">High - Serious or urgent matter</option>
+                                        <option value="Low" @selected(old('priority') === 'Low')>Low - Minor issue, not
+                                            urgent
+                                        </option>
+                                        <option value="Medium" @selected(old('priority') === 'Medium')>Medium - Need
+                                            attention, moderate urgency
+                                        </option>
+                                        <option value="High" @selected(old('priority') === 'High')>High - Serious or
+                                            urgent matter
+                                        </option>
                                     </x-SelectionLayout>
-{{--Upload Image--}}
-                                    <x-FormLayout type="file" value="{{old('image_path')}}" name="image_path" accept=".jpg,.jpeg,.png"
+                                    {{--Upload Image--}}
+                                    <x-FormLayout type="file" value="{{old('image_path')}}" name="image_path"
+                                                  accept=".jpg,.jpeg,.png"
                                                   label="Attach Image or Screenshot (Optional)">
 
                                     </x-FormLayout>
                                     <small class="text-gray-500 text-[12px]">Upload a screenshot or photo to support
                                         your
                                         complaint (max 5MB).</small>
-{{--Contact Information Identified or Anonymous--}}
+                                    {{--Contact Information Identified or Anonymous--}}
                                     <x-SelectionLayout type="select" name="type_submit" label="Submission Type"
                                                        disabledOption="Select type">
-                                        <option value="Identified" @click="open = true">I will provide my contact
+                                        <option value="Identified"
+                                                @click="open = true" @selected(old('type_submit') === 'Identified')>I
+                                            will provide my contact
                                             information
                                         </option>
-                                        <option value="Anonymous " @click="open = false">Do not display my name or
+                                        <option value="Anonymous "
+                                                @click="open = false" @selected(old('type_submit') === 'Anonymous')>Do
+                                            not display my name or
                                             student id
                                         </option>
                                     </x-SelectionLayout>
- {{--Identified Contact Information--}}
+                                    {{--Identified Contact Information--}}
                                     <span x-show="open">
+                                        @php $disabled = true; @endphp
                                     <x-FormLayout type="text" name="full_name"
                                                   placeholder="e.g., Juan Dela Cruz"
-                                                  label="Full Name">
+                                                  label="Full Name"
+                                                  value="{{Auth::user()->first_name . ' ' . Auth::user()->last_name}} "
+                                                  @class(['bg-gray-200 text-gray-500 input input-bordered w-full',
+                                                        'cursor-not-allowed' => $disabled,
+                                                  ])
+                                                  :disabled="$disabled"
+                                    readOnly>
                                     </x-FormLayout>
                                     <x-FormLayout type="text" name="student_id_number"
                                                   placeholder="e.g., 02000411432"
-                                                  label="Student ID">
+                                                  label="Student ID"
+                                                  value="{{Auth::user()->student_id_number}}">
                                     </x-FormLayout>
                                     <x-FormLayout type="email" name="email"
-                                                  placeholder="e.g., juandelacruz@sti.caloocan.edu.ph"
-                                                  label="Email Address">
+                                                  placeholder="e.g., juandelacruz@gmail.com"
+                                                  label="Email Address"
+                                                  value="{{Auth::user()->email}}">
                                     </x-FormLayout>
                                     <x-FormLayout type="text" name="phone_number"
-                                                  placeholder="e.g., 0912-345-6789"
+                                                  placeholder="e.g., 09123456789"
                                                   label="Mobile Number (Optional)">
                                     </x-FormLayout>
-                                    <x-FormLayout type="text" name="year_and_section"
-                                                  placeholder="e.g., 1st year -  BT-207"
+                                    <x-FormLayout type="text" name="year_section"
+                                                  placeholder="e.g., 1st year - BT-207"
                                                   label="Year & Section">
                                     </x-FormLayout>
                                     </span>
@@ -98,12 +131,17 @@
                                         Choose whether to include your contact information. You may remain anonymous if
                                         you prefer </small>
                                     <br>
-{{--Consent Given--}}
+                                    {{--Consent Given--}}
                                     <div class="mt-5">
-                                        <input type="checkbox" name="consent_given" value="1">
+                                        <input type="checkbox" name="consent_given" value="1"
+                                               class="@error('consent_given') is-invalid @enderror">
                                         <label for="consent_given" class="text-base-content">I agree that my complaint
                                             and personal information may be reviewed by the admin team
                                             for investigation purposes.</label>
+                                        @error('consent_given')
+                                        <div role="alert"
+                                             class=" mt-2 alert alert-error alert-soft"> {{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -114,4 +152,4 @@
             </div>
         </section>
     </x-HomeNavigationBar>
-</x-layout>
+</x-Layout>
