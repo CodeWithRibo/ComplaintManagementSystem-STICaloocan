@@ -20,6 +20,7 @@ class User extends Authenticatable
         'student_id_number',
         'grade_level',
         'program',
+        'section',
         'contact_number',
     ];
     protected $hidden = [

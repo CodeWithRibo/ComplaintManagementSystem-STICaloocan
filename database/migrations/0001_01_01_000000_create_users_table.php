@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('student_id_number')->unique();
             $table->string('grade_level');
             $table->string('program');
+            $table->string('section');
             $table->integer('contact_number')->nullable();
             $table->timestamps();
         });
