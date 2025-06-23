@@ -51,7 +51,8 @@ The Complaint Management System – STI Caloocan is designed to give students a 
 <br/><br/>
 &emsp;• Welcome message and system overview <br/>
 &emsp;• Quick-access buttons for submitting new complaints <br/>
-&emsp;• Real-time statistics (total complaints, resolved, pending, etc.) <br/><br/>
+&emsp;• Number of All Complaints, pending, resolved complaints <br/>
+&emsp;• Real-time updated all compplaints and resolved complaints <br/><br/>
 
 <strong>📝 Complaint Submission Page</strong>
 <br/><br/>
@@ -69,23 +70,28 @@ The Complaint Management System – STI Caloocan is designed to give students a 
 &emsp;&emsp;&emsp;*Additional fields may appear depending on the selected category (e.g., location details for facilities)* <br/>
 &emsp;• Priority level (Low, Medium, High) <br/>
 &emsp;• Optional image/screenshot upload <br/><br/>
+&emsp;• Optional Select type, identified or Anonymous <br/><br/>
+&emsp;&emsp;&emsp;*Additional fields may appear depending on the Selecty type. if Identifed select (e.g., Contact Information)* <br/>
+
 
 <strong>Sidebar Navigation Bar Layout</strong>
 <br/>
 <pre>
 ------------------------------
-| 📂  My Complaints           |
+| 📂  My Complaints          |
+    Name 
+    Home
+    ----------------------
 |   • All Complaints         |
 |   • Pending Complaints     |
 |   • Resolved Complaints    |
 |                            |
-| 📝  Complaint Details       |
+| 📝  Complaint Details      |
 |   • View / Edit Complaint  |
 |   • Admin Responses        |
 |                            |
-| 📖  General Information     |
+| 📖  General Information    |
 |   • FAQ                    |
-|   • About the System       |
 |   • Contact Us             |
 ------------------------------
 </pre>
