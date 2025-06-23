@@ -86,7 +86,7 @@
                                     Ready to Submit a Concern? Click here to submit a new complaint. We’ve got you
                                     covered!
                                 </p>
-                                <button class="btn btn-primary">Submit Complaint</button>
+                                <a href="{{route('complaints.create')}}" type="button" class="btn btn-primary">Submit Complaint</a>
                             </div>
                         </div>
                     </div>

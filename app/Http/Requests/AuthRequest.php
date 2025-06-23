@@ -25,7 +25,7 @@ class AuthRequest extends FormRequest
         return [
             'first_name' => ['required', 'string', 'min:3', 'max:50', 'regex:/^[a-zA-Z\s]+$/'],
             'last_name' => ['required', 'string', 'min:2',  'max:50', 'regex:/^[a-zA-Z\s.-]+$/'],
-            'email' => ['required', 'email', 'unique:users', 'regex:/^[a-zA-Z0-9]+(?:[._-][a-zA-Z0-9]+)*@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/'],
+            'email' => ['required', 'email', 'unique:users', 'regex:/^[a-zA-Z0-9]+(?:[._-][a-zA-Z0-9]+)*@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/'],
             'password' => [
                 'required',
                 'string',
@@ -39,6 +39,7 @@ class AuthRequest extends FormRequest
             'student_id_number' => ['required', 'string', 'unique:users', 'regex:/^02000[0-9]{6}$/'],
             'grade_level' => ['required', 'string'],
             'program' => ['required', 'string'],
+            'section' => ['required', 'string', 'regex:/^[A-Z]{2,4}-\d{3}$/'],
             'contact_number' => ['nullable', 'max:11', 'regex:/^[0-9]+$/'],
         ];
     }
@@ -52,6 +53,7 @@ class AuthRequest extends FormRequest
     {
         return [
             'student_id_number.regex' => 'The number must start with 02000 and contain at least 11 digits',
+            'section.regex' => 'The format must follow: Section (e.g., BT-207). Lowercase not allowed',
         ];
     }
 }

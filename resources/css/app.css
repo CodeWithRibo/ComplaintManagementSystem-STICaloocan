@@ -1,5 +1,4 @@
 @import "tailwindcss";
-
 @source "../**/*.blade.php";
 @source "../**/*.js";
 @source "../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php";
@@ -15,8 +14,7 @@
     --color-secondary-yellow: #F4C615;
     --color-header: #212529;
     --color-button: #0B5793;
-    --font-display: "sans", "sans-serif";
-}
+    --font-display: "Open Sans", sans-serif;}
 
 .noty_theme__relax.noty_bar {
     margin: 4px 0;
