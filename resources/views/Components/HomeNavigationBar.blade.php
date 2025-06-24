@@ -36,7 +36,7 @@ $asideMenu = [
 ];
 @endphp
 <div x-data="{ open: false }" class="">
-    <div class="navbar fixed z-40 bg-button shadow-sm h-16">
+    <div class="navbar fixed z-10 bg-button shadow-sm h-16">
         <div class=" px-5 sm:px-7 order-3 md:order-none">
        <span class="text-white" @click="open = ! open">
            <i class="fa-solid fa-bars"></i>
