@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ComplaintRequest;
 use App\Models\Complaint;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,8 +24,21 @@ class ComplaintController extends Controller
 
     public function store(ComplaintRequest $request): RedirectResponse
     {
-        $validated = $request->validated();
 
+        $count = auth()->user()
+            ->complaints()
+            ->whereDate('created_at', today())
+            ->count();
+
+        if ($count >= 3)
+        {
+            $formattedDate =  Carbon::parse(today()->toDateString())->format('F jS, Y');
+           return redirect()
+                ->back()
+                ->with('warning', ' You’ve submitted 3 complaints today ' . $formattedDate .  ' Please try again tomorrow.');
+        }
+
+        $validated = $request->validated();
         //Dump image to public storage
         if ($request->hasFile('image_path')) {
             $imageName = time() . '.' . $request->image_path->extension();
@@ -33,10 +47,11 @@ class ComplaintController extends Controller
         }
 
         $query = Complaint::query();
-        $query->create([
-            'user_id' => auth()->id(),
-            ...$validated]);
-
+        $query->create(['user_id' => auth()->id(),
+            ... $validated]);
+        noty()
+            ->theme('relax')
+            ->success('Complaint submitted! We’ve received your report and will take action as soon as possible.');
         return redirect()->route('dashboard.home');
     }
 

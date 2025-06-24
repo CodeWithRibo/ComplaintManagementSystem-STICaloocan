@@ -7,6 +7,9 @@
                     <fieldset class="fieldset  bg-base-200 border border-base-300 rounded-box">
                         <div class="flex items-center justify-center text-center flex-col">
                             <img src="{{asset('image/STI_LOGO_for_eLMS.png')}}" class="w-20" alt="">
+                            @if(session('warning'))
+                                <div role="alert" class="mt-2 alert alert-error alert-soft fixed z-50  "> {{ session('warning')}}</div>
+                            @endif
                             <div class="w-full border-t-2 border-base-300 my-3"></div>
                             <h2 class="text-2xl text-base-content font-semibold">Submit Complaint</h2>
                         </div>
@@ -21,10 +24,10 @@
                                             Facilities
                                         </option>
                                         <option value="Faculty"
-                                                @click="open = false" @selected(old('category ') === 'Faculty')>Faculty
+                                                @click="open = false" @selected(old('category') === 'Faculty')>Faculty
                                         </option>
                                         <option value="Admission"
-                                                @click="open = false" @selected(old('category') === 'Admissions')>
+                                                @click="open = false" @selected(old('category') === 'Admission')>
                                             Admission
                                         </option>
                                         <option value="Cashier"
@@ -97,26 +100,26 @@
                                     </x-SelectionLayout>
                                     {{--Identified Contact Information--}}
                                     <span x-show="open">
-                                        @php $disabled = true; @endphp
                                     <x-FormLayout type="text" name="full_name"
                                                   placeholder="e.g., Juan Dela Cruz"
                                                   label="Full Name"
                                                   value="{{Auth::user()->first_name . ' ' . Auth::user()->last_name}} "
-                                                  @class(['bg-gray-200 text-gray-500 input input-bordered w-full',
-                                                        'cursor-not-allowed' => $disabled,
-                                                  ])
-                                                  :disabled="$disabled"
-                                    readOnly>
+                                                  @class(['bg-gray-200 text-gray-500 cursor-not-allowed'])
+                                                  disabled>
                                     </x-FormLayout>
                                     <x-FormLayout type="text" name="student_id_number"
                                                   placeholder="e.g., 02000411432"
                                                   label="Student ID"
-                                                  value="{{Auth::user()->student_id_number}}">
+                                                  value="{{Auth::user()->student_id_number}}"
+                                                  @class(['bg-gray-200 text-gray-500 cursor-not-allowed'])
+                                                  disabled>
                                     </x-FormLayout>
                                     <x-FormLayout type="email" name="email"
                                                   placeholder="e.g., juandelacruz@gmail.com"
                                                   label="Email Address"
-                                                  value="{{Auth::user()->email}}">
+                                                  value="{{Auth::user()->email}}"
+                                                  @class(['bg-gray-200 text-gray-500 cursor-not-allowed'])
+                                                  disabled>
                                     </x-FormLayout>
                                     <x-FormLayout type="text" name="phone_number"
                                                   placeholder="e.g., 09123456789"
@@ -124,7 +127,10 @@
                                     </x-FormLayout>
                                     <x-FormLayout type="text" name="year_section"
                                                   placeholder="e.g., 1st year - BT-207"
-                                                  label="Year & Section">
+                                                  label="Year & Section"
+                                                  value="{{Auth::user()->grade_level . ' ' . Auth::user()->program . ' ' .  Auth::user()->section}}"
+                                                  @class(['bg-gray-200 text-gray-500 cursor-not-allowed'])
+                                                  disabled>
                                     </x-FormLayout>
                                     </span>
                                     <small class="text-gray-500 text-[12px]">

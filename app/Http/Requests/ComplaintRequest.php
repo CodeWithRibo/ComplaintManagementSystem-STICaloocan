@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 
 class ComplaintRequest extends FormRequest
 {
@@ -27,11 +28,11 @@ class ComplaintRequest extends FormRequest
             'priority' => ['required', 'string'],
             'image_path' =>  ['nullable', 'image', 'max:5000', 'mimes:jpg,png,jpeg'],
             'type_submit' => ['required', 'string'],
-            'full_name' => ['nullable', 'string', 'min:2', 'max:50', 'regex:/^[a-zA-Z\s]+$/'],
-            'student_id_number' => ['nullable', 'string', 'regex:/^02000[0-9]{6}$/'],
-            'email' => ['nullable', 'email', 'regex:/^[a-zA-Z0-9]+(?:[._-][a-zA-Z0-9]+)*@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/'],
+            'full_name' => ['nullable'],
+            'student_id_number' => ['nullable'],
+            'email' => ['nullable'],
             'phone_number' => ['nullable', 'max:11', 'regex:/^[0-9]+$/'],
-            'year_section' => ['nullable','string', 'regex:/^\d{1}(st|nd|rd|th)\s*Year\s*-\s*[A-Z]{2,}-\d{3}$/i'],
+            'year_section' => ['nullable'],
             'consent_given' => ['required', 'boolean']
         ];
     }
@@ -43,4 +44,5 @@ class ComplaintRequest extends FormRequest
             'incident_time.before_or_equal' => 'Please enter the actual date and time the incident occurred — future dates are not allowed.',
         ];
     }
+
 }
