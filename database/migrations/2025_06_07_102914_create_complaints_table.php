@@ -30,6 +30,7 @@ return new class extends Migration
             $table->string('phone_number')->nullable();
             $table->string('year_section')->nullable();
             $table->boolean('consent_given');
+            $table->string('status')->default('Pending');
             $table->foreignId('user_id')
                 ->nullable()
                 ->constrained()
