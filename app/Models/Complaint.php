@@ -28,6 +28,7 @@ class Complaint extends Model
         'phone_number',
         'year_section',
         'consent_given',
+        'status',
         'user_id',
     ];
     public function user() :BelongsTo
