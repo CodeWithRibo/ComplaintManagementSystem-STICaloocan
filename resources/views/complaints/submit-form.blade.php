@@ -105,32 +105,43 @@
                                                   label="Full Name"
                                                   value="{{Auth::user()->first_name . ' ' . Auth::user()->last_name}} "
                                                   @class(['bg-gray-200 text-gray-500 cursor-not-allowed'])
-                                                  disabled>
+                                                  readonly>
                                     </x-FormLayout>
                                     <x-FormLayout type="text" name="student_id_number"
                                                   placeholder="e.g., 02000411432"
                                                   label="Student ID"
                                                   value="{{Auth::user()->student_id_number}}"
                                                   @class(['bg-gray-200 text-gray-500 cursor-not-allowed'])
-                                                  disabled>
+                                                  readonly>
                                     </x-FormLayout>
                                     <x-FormLayout type="email" name="email"
                                                   placeholder="e.g., juandelacruz@gmail.com"
                                                   label="Email Address"
                                                   value="{{Auth::user()->email}}"
                                                   @class(['bg-gray-200 text-gray-500 cursor-not-allowed'])
-                                                  disabled>
+                                                  readonly>
                                     </x-FormLayout>
-                                    <x-FormLayout type="text" name="phone_number"
-                                                  placeholder="e.g., 09123456789"
-                                                  label="Mobile Number (Optional)">
-                                    </x-FormLayout>
+                                        @if(!empty(Auth::user()->contact_number))
+                                            <x-FormLayout type="text" name="phone_number"
+                                                          placeholder="e.g., 09123456789"
+                                                          label="Mobile Number (Optional)"
+                                                          value="{{Auth::user()->contact_number}}"
+                                                          @class(['bg-gray-200 text-gray-500 cursor-not-allowed'])
+                                                          readonly>
+                                                </x-FormLayout>
+                                                @else
+                                            <x-FormLayout type="text" name="phone_number"
+                                                          placeholder="e.g., 09123456789"
+                                                          label="Mobile Number (Optional)">
+                                                </x-FormLayout>
+                                        @endif
+
                                     <x-FormLayout type="text" name="year_section"
                                                   placeholder="e.g., 1st year - BT-207"
                                                   label="Year & Section"
                                                   value="{{Auth::user()->grade_level . ' ' . Auth::user()->program . ' ' .  Auth::user()->section}}"
                                                   @class(['bg-gray-200 text-gray-500 cursor-not-allowed'])
-                                                  disabled>
+                                                  readonly>
                                     </x-FormLayout>
                                     </span>
                                     <small class="text-gray-500 text-[12px]">
