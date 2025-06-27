@@ -1,3 +1,4 @@
+@php use Illuminate\Support\Carbon; @endphp
 <x-Layout>
     <x-HomeNavigationBar>
         {{-- Main Content Area --}}
@@ -8,7 +9,7 @@
                     <div class="card-title py-2 flex px-4">
                         <div class="flex-1">
                             <h1 class="text-button">Complaints (Recently updated)</h1>
-                            <p class="text-secondary-gray text-[10px] font-semibold">Updated 2 hours ago</p>
+                            <p class="text-secondary-gray text-[10px] font-semibold">Updated {{Carbon::parse($complaintData->updated_at)->diffForHumans()}}</p>
                         </div>
                         <div class="flex-none">
                             <span class="text-secondary-gray text-base font-semibold">See All</span>
@@ -16,28 +17,33 @@
                     </div>
                     <div class="w-full border-t-2 border-[#E7C01D] mb-3"></div>
                     <div class="card-body bg-white rounded shadow overflow-x-hidden ">
-                        <table class="text-left text-sm w-full table-auto ">
-                            <!-- Table head -->
-                            <thead class="uppercase tracking-wider border-b-2 border-gray-200">
+                        <table class="w-full table-auto text-sm text-left border-separate border-spacing-y-2">
+                            <!-- Table Head -->
+                            <thead class="bg-gray-100 text-gray-700 uppercase text-xs tracking-wider">
                             <tr>
-                                <th class="px-6 py-4">Title</th>
-                                <th class="px-6 py-4">Status</th>
-                                <th class="px-6 py-4">Submitted</th>
-                                <th class="px-6 py-4">Category</th>
+                                <th class="px-6 py-3 rounded-tl-md">Title</th>
+                                <th class="px-6 py-3">Status</th>
+                                <th class="px-6 py-3">Submitted</th>
+                                <th class="px-6 py-3 rounded-tr-md">Category</th>
                             </tr>
                             </thead>
-                            <!-- Table body -->
-                            <tbody>
-                            <tr class="border-b border-gray-100">
-                                <td class="px-6 py-4 font-semibold">LOST ID IN 4TH FLOOR</td>
-                                <td class="px-6 py-4">
-                                    <span class="badge bg-yellow-300 text-xs px-2 py-1 rounded">Pending</span>
-                                </td>
-                                <td class="px-6 py-4 text-[13px] text-gray-600">June 20, 4:42 PM</td>
-                                <td class="px-6 py-4 italic text-[13px] text-gray-700">Faculties</td>
-                            </tr>
-                            </tbody>
+                            <!-- Table Body -->
+                                <tbody>
+                                <tr class="bg-white shadow-sm hover:shadow-md transition rounded-md">
+                                    <td class="px-6 py-4 font-medium text-gray-800">{{$complaintData->title}}</td>
+                                    <td class="px-6 py-4">
+                            <span
+                                class="inline-flex items-center gap-1 text-xs font-semibold text-yellow-800 bg-yellow-100 px-3 py-1 rounded-full">
+                                <i class="fa-solid fa-spinner animate-spin text-yellow-600"></i>
+                                {{$complaintData->status}}
+                            </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-[13px] text-gray-500">{{Carbon::parse($complaintData->created_at)->format('F jS, Y g:i A')}}</td>
+                                    <td class="px-6 py-4 italic text-[13px] text-gray-700">{{$complaintData->category}}</td>
+                                </tr>
+                                </tbody>
                         </table>
+
                         <a href="" class="text-center text-blue-500 text-[11px] mt-1">View Details</a>
                     </div>
 
@@ -55,21 +61,24 @@
                     </div>
                     <div class="w-full border-t-2 border-[#E7C01D] mb-3"></div>
                     <div class=" card-body bg-white rounded shadow overflow-x-hidden">
-                        <table class="table-auto w-full border-collapse text-left text-sm">
-                            <thead class="uppercase tracking-wider border-b-2 border-gray-200">
+                        <table class="w-full table-auto border-separate border-spacing-y-2 text-sm text-left">
+                            <!-- Table Head -->
+                            <thead class="bg-gray-100 text-gray-700 uppercase text-xs tracking-wider">
                             <tr>
-                                <th class="px-6 py-4">Title</th>
-                                <th class="px-6 py-4">Resolved On</th>
-                                <th class="px-6 py-4">Category</th>
-                                <th class="px-6 py-4">Resolution Note</th>
+                                <th class="px-6 py-3 rounded-tl-md">Title</th>
+                                <th class="px-6 py-3">Resolved On</th>
+                                <th class="px-6 py-3">Category</th>
+                                <th class="px-6 py-3 rounded-tr-md">Resolution Note</th>
                             </tr>
                             </thead>
+
+                            <!-- Table Body -->
                             <tbody>
-                            <tr class="border-b border-gray-100">
-                                <td class="px-6 py-4 font-semibold">LOST ID IN 4TH FLOOR</td>
-                                <td class="px-6 py-4 text-[13px] text-gray-600">June 20, 6:30 PM</td>
+                            <tr class="bg-white shadow-sm hover:shadow-md transition rounded-md">
+                                <td class="px-6 py-4 font-medium text-gray-800">LOST ID IN 4TH FLOOR</td>
+                                <td class="px-6 py-4 text-[13px] text-gray-500">June 20, 6:30 PM</td>
                                 <td class="px-6 py-4 italic text-[13px] text-gray-700">Faculties</td>
-                                <td class="px-6 py-4 text-[12px] text-gray-600">ID turned in to Admin Office.</td>
+                                <td class="px-6 py-4 text-[13px] text-gray-600">ID turned in to Admin Office.</td>
                             </tr>
                             </tbody>
                         </table>
@@ -86,11 +95,45 @@
                                     Ready to Submit a Concern? Click here to submit a new complaint. We’ve got you
                                     covered!
                                 </p>
-                                <a href="{{route('complaints.create')}}" type="button" class="btn btn-primary">Submit Complaint</a>
+                                <a href="{{route('complaints.create')}}" type="button" class="btn btn-primary">Submit
+                                    Complaint</a>
                             </div>
                         </div>
                     </div>
+                    {{--Status--}}
+                    <div class="card w-full bg-base-100 card-md shadow-sm mt-10">
+                        <div class="card-body">
+                            <h2 class="card-title text-button">Status (Recently updated)</h2>
+                            <p class="text-secondary-gray text-[10px] font-semibold">Updated {{Carbon::parse($complaintData->updated_at)->diffForHumans()}}</p>
+                            <div class="w-full border-t-2 border-[#E7C01D] mb-3"></div>
+                            <div class="flex flex-col sm:flex-row gap-4 justify-start items-start card-actions">
+
+                                {{-- Pending --}}
+                                <div
+                                    class="flex items-center gap-3 bg-yellow-100 border border-yellow-300 text-yellow-800 rounded-lg px-4 py-2 shadow w-full sm:w-1/2">
+                                    <i class="fa-solid fa-spinner animate-spin text-lg"></i>
+                                    <div class="flex flex-col">
+                                        <span class="font-semibold text-sm">Pending</span>
+                                        <span class="text-xs">{{ $countPending }} complaints</span>
+                                    </div>
+                                </div>
+
+                                {{-- Resolved --}}
+                                <div
+                                    class="flex items-center gap-3 bg-green-100 border border-green-300 text-green-800 rounded-lg px-4 py-2 shadow w-full sm:w-1/2">
+                                    <i class="fa-solid fa-check text-lg"></i>
+                                    <div class="flex flex-col">
+                                        <span class="font-semibold text-sm">Resolved</span>
+                                        <span class="text-xs">1 complaints</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </section>
     </x-HomeNavigationBar>
