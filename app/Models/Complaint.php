@@ -29,6 +29,7 @@ class Complaint extends Model
         'year_section',
         'consent_given',
         'status',
+        'complaint_tracker',
         'user_id',
     ];
     public function user() :BelongsTo
