@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('year_section')->nullable();
             $table->boolean('consent_given');
             $table->string('status')->default('Pending');
+            $table->string('complaint_tracker');
             $table->foreignId('user_id')
                 ->nullable()
                 ->constrained()
