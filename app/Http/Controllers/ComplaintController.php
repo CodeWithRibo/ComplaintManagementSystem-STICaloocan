@@ -24,6 +24,13 @@ class ComplaintController extends Controller
 
     public function store(ComplaintRequest $request): RedirectResponse
     {
+        $validated = $request->validated();
+        //Dump image to public storage
+        if ($request->hasFile('image_path')) {
+            $imageName = time() . '.' . $request->image_path->extension();
+            $request->image_path->move(public_path('student_complaint_image'), $imageName);
+            $validated['image_path'] = $imageName;
+        }
 
         $count = auth()->user()
             ->complaints()
@@ -33,17 +40,9 @@ class ComplaintController extends Controller
         if ($count >= 3)
         {
             $formattedDate =  Carbon::parse(today()->toDateString())->format('F jS, Y');
-           return redirect()
+            return redirect()
                 ->back()
                 ->with('warning', ' You’ve submitted 3 complaints today ' . $formattedDate .  ' Please try again tomorrow.');
-        }
-
-        $validated = $request->validated();
-        //Dump image to public storage
-        if ($request->hasFile('image_path')) {
-            $imageName = time() . '.' . $request->image_path->extension();
-            $request->image_path->move(public_path('student_complaint_image'), $imageName);
-            $validated['image_path'] = $imageName;
         }
 
         $query = Complaint::query();
