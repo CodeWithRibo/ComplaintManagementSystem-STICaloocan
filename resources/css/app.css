@@ -7,7 +7,9 @@
 @plugin "daisyui" {
     themes: all;
 }
-
+[x-cloak] {
+    display: none !important;
+}
 @theme {
     --color-primary-gray: #BFC3C6;
     --color-secondary-gray: #58606a;
