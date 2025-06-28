@@ -19,7 +19,7 @@
             </span>
         </div>
         <!-- Mobile Dropdown Menu -->
-        <div class="w-full bg-white absolute top-16 left-0 shadow-md flex flex-col p-4 space-y-4 lg:hidden z-50" x-show="open" x-transition>
+        <div class="w-full bg-white fixed top-16 left-0 shadow-md flex flex-col p-4 space-y-4 lg:hidden z-50" x-show="open" x-transition>
             {{$auth}}
         </div>
         <!-- Desktop Menu -->

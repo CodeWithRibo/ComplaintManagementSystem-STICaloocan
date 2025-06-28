@@ -35,8 +35,8 @@ $asideMenu = [
 ],
 ];
 @endphp
-<div x-data="{ open: false }" class="">
-    <div class="navbar fixed z-10 bg-button shadow-sm h-16">
+<div x-data="{ open: false }">
+    <div class="navbar fixed z-50 bg-button shadow-sm h-16">
         <div class=" px-5 sm:px-7 order-3 md:order-none">
        <span class="text-white" @click="open = ! open">
            <i class="fa-solid fa-bars"></i>
@@ -98,7 +98,7 @@ $asideMenu = [
     <div x-show="open"
          x-transition.scale.origin.top
          x-transition.delay.50ms
-         class="bg-white shadow-lg w-full md:hidden">
+         class="bg-white shadow-lg w-full md:hidden sticky top-0 z-10">
         <div class="text-button flex flex-col">
             <ul class="flex flex-col p-3 pt-20  space-y-3">
                 <li class="flex items-center h-10 gap-3 text- hover:text-button">
