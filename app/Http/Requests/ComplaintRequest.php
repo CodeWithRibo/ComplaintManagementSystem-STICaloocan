@@ -33,7 +33,8 @@ class ComplaintRequest extends FormRequest
             'email' => ['nullable'],
             'phone_number' => ['nullable', 'max:11', 'regex:/^[0-9]+$/'],
             'year_section' => ['nullable'],
-            'consent_given' => ['required', 'boolean']
+            'consent_given' => ['required', 'boolean'],
+            'complaint_tracker' => ['nullable']
         ];
     }
 
