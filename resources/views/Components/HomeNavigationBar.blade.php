@@ -2,11 +2,9 @@
     $name  = auth()->user()->first_name . ' ' . auth()->user()->last_name;
     $convert = strtoupper($name);
 
-    //Loop icons and content
-    //UNDER DEVELOPMENT (ADDED ROUTES USING KEY-VALUE PAIR)
-$menu = [
+$mDropdownMenu = [
 'My Complaints' => [
-  ['icon' => 'fa-house', 'label' => 'All Complaints'],
+  ['icon' => 'fa-house', 'label' => 'All Complaints', 'route' => route('dashboard.listComplaint')],
   ['icon' => 'fa-folder', 'label' => 'Pending Complaints'],
   ['icon' => 'fa-clock', 'label' => 'Resolved Complaints'],
 ],
@@ -22,7 +20,7 @@ $menu = [
 
 $asideMenu = [
 'My Complaints' => [
-  ['icon' => 'fa-house', 'label' => 'All Complaints'],
+  ['icon' => 'fa-house', 'label' => 'All Complaints', 'route' => route('dashboard.listComplaint')],
   ['icon' => 'fa-folder', 'label' => 'Pending Complaints'],
   ['icon' => 'fa-clock', 'label' => 'Resolved Complaints'],
 ],
@@ -43,7 +41,7 @@ $asideMenu = [
        </span>
         </div>
         <div class="flex-1 ">
-            <a class="text-xl text-white">Complaint Management System</a>
+            <a href="{{route('dashboard.home', ['page' => 'home']) }}" class="text-xl text-white">Complaint Management System</a>
         </div>
         <div class="dropdown flex-none hidden md:block">
             <div tabindex="0" role="button" class="w-10">
@@ -59,7 +57,7 @@ $asideMenu = [
             </ul>
         </div>
     </div>
-    {{--Aside--}}
+    {{--Aside Desktop Icon--}}
     <div x-show="! open"
          x-transition
          class="h-screen fixed top-0 z-0 w-20 bg-white shadow-lg hidden md:flex flex-col items-center pt-10">
@@ -67,13 +65,21 @@ $asideMenu = [
             @foreach($asideMenu as $header => $items)
                 @foreach($items as $item)
                     <li class="flex items-center justify-center h-10 text-gray-500 hover:text-button">
-                        <i class="fa-solid {{ $item['icon'] }} text-xl"></i>
+                        @if(isset($item['route']))
+                            <a href="{{ $item['route'] }}"
+                                @class(['text-button font-semibold' => request()->url() === $item['route'],
+                                         'text-gray-500' => request()->url() != $item['route']])>
+                                <i class="fa-solid {{ $item['icon'] }} text-xl"></i>
+                            </a>
+                        @else
+                            <i class="fa-solid {{ $item['icon'] }} text-xl"></i>
+                        @endif
                     </li>
                 @endforeach
             @endforeach
         </ul>
     </div>
-    {{--Aside Desktop--}}
+    {{--Aside Desktop Menu--}}
     <div x-show="open"
          x-transition
          class="bg-white shadow-lg w-[300px] h-screen hidden md:block overflow-y-auto fixed">
@@ -82,12 +88,20 @@ $asideMenu = [
                 @foreach($asideMenu as $header => $items)
                     <h1 class="text-base-content font-semibold">{{$header}}</h1>
                     @foreach($items as $item)
-                        <li class="flex items-center h-10 gap-3 text-gray-500 hover:text-button">
+                        <li class="flex items-center h-10 gap-3 text-gray-500 ">
                             <div class="w-10 h-10 flex items-center justify-center">
                                 <i class="fa-solid {{$item['icon']}} "></i>
                             </div>
-                            <span
-                                class="text-gray-500 hover:text-button leading-none flex items-center h-10">{{$item['label']}}</span>
+                            @if(isset($item['route']))
+                                <a href="{{ $item['route'] }}"
+                                   @class(['text-button font-semibold' => request()->url() === $item['route'],
+                                            'text-gray-500' => request()->url() != $item['route']])>
+                                    {{ $item['label'] }}
+                                </a>
+                            @else
+                                <span
+                                    class="text-gray-500 hover:text-button leading-none flex items-center h-10">{{$item['label']}}</span>
+                            @endif
                         </li>
                     @endforeach
                 @endforeach
@@ -109,7 +123,7 @@ $asideMenu = [
                     <span
                         class=" text-gray-500 hover:text-button leading-none flex items-center h-10">{{$convert}}</span>
                 </li>
-                @foreach($menu as $header => $items)
+                @foreach($mDropdownMenu as $header => $items)
                     <h1 class="text-base-content font-semibold">{{$header}}</h1>
                     @foreach($items as $item)
                         <li class="flex items-center h-10 gap-3 text-gray-500 hover:text-button">

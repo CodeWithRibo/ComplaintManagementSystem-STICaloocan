@@ -18,7 +18,11 @@ class DashboardController extends Controller
         $complaintData = auth()->user()->complaints()->orderBy('updated_at', 'desc')->first();
         return view('dashboard.home', ['countPending' => $countPending, 'complaintData' => $complaintData]);
     }
-
+    public function listComplaint()
+    {
+        $complaintData = auth()->user()->complaints()->orderBy('updated_at', 'desc')->paginate(15);
+        return view ('complaints.list-complaint', ['complaintData' => $complaintData]);
+    }
     public function welcome()
     {
         return view('welcome');
