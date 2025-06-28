@@ -9,25 +9,30 @@
                     <div class="card-title py-2 flex px-4">
                         <div class="flex-1">
                             <h1 class="text-button">Complaints (Recently updated)</h1>
-                            <p class="text-secondary-gray text-[10px] font-semibold">Updated {{Carbon::parse($complaintData->updated_at)->diffForHumans()}}</p>
+                            <p class="text-secondary-gray text-[10px] font-semibold"> {{empty($complaintData) ? 'No Recent updates' :  'Updated ' . Carbon::parse($complaintData->updated_at)->diffForHumans()}}</p>
                         </div>
                         <div class="flex-none">
-                            <span class="text-secondary-gray text-base font-semibold">See All</span>
+                            <span class="text-secondary-gray text-base font-semibold">View All</span>
                         </div>
                     </div>
                     <div class="w-full border-t-2 border-[#E7C01D] mb-3"></div>
-                    <div class="card-body bg-white rounded shadow overflow-x-hidden ">
-                        <table class="w-full table-auto text-sm text-left border-separate border-spacing-y-2">
-                            <!-- Table Head -->
-                            <thead class="bg-gray-100 text-gray-700 uppercase text-xs tracking-wider">
-                            <tr>
-                                <th class="px-6 py-3 rounded-tl-md">Title</th>
-                                <th class="px-6 py-3">Status</th>
-                                <th class="px-6 py-3">Submitted</th>
-                                <th class="px-6 py-3 rounded-tr-md">Category</th>
-                            </tr>
-                            </thead>
-                            <!-- Table Body -->
+                    <div class="card-body bg-white  overflow-x-hidden ">
+                        @if(empty($complaintData))
+                            <div class="text-center py-8 text-gray-500">
+                                <i class="fa-regular fa-folder-open text-3xl mb-2"></i>
+                                <p class="text-sm font-medium">No complaints found.</p>
+                            </div>                        @else
+                            <table class="w-full table-auto text-sm text-left border-separate border-spacing-y-2">
+                                <!-- Table Head -->
+                                <thead class="bg-gray-100 text-gray-700 uppercase text-xs tracking-wider">
+                                <tr>
+                                    <th class="px-6 py-3 rounded-tl-md">Title</th>
+                                    <th class="px-6 py-3">Status</th>
+                                    <th class="px-6 py-3">Submitted</th>
+                                    <th class="px-6 py-3 rounded-tr-md">Complaint Tracker</th>
+                                </tr>
+                                </thead>
+                                <!-- Table Body -->
                                 <tbody>
                                 <tr class="bg-white shadow-sm hover:shadow-md transition rounded-md">
                                     <td class="px-6 py-4 font-medium text-gray-800">{{$complaintData->title}}</td>
@@ -39,14 +44,12 @@
                             </span>
                                     </td>
                                     <td class="px-6 py-4 text-[13px] text-gray-500">{{Carbon::parse($complaintData->created_at)->format('F jS, Y g:i A')}}</td>
-                                    <td class="px-6 py-4 italic text-[13px] text-gray-700">{{$complaintData->category}}</td>
+                                    <td class="px-6 py-4 italic text-[13px] text-gray-700">{{$complaintData->complaint_tracker}}</td>
                                 </tr>
                                 </tbody>
-                        </table>
-
-                        <a href="" class="text-center text-blue-500 text-[11px] mt-1">View Details</a>
+                            </table>
+                        @endif
                     </div>
-
                 </div>
                 {{--RESOLVED COMPLAINT--}}
                 <div class="row-start-2 lg:col-span-2 bg-gray-100 rounded">
@@ -60,7 +63,7 @@
                         </div>
                     </div>
                     <div class="w-full border-t-2 border-[#E7C01D] mb-3"></div>
-                    <div class=" card-body bg-white rounded shadow overflow-x-hidden">
+                    <div class=" card-body bg-white overflow-x-hidden">
                         <table class="w-full table-auto border-separate border-spacing-y-2 text-sm text-left">
                             <!-- Table Head -->
                             <thead class="bg-gray-100 text-gray-700 uppercase text-xs tracking-wider">
@@ -82,7 +85,6 @@
                             </tr>
                             </tbody>
                         </table>
-                        <a href="" class="text-center text-blue-500 text-[11px] mt-1">View Details</a>
                     </div>
                 </div>
                 {{--SUBMIT COMPLAINT--}}
@@ -104,7 +106,7 @@
                     <div class="card w-full bg-base-100 card-md shadow-sm mt-10">
                         <div class="card-body">
                             <h2 class="card-title text-button">Status (Recently updated)</h2>
-                            <p class="text-secondary-gray text-[10px] font-semibold">Updated {{Carbon::parse($complaintData->updated_at)->diffForHumans()}}</p>
+                            <p class="text-secondary-gray text-[10px] font-semibold">{{empty($complaintData) ? 'No recent updates' : 'Updated ' . Carbon::parse($complaintData->updated_at)->diffForHumans()}}</p>
                             <div class="w-full border-t-2 border-[#E7C01D] mb-3"></div>
                             <div class="flex flex-col sm:flex-row gap-4 justify-start items-start card-actions">
 

@@ -45,6 +45,8 @@
                                                   label="Location Details">
                                     </x-FormLayout>
                                     </span>
+                                    {{--Complaint Tracker--}}
+                                    <input type="hidden" name="complaint_tracker">
                                     {{--Title--}}
                                     <x-FormLayout type="text" value="{{old('title')}}" name="title"
                                                   placeholder="e.g., Broken Chair in Room 405"
