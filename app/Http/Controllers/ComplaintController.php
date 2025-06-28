@@ -25,6 +25,13 @@ class ComplaintController extends Controller
     public function store(ComplaintRequest $request): RedirectResponse
     {
         $validated = $request->validated();
+        //Generate Complaint Log Tracker
+        if ($request->has('complaint_tracker')) {
+            $randomNumber = mt_rand(1000, 2000);
+            $currentYear = Carbon::now()->year;
+            $complaintLog = 'CPL' . '-' . $currentYear . '-' . $randomNumber;
+            $validated['complaint_tracker']  = $complaintLog;
+        }
         //Dump image to public storage
         if ($request->hasFile('image_path')) {
             $imageName = time() . '.' . $request->image_path->extension();
