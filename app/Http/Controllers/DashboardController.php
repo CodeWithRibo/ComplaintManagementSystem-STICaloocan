@@ -8,6 +8,10 @@ use Illuminate\Support\Carbon;
 
 class DashboardController extends Controller
 {
+    public function welcome()
+    {
+        return view('welcome');
+    }
     public function home()
     {
         $countPending = auth()->user()
@@ -20,11 +24,12 @@ class DashboardController extends Controller
     }
     public function listComplaint()
     {
-        $complaintData = auth()->user()->complaints()->orderBy('updated_at', 'desc')->paginate(15);
-        return view ('complaints.list-complaint', ['complaintData' => $complaintData]);
+        $complaintData = auth()->user()
+            ->complaints()
+            ->orderBy('updated_at', 'desc')
+            ->paginate(15);
+
+        return view ('complaints.list-complaint', compact('complaintData'));
     }
-    public function welcome()
-    {
-        return view('welcome');
-    }
+
 }
