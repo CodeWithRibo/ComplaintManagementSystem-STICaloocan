@@ -45,7 +45,7 @@
                         </thead>
                         <tbody>
                         @foreach($complaintData as $data)
-                            <tr class="bg-white shadow-sm hover:shadow-md transition rounded-md">
+                            <tr class="bg-white shadow-sm hover:shadow-md transition rounded-md" x-data @click="modalIsOpen = true; selectedComplaint = {{ $data }}">
                                 <td class="px-6 py-4 font-medium text-gray-800">{{$data->title}}</td>
                                 <td class="px-6 py-4">
                                 <span
@@ -58,45 +58,45 @@
                                 <td class="px-6 py-4 text-[13px] text-gray-500">{{Carbon::parse($data->created_at)->format('F jS, Y g:i A')}}</td>
                                 <td class="px-6 py-4 italic text-[13px] text-gray-700">{{$data->complaint_tracker}}</td>
                                 <td>
-                                    <button class="btn btn-secondary px-5" x-on:click="modalIsOpen = true"
-                                            type="button">View Complaint
-                                    </button>
+                                        <button class="btn btn-secondary px-5"
+                                                x-on:click="modalIsOpen = true"
+                                                type="button">View Complaint
+                                        </button>
                                 </td>
                             </tr>
-                            <x-Modal>
+                        @endforeach
+                            <x-ModalHeader>
                                 <!-- Body -->
                                 <div class="px-6 py-6 space-y-4">
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         {{--Details--}}
-                                        <x-ModalDetails label="Title">...</x-ModalDetails>
-                                        <x-ModalDetails label="Category">...</x-ModalDetails>
-                                        <x-ModalDetails label="Description">...</x-ModalDetails>
-                                        <x-ModalDetails label="Location">...</x-ModalDetails>
-                                        <x-ModalDetails label="Incident Time">...</x-ModalDetails>
-                                        <x-ModalDetails label="Priority">...</x-ModalDetails>
-                                        <x-ModalDetails label="Status">...</x-ModalDetails>
-                                        <x-ModalDetails label="Complaint Tracker">...</x-ModalDetails>
+                                        <x-ModalDetails label="Title">{{$data->title}}.</x-ModalDetails>
+                                        <x-ModalDetails label="Category">{{$data->category}}</x-ModalDetails>
+                                        <x-ModalDetails label="Description">{{$data->description}}</x-ModalDetails>
+                                        <x-ModalDetails label="Location">{{$data->location}}</x-ModalDetails>
+                                        <x-ModalDetails label="Incident Time">{{$data->incident_time}}</x-ModalDetails>
+                                        <x-ModalDetails label="Priority">{{$data->priority}}</x-ModalDetails>
+                                        <x-ModalDetails label="Status">{{$data->status}}</x-ModalDetails>
+                                        <x-ModalDetails label="Complaint Tracker">{{$data->complaint_tracker}}</x-ModalDetails>
                                         {{--Image--}}
-                                        <x-ModalAttachedImage label="Attached Image">...</x-ModalAttachedImage>
+                                        <x-ModalAttachedImage label="Attached Image"></x-ModalAttachedImage>
                                     </div>
-
                                     <div class="border-t pt-4">
                                         <h4 class="text-sm font-semibold text-gray-700 dark:text-white mb-3">Submitter
                                             Information</h4>
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                             {{--Submitter Information--}}
-                                            <x-ModalSubmitterInfo label="Name">...</x-ModalSubmitterInfo>
-                                            <x-ModalSubmitterInfo label="Student ID">...</x-ModalSubmitterInfo>
-                                            <x-ModalSubmitterInfo label="Email">...</x-ModalSubmitterInfo>
-                                            <x-ModalSubmitterInfo label="Phone">...</x-ModalSubmitterInfo>
+                                            <x-ModalSubmitterInfo label="Name">{{$data->full_name}}</x-ModalSubmitterInfo>
+                                            <x-ModalSubmitterInfo label="Student ID">{{$data->student_id_number}}</x-ModalSubmitterInfo>
+                                            <x-ModalSubmitterInfo label="Email">{{$data->email}}</x-ModalSubmitterInfo>
+                                            <x-ModalSubmitterInfo label="Phone">{{$data->phone_number}}</x-ModalSubmitterInfo>
                                             <div class="md:col-span-2">
                                                 <x-ModalSubmitterInfo label="Year & Section">...</x-ModalSubmitterInfo>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </x-Modal>
-                        @endforeach
+                            </x-ModalHeader>
                         </tbody>
                     </table>
                 </div>
