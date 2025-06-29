@@ -17,8 +17,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('complaints/submit-form', [ComplaintController::class, 'create'])->name('complaints.create');
     Route::post('complaints/submit-form', [ComplaintController::class, 'store'])->name('complaints.store');
     Route::get('complaints/list-complaint', [DashboardController::class, 'listComplaint'])->name('dashboard.listComplaint');
-
-
 });
 
 //AUTHENTICATION ROUTE
