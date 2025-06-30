@@ -12,11 +12,10 @@
                                                                                       class="underline">Signup</a></p>
                     </div>
                     <x-FormLayout type="text" value="{{old('student_id_number')}}" name="student_id_number"
-                                  placeholder="Enter Student ID Number">
-                        Student ID Number
+                                  placeholder="Enter Student ID Number" label="Student ID Number">
+
                     </x-FormLayout>
-                    <x-FormLayout type="password" name="password" placeholder="Enter Password">
-                        Password
+                    <x-FormLayout type="password" name="password" placeholder="Enter Password" label="Password">
                     </x-FormLayout>
                     <button class="btn btn-neutral mt-6 w-full">Login</button>
                 </fieldset>
