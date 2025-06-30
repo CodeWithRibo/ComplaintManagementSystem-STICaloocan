@@ -67,6 +67,7 @@
                         @endforeach
                         </tbody>
                     </table>
+                    {{ $complaintData->links() }}
                     <x-ModalHeader>
                         <!-- Body -->
                         <div class="px-6 py-6 space-y-4" x-show="selectedComplaint">
