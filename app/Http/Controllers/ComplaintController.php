@@ -37,8 +37,8 @@ class ComplaintController extends Controller
         }
 
         if ($request->hasFile('image_path')) {
-            $imageName = time() . '.' . $request->input('image_path')->extension();
-            $request->input('image_path')->move(public_path('student_complaint_image'), $imageName);
+            $imageName = time() . '.' . $request->image_path->extension();
+            $request->image_path->move(public_path('student_complaint_image'), $imageName);
             $validated['image_path'] = $imageName;
         }
 
