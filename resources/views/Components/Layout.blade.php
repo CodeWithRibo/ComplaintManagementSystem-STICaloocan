@@ -8,7 +8,7 @@
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
 {{--    <script src="https://cdn.tailwindcss.com"></script>--}}
-    <title>STI COMPLAINT SYSTEM PRACTICE</title>
+    <title>CMS</title>
 </head>
 <body class="font-display">
     <div>
