@@ -23,7 +23,7 @@ class ComplaintRequest extends FormRequest
             'category' => ['required', 'string'],
             'location' => ['nullable', 'string', 'min:6', 'max:50', 'regex:/^[a-zA-Z0-9\s]+$/'],
             'title' => ['required', 'string', 'min:6', 'max:30', 'regex:/^[a-zA-Z0-9\s]+$/'],
-            'description' => ['required', 'string', 'min:10', 'max:300'],
+            'description' => ['required', 'string', 'min:10', 'max:4000'],
             'incident_time' => ['required', 'date', 'before_or_equal:' . now()->format('Y-m-d H:i:s') ],
             'priority' => ['required', 'string'],
             'image_path' =>  ['nullable', 'image', 'max:5000', 'mimes:jpg,png,jpeg'],
