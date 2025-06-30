@@ -27,7 +27,7 @@ class DashboardController extends Controller
         $complaintData = auth()->user()
             ->complaints()
             ->orderBy('updated_at', 'desc')
-            ->paginate(15);
+            ->paginate(10);
 
         return view ('complaints.list-complaint', compact('complaintData'));
     }
