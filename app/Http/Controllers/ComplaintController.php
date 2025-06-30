@@ -30,8 +30,8 @@ class ComplaintController extends Controller
             $query = Complaint::query();
             do {
                 $randomNumber = mt_rand(1000, 9000);
-                $currentYear = Carbon::now()->year;
-                $complaintLog = 'CPL' . '-' . $currentYear . '-' . $randomNumber;
+                $currentDay = Carbon::now()->day;
+                $complaintLog = 'CPL' . '-' . $currentDay . '-' . $randomNumber;
             }while($query->where('complaint_tracker', $complaintLog)->exists());
             $validated['complaint_tracker'] = $complaintLog;
         }
