@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
@@ -17,6 +18,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('complaints/submit-form', [ComplaintController::class, 'create'])->name('complaints.create');
     Route::post('complaints/submit-form', [ComplaintController::class, 'store'])->name('complaints.store');
     Route::get('complaints/list-complaint', [DashboardController::class, 'listComplaint'])->name('dashboard.listComplaint');
+    Route::get('complaints', SearchController::class)->name('search');
 });
 
 //AUTHENTICATION ROUTE
