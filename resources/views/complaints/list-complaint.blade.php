@@ -29,7 +29,7 @@
                 </x-Filter>
             </div>
             <!-- 📋 Complaints Table -->
-            <div x-data="{modalIsOpen: false}">
+            <div x-data="{modalIsOpen: false, selectedComplaint: null}">
                 <div class="px-4">
                     <table
                         class="w-full table-auto text-sm text-left border-separate border-spacing-y-2 overflow-x-hidden">
@@ -45,7 +45,7 @@
                         </thead>
                         <tbody>
                         @foreach($complaintData as $data)
-                            <tr class="bg-white shadow-sm hover:shadow-md transition rounded-md" x-data @click="modalIsOpen = true; selectedComplaint = {{ $data }}">
+                            <tr class="bg-white shadow-sm hover:shadow-md transition rounded-md">
                                 <td class="px-6 py-4 font-medium text-gray-800">{{$data->title}}</td>
                                 <td class="px-6 py-4">
                                 <span
@@ -59,46 +59,52 @@
                                 <td class="px-6 py-4 italic text-[13px] text-gray-700">{{$data->complaint_tracker}}</td>
                                 <td>
                                         <button class="btn btn-secondary px-5"
-                                                x-on:click="modalIsOpen = true"
+                                                @click="modalIsOpen = true; selectedComplaint = {{json_encode($data)}} "
                                                 type="button">View Complaint
                                         </button>
                                 </td>
                             </tr>
                         @endforeach
-                            <x-ModalHeader>
-                                <!-- Body -->
-                                <div class="px-6 py-6 space-y-4">
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        {{--Details--}}
-                                        <x-ModalDetails label="Title">{{$data->title}}.</x-ModalDetails>
-                                        <x-ModalDetails label="Category">{{$data->category}}</x-ModalDetails>
-                                        <x-ModalDetails label="Description">{{$data->description}}</x-ModalDetails>
-                                        <x-ModalDetails label="Location">{{$data->location}}</x-ModalDetails>
-                                        <x-ModalDetails label="Incident Time">{{$data->incident_time}}</x-ModalDetails>
-                                        <x-ModalDetails label="Priority">{{$data->priority}}</x-ModalDetails>
-                                        <x-ModalDetails label="Status">{{$data->status}}</x-ModalDetails>
-                                        <x-ModalDetails label="Complaint Tracker">{{$data->complaint_tracker}}</x-ModalDetails>
-                                        {{--Image--}}
-                                        <x-ModalAttachedImage label="Attached Image"></x-ModalAttachedImage>
-                                    </div>
-                                    <div class="border-t pt-4">
-                                        <h4 class="text-sm font-semibold text-gray-700 dark:text-white mb-3">Submitter
-                                            Information</h4>
-                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                            {{--Submitter Information--}}
-                                            <x-ModalSubmitterInfo label="Name">{{$data->full_name}}</x-ModalSubmitterInfo>
-                                            <x-ModalSubmitterInfo label="Student ID">{{$data->student_id_number}}</x-ModalSubmitterInfo>
-                                            <x-ModalSubmitterInfo label="Email">{{$data->email}}</x-ModalSubmitterInfo>
-                                            <x-ModalSubmitterInfo label="Phone">{{$data->phone_number}}</x-ModalSubmitterInfo>
-                                            <div class="md:col-span-2">
-                                                <x-ModalSubmitterInfo label="Year & Section">...</x-ModalSubmitterInfo>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </x-ModalHeader>
                         </tbody>
                     </table>
+                    <x-ModalHeader>
+                        <!-- Body -->
+                        <div class="px-6 py-6 space-y-4" x-show="selectedComplaint">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" >
+                                {{--Details--}}
+                                <x-ModalDetails label="Title"  x-text="selectedComplaint.title"/>
+                                <x-ModalDetails label="Category"  x-text="selectedComplaint.category"/>
+                                <x-ModalDetails label="Description" x-text="selectedComplaint.description"/>
+                                <x-ModalDetails label="Location" x-text="selectedComplaint?.location || '-' "/>
+                                <x-ModalDetails label="Incident Time" x-text="selectedComplaint.incident_time"/>
+                                <x-ModalDetails label="Priority" x-text="selectedComplaint.priority"/>
+                                <x-ModalDetails label="Status" x-text="selectedComplaint.status"/>
+                                <x-ModalDetails label="Complaint Tracker" x-text="selectedComplaint.complaint_tracker"/>
+                                {{--Image--}}
+                                <x-ModalAttachedImage label="Attached Image" x-text="selectedComplaint?.image_path || 'No Attached Image'">
+                                    <img :src="'{{asset('student_complaint_image')}}/' + selectedComplaint?.image_path"
+                                         alt="Attached Image"
+                                         x-show="selectedComplaint?.image_path"
+                                         class="h-full w-auto object-contain cursor-zoom-in rounded"
+                                         @click="window.open($el.src, '_blank')">
+                                </x-ModalAttachedImage>
+                            </div>
+                            <div class="border-t pt-4">
+                                <h4 class="text-sm font-semibold text-gray-700 dark:text-white mb-3">Submitter
+                                    Information</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    {{--Submitter Information--}}
+                                    <x-ModalSubmitterInfo label="Name" x-text="selectedComplaint.full_name"/>
+                                    <x-ModalSubmitterInfo label="Student ID" x-text="selectedComplaint.student_id_number"/>
+                                    <x-ModalSubmitterInfo label="Email" x-text="selectedComplaint.email"/>
+                                    <x-ModalSubmitterInfo label="Phone" x-text="selectedComplaint?.phone_number || '-' "/>
+                                    <div class="md:col-span-2">
+                                        <x-ModalSubmitterInfo label="Year & Section" x-text="selectedComplaint.year_section"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </x-ModalHeader>
                 </div>
             </div>
         </section>
