@@ -7,19 +7,27 @@
                 <!-- Search Input -->
                 <div class="w-full md:w-1/3">
                     <label for="search" class="block text-sm font-medium text-gray-700 mb-1">Search Complaints</label>
-                    <div class="relative">
-                        <input type="text" id="search" name="search"
-                               class="input input-bordered w-full pl-10 text-sm"
-                               placeholder="Search by title or tracker...">
-                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-gray-400 text-sm"></i>
-                    </div>
+                    <form action="{{route('search')}}" method="GET">
+                        @csrf
+                        <div class="relative">
+                            <input type="text" id="search" name="search"
+                                   value="{{request()->get('search')}}"
+                                   class="input input-bordered w-full pl-10 text-sm"
+                                   placeholder="Search by title or tracker...">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-gray-400 text-sm"></i>
+                        </div>
+                    </form>
                 </div>
                 <!-- Filter: Status -->
-                <x-Filter label="Filter by Status">
-                    <option>All</option>
-                    <option>Pending</option>
-                    <option>Resolved</option>
-                </x-Filter>
+                <form action="{{route('search')}}" method="get">
+                    <x-Filter label="Filter by Status" name="status">
+                        <option value="">All</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Resolved">Resolved</option>
+                    </x-Filter>
+                    <button type="submit" class="btn btn-ghost">Filter</button>
+                </form>
+
                 <!-- Filter: Priority -->
                 <x-Filter label="Filter by Priority">
                     <option>All</option>
@@ -44,7 +52,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($complaintData as $data)
+                        @forelse ($complaintData as $data)
                             <tr class="bg-white shadow-sm hover:shadow-md transition rounded-md">
                                 <td class="px-6 py-4 font-medium text-gray-800">{{$data->title}}</td>
                                 <td class="px-6 py-4">
@@ -63,8 +71,16 @@
                                                 type="button">View Complaint
                                         </button>
                                 </td>
+                                @empty
+                                    @if(request()->has('search'))
+                                            <td colspan="6" class="text-2xl text-gray-500 text-center italic">No Complaint found for  <span class="text-accent">{{request()->get('search')}}</span></td>
+                                        @else
+                                        <td colspan="6" class="text-2xl text-gray-500 text-center italic">
+                                            No complaints have been submitted yet.
+                                        </td>
+                                    @endif
                             </tr>
-                        @endforeach
+                        @endforelse
                         </tbody>
                     </table>
                     {{ $complaintData->links() }}
@@ -73,14 +89,14 @@
                         <div class="px-6 py-6 space-y-4" x-show="selectedComplaint">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4" >
                                 {{--Details--}}
-                                <x-ModalDetails label="Title"  x-text="selectedComplaint.title"/>
-                                <x-ModalDetails label="Category"  x-text="selectedComplaint.category"/>
-                                <x-ModalDetails label="Description" x-text="selectedComplaint.description"/>
+                                <x-ModalDetails label="Title"  x-text="selectedComplaint?. title || '-'"/>
+                                <x-ModalDetails label="Category"  x-text="selectedComplaint?.category || '-'"/>
+                                <x-ModalDetails label="Description" x-text="selectedComplaint?.description || '-'"/>
                                 <x-ModalDetails label="Location" x-text="selectedComplaint?.location || '-' "/>
-                                <x-ModalDetails label="Incident Time" x-text="selectedComplaint.incident_time"/>
-                                <x-ModalDetails label="Priority" x-text="selectedComplaint.priority"/>
-                                <x-ModalDetails label="Status" x-text="selectedComplaint.status"/>
-                                <x-ModalDetails label="Complaint Tracker" x-text="selectedComplaint.complaint_tracker"/>
+                                <x-ModalDetails label="Incident Time" x-text="selectedComplaint?.incident_time || '-'"/>
+                                <x-ModalDetails label="Priority" x-text="selectedComplaint?.priority || '-'"/>
+                                <x-ModalDetails label="Status" x-text="selectedComplaint?.status || '-'"/>
+                                <x-ModalDetails label="Complaint Tracker" x-text="selectedComplaint?.complaint_tracker || '-'"/>
                                 {{--Image--}}
                                 <x-ModalAttachedImage label="Attached Image" x-text="selectedComplaint?.image_path || 'No Attached Image'">
                                     <img :src="'{{asset('student_complaint_image')}}/' + selectedComplaint?.image_path"
@@ -95,12 +111,12 @@
                                     Information</h4>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     {{--Submitter Information--}}
-                                    <x-ModalSubmitterInfo label="Name" x-text="selectedComplaint.full_name"/>
-                                    <x-ModalSubmitterInfo label="Student ID" x-text="selectedComplaint.student_id_number"/>
-                                    <x-ModalSubmitterInfo label="Email" x-text="selectedComplaint.email"/>
+                                    <x-ModalSubmitterInfo label="Name" x-text="selectedComplaint?.full_name || '-'"/>
+                                    <x-ModalSubmitterInfo label="Student ID" x-text="selectedComplaint?.student_id_number || '-'"/>
+                                    <x-ModalSubmitterInfo label="Email" x-text="selectedComplaint?.email || '-'"/>
                                     <x-ModalSubmitterInfo label="Phone" x-text="selectedComplaint?.phone_number || '-' "/>
                                     <div class="md:col-span-2">
-                                        <x-ModalSubmitterInfo label="Year & Section" x-text="selectedComplaint.year_section"/>
+                                        <x-ModalSubmitterInfo label="Year & Section" x-text="selectedComplaint?.year_section || '-'"/>
                                     </div>
                                 </div>
                             </div>
