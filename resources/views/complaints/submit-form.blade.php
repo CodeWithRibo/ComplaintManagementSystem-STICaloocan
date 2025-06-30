@@ -1,15 +1,15 @@
 <x-Layout>
     <x-HomeNavigationBar>
         <section :class="open ? 'md:ml-[300px]' : 'md:ml-20'" class="transition-all duration-300">
-            <div class="flex items-center justify-center min-h-screen py-20 sm:p-20 mx-auto max-w-5xl ">
+            <div class="flex items-center justify-center min-h-screen py-20 lg:p-20 mx-auto max-w-5xl ">
                 <form action="{{route('complaints.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <fieldset class="fieldset  bg-base-200 border border-base-300 rounded-box">
+                        @if(session('warning'))
+                            <div role="alert" class="mt-2 alert alert-error alert-soft fixed z-50 "> {{ session('warning')}}</div>
+                        @endif
                         <div class="flex items-center justify-center text-center flex-col">
                             <img src="{{asset('image/STI_LOGO_for_eLMS.png')}}" class="w-20" alt="">
-                            @if(session('warning'))
-                                <div role="alert" class="mt-2 alert alert-error alert-soft fixed z-50  "> {{ session('warning')}}</div>
-                            @endif
                             <div class="w-full border-t-2 border-base-300 my-3"></div>
                             <h2 class="text-2xl text-base-content font-semibold">Submit Complaint</h2>
                         </div>
