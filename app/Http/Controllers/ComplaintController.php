@@ -64,9 +64,13 @@ class ComplaintController extends Controller
         return redirect()->route('dashboard.home');
     }
 
-    public function show(string $id)
+    public function show()
     {
-        //
+        $complaintData = auth()->user()
+            ->complaints()
+            ->orderBy('updated_at', 'desc')
+            ->paginate(10);
+        return view('complaints.edit-complaint', compact('complaintData'));
     }
 
     public function edit(string $id)
