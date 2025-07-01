@@ -25,7 +25,7 @@ $asideMenu = [
   ['icon' => 'fa-clock', 'label' => 'Resolved Complaints'],
 ],
 'Complaint Details' => [
-  ['icon' => 'fa-circle-check', 'label' => 'View / Edit Complaints'],
+  ['icon' => 'fa-circle-check', 'label' => 'Edit Complaints', 'route' => route('complaints.show')],
 ],
 'Others' => [
   ['icon' => 'fa-question', 'label' => 'FAQ'],
