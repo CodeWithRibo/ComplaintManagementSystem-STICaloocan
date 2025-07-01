@@ -1,12 +1,9 @@
 @php use Illuminate\Support\Carbon; @endphp
 <x-Layout>
     <x-HomeNavigationBar>
-        <section :class="open ? 'md:ml-[300px]' : 'md:ml-20'" class="pt-16 transition-all duration-300">
-            <!-- 🔍 Filters with Search Bar -->
-            <div class="flex flex-wrap justify-between items-center gap-4 mb-4 px-4 pt-5">
-                <!-- Search Input -->
-                <div class="w-full md:w-1/3">
-                    <label for="search" class="block text-sm font-medium text-gray-700 mb-1">Search Complaints</label>
+        <x-Section>
+        <!-- 🔍 Filters with Search Bar -->
+                <x-Search header="All Complaint">
                     <form action="{{route('search')}}" method="GET">
                         @csrf
                         <div class="relative">
@@ -17,8 +14,7 @@
                             <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-gray-400 text-sm"></i>
                         </div>
                     </form>
-                </div>
-            </div>
+                </x-Search>
             <!-- 📋 Complaints Table -->
             <div x-data="{modalIsOpen: false, selectedComplaint: null}">
                 <div class="px-4">
@@ -107,6 +103,6 @@
                     </x-ModalHeader>
                 </div>
             </div>
-        </section>
+        </x-Section>
     </x-HomeNavigationBar>
 </x-Layout>

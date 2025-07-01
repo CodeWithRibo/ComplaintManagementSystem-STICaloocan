@@ -1,6 +1,6 @@
 <x-Layout>
     <x-HomeNavigationBar>
-        <section :class="open ? 'md:ml-[300px]' : 'md:ml-20'" class="transition-all duration-300">
+        <x-Section>
             <div class="flex items-center justify-center min-h-screen py-20 lg:p-20 mx-auto max-w-5xl ">
                 <form action="{{route('complaints.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -169,6 +169,6 @@
                     </fieldset>
                 </form>
             </div>
-        </section>
+        </x-Section>
     </x-HomeNavigationBar>
 </x-Layout>

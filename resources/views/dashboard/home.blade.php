@@ -2,7 +2,7 @@
 <x-Layout>
     <x-HomeNavigationBar>
         {{-- Main Content Area --}}
-        <section :class="open ? 'md:ml-[300px]' : 'md:ml-20'" class="pt-16 transition-all duration-300">
+        <x-Section>
             <div class="grid lg:grid-cols-4 lg:grid-rows-2 grid-cols-1 grid-rows-2 gap-4 px-4 pt-5">
                 {{--COMPLAINTS--}}
                 <div class="rounded lg:col-span-2 shadow-lg bg-[#F7F7F7]">
@@ -135,8 +135,7 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-        </section>
+        </x-Section>
     </x-HomeNavigationBar>
 </x-Layout>
