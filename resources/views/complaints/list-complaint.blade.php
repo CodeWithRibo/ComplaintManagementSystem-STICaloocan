@@ -18,23 +18,6 @@
                         </div>
                     </form>
                 </div>
-                <!-- Filter: Status -->
-                <form action="{{route('search')}}" method="get">
-                    <x-Filter label="Filter by Status" name="status">
-                        <option value="">All</option>
-                        <option value="Pending">Pending</option>
-                        <option value="Resolved">Resolved</option>
-                    </x-Filter>
-                    <button type="submit" class="btn btn-ghost">Filter</button>
-                </form>
-
-                <!-- Filter: Priority -->
-                <x-Filter label="Filter by Priority">
-                    <option>All</option>
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
-                </x-Filter>
             </div>
             <!-- 📋 Complaints Table -->
             <div x-data="{modalIsOpen: false, selectedComplaint: null}">
