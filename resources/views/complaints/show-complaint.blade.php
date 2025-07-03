@@ -40,9 +40,11 @@
                         <td class="px-6 py-4 text-xs font-semibold text-gray-700">{{$data->priority}}</td>
                         <td class="px-6 py-4 italic text-[13px] text-gray-700">{{$data->complaint_tracker}}</td>
                         <td>
-                            <button class="btn btn-secondary px-5"
-                                    type="button">Edit Complaint
-                            </button>
+                            <a href="{{route('complaints.edit', $data->id)}}">
+                                <button class="btn btn-secondary px-5"
+                                        type="button">Edit Complaint
+                                </button>
+                            </a>
                         </td>
                         @empty
                             @if(request()->has('search'))
