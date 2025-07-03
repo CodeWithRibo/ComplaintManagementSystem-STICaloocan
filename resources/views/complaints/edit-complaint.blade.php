@@ -30,10 +30,10 @@
                         </select>
                     </div>
                     {{-- Location --}}
-                     @if(!request()->has('location'))
-                        <x-EditFormLayout label="Location" name="location" value="{{old('location', $complaint->location ?? 'No Location Provided') }}"/>
-                    @else
+                     @if(empty($complaint->location))
                         <x-EditFormLayout name="location" hidden/>
+                    @else
+                        <x-EditFormLayout label="Location" name="location" value="{{old('location', $complaint->location) }}"/>
                     @endif
                     {{-- Description --}}
                     <div>
