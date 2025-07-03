@@ -34,6 +34,7 @@ class ComplaintRequest extends FormRequest
             'phone_number' => ['nullable', 'max:11', 'regex:/^[0-9]+$/'],
             'year_section' => ['nullable'],
             'consent_given' => ['required', 'boolean'],
+            'is_anonymous' => ['nullable', 'boolean'],
             'complaint_tracker' => ['nullable']
         ];
     }
