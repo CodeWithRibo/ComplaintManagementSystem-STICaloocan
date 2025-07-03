@@ -94,7 +94,7 @@
                                             will provide my contact
                                             information
                                         </option>
-                                        <option value="Anonymous "
+                                        <option value="Anonymous"
                                                 @click="open = false" @selected(old('type_submit') === 'Anonymous')>Do
                                             not display my name or
                                             student id
