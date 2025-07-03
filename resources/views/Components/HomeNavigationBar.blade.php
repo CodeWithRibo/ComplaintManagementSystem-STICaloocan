@@ -5,7 +5,7 @@
 $mDropdownMenu = [
 'My Complaints' => [
   ['icon' => 'fa-house', 'label' => 'All Complaints', 'route' => route('dashboard.listComplaint')],
-  ['icon' => 'fa-folder', 'label' => 'Pending Complaints'],
+  ['icon' => 'fa-folder', 'label' => 'Pending Complaints', 'route' => route('complaints.pending')],
   ['icon' => 'fa-clock', 'label' => 'Resolved Complaints'],
 ],
 'Complaint Details' => [
@@ -21,7 +21,7 @@ $mDropdownMenu = [
 $asideMenu = [
 'My Complaints' => [
   ['icon' => 'fa-house', 'label' => 'All Complaints', 'route' => route('dashboard.listComplaint')],
-  ['icon' => 'fa-folder', 'label' => 'Pending Complaints'],
+  ['icon' => 'fa-folder', 'label' => 'Pending Complaints', 'route' => route('complaints.pending')],
   ['icon' => 'fa-clock', 'label' => 'Resolved Complaints'],
 ],
 'Complaint Details' => [
