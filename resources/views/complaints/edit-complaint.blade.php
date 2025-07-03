@@ -2,17 +2,16 @@
 <x-Layout>
     <x-HomeNavigationBar>
         <x-Section class="md:pt-32">
-            <div class="max-w-5xl mx-auto px-4 py-6 bg-white shadow-md rounded-lg">
+            <div class="max-w-5xl mx-auto px-4 py-6 bg-white shadow-md rounded-lg" >
                 <div class="flex items-center justify-center text-center flex-col">
                     <img src="{{asset('image/STI_LOGO_for_eLMS.png')}}" class="w-20" alt="">
                     <div class="w-full border-t-2 border-base-300 my-3"></div>
                     <h2 class="text-2xl text-base-content font-semibold">Edit Complaint</h2>
                 </div>
 
-                <form action="" method="POST" enctype="multipart/form-data" class="space-y-6">
+                <form x-data="{open : false}" action="{{route('complaints.update', $complaint->id)}}" method="POST" enctype="multipart/form-data" class="space-y-6">
                     @csrf
                     @method('PUT')
-
                     {{-- Title --}}
                     <div>
                       <x-EditFormLayout type="text" label="Title" name="title" value="{{old('title', $complaint->title)}}"/>
@@ -22,19 +21,17 @@
                         <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
                         <select name="category"
                                 class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring focus:ring-blue-400">
-                            <option value="Facilities" {{ $complaint->category == 'Facilities' ? 'selected' : '' }}>Facilities</option>
-                            <option value="Faculty" {{ $complaint->category == 'Faculty' ? 'selected' : '' }}>Faculty</option>
-                            <option value="Admission" {{ $complaint->category == 'Admission' ? 'selected' : '' }}>Admission</option>
-                            <option value="Cashier" {{ $complaint->category == 'Cashier' ? 'selected' : '' }}>Cashier</option>
-                            <option value="Registrar" {{ $complaint->category == 'Registrar' ? 'selected' : '' }}>Registrar</option>
+                            <option value="Facilities"  @click="open = true" {{ $complaint->category == 'Facilities' ? 'selected' : '' }}>Facilities</option>
+                            <option value="Faculty" @click="open = false" {{ $complaint->category == 'Faculty' ? 'selected' : '' }}>Faculty</option>
+                            <option value="Admission" @click="open = false" {{ $complaint->category == 'Admission' ? 'selected' : '' }}>Admission</option>
+                            <option value="Cashier"  @click="open = false"{{ $complaint->category == 'Cashier' ? 'selected' : '' }}>Cashier</option>
+                            <option value="Registrar" @click="open = false"{{ $complaint->category == 'Registrar' ? 'selected' : '' }}>Registrar</option>
                         </select>
                     </div>
                     {{-- Location --}}
-                     @if($complaint->location === null)
-                        <x-EditFormLayout name="location" hidden/>
-                    @else
+                        <span x-show="open">
                         <x-EditFormLayout label="Location" name="location" value="{{old('location', $complaint->location) }}"/>
-                    @endif
+                        </span>
                     {{-- Description --}}
                     <div>
                     <x-EditFormLayout name="description" label="Description" inputField="textarea">
@@ -49,7 +46,7 @@
 
                     {{-- Phone Number --}}
                     <div>
-                        <x-EditFormLayout type="text" name="phone_number" label="Phone Number" value="{{ old('phone_number', $complaint->phone_number) }}"/>
+                        <x-EditFormLayout type="text" name="phone_number" label="Phone Number (Optional)" value="{{ old('phone_number', $complaint->phone_number) }}"/>
                     </div>
 
                     {{-- Attached Image --}}
