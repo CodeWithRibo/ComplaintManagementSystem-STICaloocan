@@ -8,7 +8,7 @@
                 <div class="relative">
                     <input type="text" id="search" name="search"
                            value="{{request()->get('search')}}"
-                           class="input input-bordered w-full pl-10 text-sm"
+                           class="input input-bordered w-full pl-10 text-sm focus:outline-none focus:ring focus:ring-blue-400"
                            placeholder="Search by title or tracker...">
                     <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-gray-400 text-sm"></i>
                 </div>
