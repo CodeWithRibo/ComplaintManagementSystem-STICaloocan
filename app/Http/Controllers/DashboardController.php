@@ -32,4 +32,14 @@ class DashboardController extends Controller
         return view ('complaints.list-complaint', compact('complaintData'));
     }
 
+    public function pending()
+    {
+        $pending = auth()->user()
+            ->complaints()
+            ->where('status','Pending')
+            ->paginate(10);
+
+        return view('complaints.pending-complaint', compact('pending'));
+    }
+
 }
