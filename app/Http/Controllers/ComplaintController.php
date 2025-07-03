@@ -70,12 +70,12 @@ class ComplaintController extends Controller
             ->complaints()
             ->orderBy('updated_at', 'desc')
             ->paginate(10);
-        return view('complaints.edit-complaint', compact('complaintData'));
+        return view('complaints.show-complaint', compact('complaintData'));
     }
 
-    public function edit(string $id)
+    public function edit(Complaint $complaint)
     {
-        //
+        return view('complaints.edit-complaint' , compact('complaint'));
     }
 
     public function update(Request $request, string $id)
