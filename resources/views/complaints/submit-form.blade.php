@@ -4,7 +4,7 @@
             <div class="flex items-center justify-center min-h-screen py-20 lg:p-20 mx-auto max-w-5xl ">
                 <form action="{{route('complaints.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <fieldset class="fieldset  bg-base-200 border border-base-300 rounded-box">
+                    <fieldset class="fieldset  bg-base-200 border border-base-300 rounded-box px-10 py-10">
                         @if(session('warning'))
                             <div role="alert" class="mt-2 alert alert-error alert-soft fixed z-50 "> {{ session('warning')}}</div>
                         @endif
