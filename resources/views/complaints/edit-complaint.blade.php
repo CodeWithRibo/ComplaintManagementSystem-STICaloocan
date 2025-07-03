@@ -30,7 +30,7 @@
                         </select>
                     </div>
                     {{-- Location --}}
-                     @if(empty($complaint->location))
+                     @if($complaint->location === null)
                         <x-EditFormLayout name="location" hidden/>
                     @else
                         <x-EditFormLayout label="Location" name="location" value="{{old('location', $complaint->location) }}"/>
