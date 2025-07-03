@@ -55,6 +55,15 @@ class ComplaintController extends Controller
                 ->with('warning', ' You’ve submitted 3 complaints today ' . $formattedDate .  ' Please try again tomorrow.');
         }
 
+        if($request->input('type_submit') != 'Identified') {
+            $validated['full_name'] = null;
+            $validated['student_id_number'] = null;
+            $validated['email'] = null;
+            $validated['year_section'] = null;
+            $validated['phone_number'] = null;
+            $validated['is_anonymous'] = true;
+        }
+
         $query = Complaint::query();
         $query->create(['user_id' => auth()->id(),
             ... $validated]);
@@ -78,13 +87,32 @@ class ComplaintController extends Controller
         return view('complaints.edit-complaint' , compact('complaint'));
     }
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, Complaint $complaint)
     {
-        //
+        $validated = $request->validate([
+            'category' => ['required', 'string'],
+            'location' => ['nullable', 'string', 'min:6', 'max:50', 'regex:/^[a-zA-Z0-9\s]+$/'],
+            'title' => ['required', 'string', 'min:6', 'max:30', 'regex:/^[a-zA-Z0-9\s]+$/'],
+            'description' => ['required', 'string', 'min:10', 'max:4000'],
+            'incident_time' => ['required', 'date', 'before_or_equal:' . now()->format('Y-m-d H:i:s')],
+            'phone_number' => ['nullable', 'max:11', 'regex:/^[0-9]+$/'],
+            'image_path' =>  ['nullable', 'image', 'max:5000', 'mimes:jpg,png,jpeg'],
+        ]);
+
+        if($request->input('category') != 'Facilities') {
+            $validated['location'] = null;
+        }
+
+        if ($request->hasFile('image_path')) {
+            $imageName = time() . '.' . $request->image_path->extension();
+            $request->image_path->move(public_path('student_complaint_image'), $imageName);
+            $validated['image_path'] = $imageName;
+        }
+        $complaint->update($validated);
+            noty()
+                ->theme('relax')
+                ->success('Your complaint has been updated successfully!');
+        return redirect()->route('complaints.show');
     }
 
-    public function destroy(string $id)
-    {
-        //
-    }
 }
