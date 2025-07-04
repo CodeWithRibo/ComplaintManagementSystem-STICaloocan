@@ -5,14 +5,14 @@
         <x-Section>
             <div class="grid lg:grid-cols-4 lg:grid-rows-2 grid-cols-1 grid-rows-2 gap-4 px-4 pt-5">
                 {{--COMPLAINTS--}}
-                <div class="rounded lg:col-span-2 shadow-lg bg-[#F7F7F7]">
+                <div class="rounded lg:col-span-2 shadow-lg bg-white">
                     <div class="card-title py-2 flex px-4">
                         <div class="flex-1">
                             <h1 class="text-button">Complaints (Recently updated)</h1>
                             <p class="text-secondary-gray text-[10px] font-semibold"> {{empty($complaintData) ? 'No Recent updates' :  'Updated ' . Carbon::parse($complaintData->updated_at)->diffForHumans()}}</p>
                         </div>
                         <div class="flex-none">
-                            <span class="text-secondary-gray text-base font-semibold">View All</span>
+                            <a href="{{route('dashboard.listComplaint')}}" class="text-secondary-gray text-base font-semibold">View All</a>
                         </div>
                     </div>
                     <div class="w-full border-t-2 border-[#E7C01D] mb-3"></div>
@@ -37,11 +37,18 @@
                                 <tr class="bg-white shadow-sm hover:shadow-md transition rounded-md">
                                     <td class="px-6 py-4 font-medium text-gray-800">{{$complaintData->title}}</td>
                                     <td class="px-6 py-4">
-                            <span
-                                class="inline-flex items-center gap-1 text-xs font-semibold text-yellow-800 bg-yellow-100 px-3 py-1 rounded-full">
-                                <i class="fa-solid fa-spinner animate-spin text-yellow-600"></i>
-                                {{$complaintData->status}}
-                            </span>
+                                        @if($complaintData->status == 'Resolved')
+                                            <span class="inline-flex items-center gap-2 text-xs font-semibold text-green-800 bg-green-100 border border-green-300 px-3 py-1 rounded-full">
+                                        <i class="fa-solid fa-check text-green-600 text-sm"></i>
+                                        <span class="text-sm">Resolved</span>
+                                    </span>
+                                        @else
+                                            <span
+                                                class="inline-flex items-center gap-1 text-xs font-semibold text-yellow-800 bg-yellow-100 px-3 py-1 rounded-full">
+                                    <i class="fa-solid fa-spinner animate-spin text-yellow-600"></i>
+                                      <span class="font-semibold text-sm">Pending</span>
+                                </span>
+                                        @endif
                                     </td>
                                     <td class="px-6 py-4 text-[13px] text-gray-500">{{Carbon::parse($complaintData->created_at)->format('F jS, Y g:i A')}}</td>
                                     <td class="px-6 py-4 italic text-[13px] text-gray-700">{{$complaintData->complaint_tracker}}</td>
@@ -52,14 +59,14 @@
                     </div>
                 </div>
                 {{--RESOLVED COMPLAINT--}}
-                <div class="row-start-2 lg:col-span-2 bg-gray-100 rounded">
+                <div class="row-start-2 lg:col-span-2 bg-gray-100 rounded bg-white">
                     <div class="card-title py-2 flex px-4">
                         <div class="flex-1">
                             <h1 class="text-button">Resolved Complaint (Recently updated)</h1>
                             <p class="text-secondary-gray text-[10px] font-semibold">Updated 13 hours ago</p>
                         </div>
                         <div class="flex-none">
-                            <span class="text-secondary-gray text-base font-semibold">See All</span>
+                            <span class="text-secondary-gray text-base font-semibold">View All</span>
                         </div>
                     </div>
                     <div class="w-full border-t-2 border-[#E7C01D] mb-3"></div>
@@ -88,7 +95,7 @@
                     </div>
                 </div>
                 {{--SUBMIT COMPLAINT--}}
-                <div class="row-start-3 lg:col-span-2 lg:col-start-3 lg:row-span-2 bg-gray-100 p-4 rounded">
+                <div class="row-start-3 lg:col-span-2 lg:col-start-3 lg:row-span-2 bg-gray-100 p-4 rounded bg-white">
                     <div class="hero bg-base-200">
                         <div class="hero-content text-center">
                             <div class="max-w-md">
@@ -103,7 +110,7 @@
                         </div>
                     </div>
                     {{--Status--}}
-                    <div class="card w-full bg-base-100 card-md shadow-sm mt-10">
+                    <div class="card w-full bg-base-100 card-md shadow-sm mt-10 bg-white">
                         <div class="card-body">
                             <h2 class="card-title text-button">Status (Recently updated)</h2>
                             <p class="text-secondary-gray text-[10px] font-semibold">{{empty($complaintData) ? 'No recent updates' : 'Updated ' . Carbon::parse($complaintData->updated_at)->diffForHumans()}}</p>
@@ -136,6 +143,7 @@
                     </div>
                 </div>
             </div>
+            @include('Components.AuthFooter')
         </x-Section>
     </x-HomeNavigationBar>
 </x-Layout>
