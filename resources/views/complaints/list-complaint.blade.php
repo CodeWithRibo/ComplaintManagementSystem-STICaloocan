@@ -4,3 +4,4 @@
 'complaints' => $complaintData,
 'header' => 'All Complaints'
 ])
+@include('Components.AuthFooter')
