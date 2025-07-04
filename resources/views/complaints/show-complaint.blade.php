@@ -31,11 +31,18 @@
                     <tr class="bg-white shadow-sm hover:shadow-md transition rounded-md">
                         <td class="px-6 py-4 font-medium text-gray-800">{{$data->title}}</td>
                         <td class="px-6 py-4">
+                            @if($data->status == 'Resolved')
+                                <span class="inline-flex items-center gap-2 text-xs font-semibold text-green-800 bg-green-100 border border-green-300 px-3 py-1 rounded-full">
+                                        <i class="fa-solid fa-check text-green-600 text-sm"></i>
+                                        <span class="text-sm">Resolved</span>
+                                    </span>
+                            @else
                                 <span
                                     class="inline-flex items-center gap-1 text-xs font-semibold text-yellow-800 bg-yellow-100 px-3 py-1 rounded-full">
                                     <i class="fa-solid fa-spinner animate-spin text-yellow-600"></i>
-                                    Pending
+                                      <span class="font-semibold text-sm">Pending</span>
                                 </span>
+                            @endif
                         </td>
                         <td class="px-6 py-4 text-xs font-semibold text-gray-700">{{$data->priority}}</td>
                         <td class="px-6 py-4 italic text-[13px] text-gray-700">{{$data->complaint_tracker}}</td>
@@ -60,5 +67,6 @@
             </table>
         </div>
     </x-Section>
+        @include('Components.AuthFooter')
     </x-HomeNavigationBar>
 </x-Layout>
