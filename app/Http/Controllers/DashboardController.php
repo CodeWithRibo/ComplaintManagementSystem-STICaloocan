@@ -12,6 +12,21 @@ class DashboardController extends Controller
     {
         return view('welcome');
     }
+
+    public function termsConditions()
+    {
+        return view('terms-conditions');
+    }
+
+    public function privacyPolicy()
+    {
+        return view('privacy-policy');
+    }
+
+    public function faq()
+    {
+        return view('dashboard.faq');
+    }
     public function home()
     {
         $countPending = auth()->user()
@@ -40,6 +55,16 @@ class DashboardController extends Controller
             ->paginate(10);
 
         return view('complaints.pending-complaint', compact('pending'));
+    }
+
+    public function resolved()
+    {
+        $resolved = auth()->user()
+            ->complaints()
+            ->where('status','Resolved')
+            ->paginate(10);
+
+        return view('complaints.resolved-complaint', compact('resolved'));
     }
 
 }
