@@ -8,13 +8,13 @@
     <nav>
         <h6 class="footer-title">Quick Links</h6>
         <a class="link link-hover">View Status</a>
-        <a class="link link-hover">Student Support</a>
-        <a class="link link-hover">Reports & Feedback</a>
+        <a href="{{route('show.login')}}" class="link link-hover">Login</a>
+        <a href="{{route('show.register')}}" class="link link-hover">Signup</a>
     </nav>
     <nav>
         <h6 class="footer-title">Legal</h6>
-        <a class="link link-hover" href="#">Terms of Use</a>
-        <a class="link link-hover" href="#">Privacy Policy</a>
+        <a class="link link-hover" href="{{route('terms-conditions')}}">Terms & Conditions</a>
+        <a class="link link-hover" href="{{route('privacy-policy')}}">Privacy Policy</a>
     </nav>
 </footer>
 <footer class="footer bg-base-200 text-base-content border-base-300 border-t px-10 py-4">
