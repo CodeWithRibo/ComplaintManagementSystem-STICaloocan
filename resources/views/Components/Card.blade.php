@@ -1,4 +1,4 @@
-<div class="card bg-base-100 w-[375px] shadow-lg">
+<div class="card bg-base-100 w-[375px] shadow-lg bg-white">
     <figure>
         <img src="{{ $attribute }}" alt="STI PROPERTY" />
     </figure>
