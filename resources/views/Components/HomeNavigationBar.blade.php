@@ -1,5 +1,5 @@
 @php
-    $name  = auth()->user()->first_name . ' ' . auth()->user()->last_name;
+    $name  = auth()->user()->last_name . ', ' . auth()->user()->first_name;
     $convert = strtoupper($name);
 
 $mDropdownMenu = [
@@ -29,7 +29,6 @@ $asideMenu = [
 ],
 'Others' => [
   ['icon' => 'ph-seal-question', 'label' => 'FAQ', 'route' => route('dashboard.faq')],
-  ['icon' => 'ph-address-book-tabs', 'label' => 'Contact Us'],
 ],
 ];
 
@@ -50,7 +49,7 @@ $asideMenu = [
             </div>
             <ul class="dropdown-content menu bg-base-100 rounded-box shadow-sm w-52 mt-2 right-0 z-50">
                 <li>
-                    <a href="#">Profile</a>
+                    <a href="{{route('dashboard.profile')}}">{{ $convert }}</a>
                 </li>
                 <li>
                     <a href="{{route('logout')}}">Logout</a>
