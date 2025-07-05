@@ -51,7 +51,7 @@
 
                     {{-- Attached Image --}}
                     <div>
-                        <x-EditFormLayout name="image_path" label="Attached Image (Optional)" inputField="file"/>
+                        <x-EditFormLayout name="image_path" label="Attached Image (Optional)" type="file"/>
                     </div>
 
                     {{-- Submit Button --}}
