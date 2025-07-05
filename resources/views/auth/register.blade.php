@@ -13,9 +13,9 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             {{-- First Name --}}
-                           <x-FormLayout type="input" value="{{old('first_name')}}" name="first_name" placeholder="e.g., Juan" label="First Name">
+                           <x-FormLayout type="text" value="{{old('first_name')}}" name="first_name" placeholder="e.g., Juan" label="First Name">
                            </x-FormLayout>
-                            <x-FormLayout type="input" value="{{old('last_name')}}" name="last_name" placeholder="e.g., Dela Cruz" label="Last Name">
+                            <x-FormLayout type="text" value="{{old('last_name')}}" name="last_name" placeholder="e.g., Dela Cruz" label="Last Name">
                             </x-FormLayout>
                             {{-- Email --}}
                             <x-FormLayout type="email" value="{{old('email')}}" name="email" placeholder="e.g., juan.delacruz@gmail.com" label="Email">
@@ -29,7 +29,7 @@
                         </div>
                         <div>
                             {{-- Student ID Number --}}
-                            <x-FormLayout type="input" value="{{old('student_id_number')}}" name="student_id_number" placeholder="e.g., 02000411496" label="Student ID Number">
+                            <x-FormLayout type="text" value="{{old('student_id_number')}}" name="student_id_number" placeholder="e.g., 02000411496" label="Student ID Number">
                             </x-FormLayout>
                             {{-- Grade Level --}}
                             <x-SelectionLayout name="grade_level" label="Grade Level" disabledOption="Select your Grade Level">
@@ -46,10 +46,10 @@
                                 <option value="BSTM" @selected(old('program') === 'BSTM')>BSTM - Tourism Management</option>
                             </x-SelectionLayout>
                             {{--Section--}}
-                            <x-FormLayout type="input"  value="{{old('section')}}" name="section" placeholder="e.g., BT-207" label="Section">
+                            <x-FormLayout type="text"  value="{{old('section')}}" name="section" placeholder="e.g., BT-207" label="Section">
                             </x-FormLayout>
                             {{--Contact Number--}}
-                            <x-FormLayout type="input"  value="{{old('contact_number')}}" name="contact_number" placeholder="Enter Contact Number" label=" Contact Number (Optional)">
+                            <x-FormLayout type="text"  value="{{old('contact_number')}}" name="contact_number" placeholder="Enter Contact Number" label=" Contact Number (Optional)">
                             </x-FormLayout>
                         </div>
                     </div>
