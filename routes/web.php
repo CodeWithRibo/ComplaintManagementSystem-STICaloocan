@@ -25,6 +25,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('complaints/pending-complaint', [DashboardController::class, 'pending'])->name('complaints.pending');
     Route::get('complaints/resolved-complaint', [DashboardController::class, 'resolved'])->name('complaints.resolved');
     Route::get('dashboard/faq', [DashboardController::class, 'faq'])->name('dashboard.faq');
+    Route::get('dashboard/profile', [DashboardController::class, 'profile'])->name('dashboard.profile');
 });
 
 Route::middleware(['guest'])->group( function (){
