@@ -87,7 +87,7 @@ class ComplaintController extends Controller
         return view('complaints.edit-complaint' , compact('complaint'));
     }
 
-    public function update(Request $request, Complaint $complaint)
+    public function update(Request $request, Complaint $complaint) : RedirectResponse
     {
         $validated = $request->validate([
             'category' => ['required', 'string'],
@@ -108,6 +108,7 @@ class ComplaintController extends Controller
             $request->image_path->move(public_path('student_complaint_image'), $imageName);
             $validated['image_path'] = $imageName;
         }
+
         $complaint->update($validated);
             noty()
                 ->theme('relax')
