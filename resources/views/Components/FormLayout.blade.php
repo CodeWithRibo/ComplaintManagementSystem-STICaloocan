@@ -10,13 +10,13 @@
     </label>
     @if($inputField === 'textarea')
         <textarea {{$attributes}} name="{{ $name }}"
-                  class="@error($name) is-invalid @enderror textarea textarea-bordered w-full resize-none "
+                  class="@error($name) is-invalid @enderror textarea textarea-bordered w-full resize-none border-1 focus:border-none focus:outline-none focus:ring focus:ring-blue-400 "
                   placeholder="{{$placeholder}}">{{old($name)}}</textarea>
     @else
         <input
             name="{{ $name }}"
             {{ $attributes->merge([
-                'class' => 'input input-bordered w-full ' . ($errors->has($name) ? 'is-invalid' : '')
+                'class' => 'input input-bordered w-full focus:outline-none border-1 focus:border-none focus:ring focus:ring-blue-400' . ($errors->has($name) ? 'is-invalid' : '')
             ]) }}
             placeholder="{{ $placeholder }}"
         />
