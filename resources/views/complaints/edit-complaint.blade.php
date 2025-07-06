@@ -44,11 +44,6 @@
                         <x-EditFormLayout type="datetime-local" name="incident_time" label="Incident Time" value="{{ old('incident_time', Carbon::parse($complaint->incident_time)->format('Y-m-d\TH:i')) }}"/>
                     </div>
 
-                    {{-- Phone Number --}}
-                    <div>
-                        <x-EditFormLayout type="text" name="phone_number" label="Phone Number (Optional)" value="{{ old('phone_number', $complaint->phone_number) }}"/>
-                    </div>
-
                     {{-- Attached Image --}}
                     <div>
                         <x-EditFormLayout name="image_path" label="Attached Image (Optional)" type="file"/>
