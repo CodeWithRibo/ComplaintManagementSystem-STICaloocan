@@ -30,7 +30,7 @@
         </div>
     </div>
 </header>
-<div class="mb-20">
+<div class="mb-20 bg-white">
     {{$slot}}
 </div>
 </x-layout>
