@@ -74,5 +74,5 @@
             </div>
         </section>
     </x-NavigationBar>
-    <x-Footer></x-Footer>
+    <x-Footer/>
 </x-Layout>
