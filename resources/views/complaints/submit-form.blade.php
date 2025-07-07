@@ -164,7 +164,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-neutral mt-6 w-full">Submit Complaint</button>
+                            <button type="submit" class="btn btn-secondary text-white mt-6 w-full">Submit Complaint</button>
                         </div>
                     </fieldset>
                 </form>
