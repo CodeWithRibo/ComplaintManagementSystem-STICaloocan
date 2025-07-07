@@ -13,7 +13,10 @@ class DashboardController extends Controller
         return view('welcome');
     }
 
-
+    public function profile()
+    {
+        return view('dashboard.profile');
+    }
     public function termsConditions()
     {
         return view('terms-conditions');
