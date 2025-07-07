@@ -5,37 +5,41 @@ namespace App\Http\Controllers;
 use App\Models\Complaint;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class ChangePasswordController extends Controller
 {
 
-    public function profile()
-    {
-        return view('dashboard.profile');
-    }
 
     public function testing(User $user)
     {
-        return view('change-password', compact('user'));
+        return view('auth.change-password', compact('user'));
     }
 
     public function changePassword(User $user, Request $request)
     {
-       $validate = $request->validate([
+        $request->validate([
             'current_password' => ['required','string','min:8'],
-            'password' => ['required', 'string', 'min:8', 'confirmed']
+            'password' => ['required', 'string', 'min:8', 'confirmed', 'different:current_password']
         ]);
 
-        $testing = Hash::check($request->current_password, $user->getAuthPassword());
-        dd($testing);
-        $request->user()->fill([
-            'password' => Hash::make($request->password)
-        ])->save();
+        $checkCurrentPassword = Hash::check($request->current_password, $user->getAuthPassword());
+        if(!$checkCurrentPassword)
+        {
+            return redirect()->back()->with('error', 'Current password does not match');
+        }
 
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         noty()
             ->theme('relax')
-            ->success('Password updated successfully');
+            ->success('Update password successfully. You may now login your account');
+
         return redirect()->route('dashboard.profile');
     }
 
