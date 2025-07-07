@@ -40,10 +40,10 @@
                             </x-SelectionLayout>
                             {{--Program--}}
                             <x-SelectionLayout name="program" label="Program" disabledOption="Select your Program">
-                                <option value="BSIT" @selected(old('program') === 'BSIT')>BSIT - Information Technology</option>
-                                <option value="BSBA" @selected(old('program') === 'BSBA')>BSBA - Business Accountancy</option>
-                                <option value="BSHM" @selected(old('program') === 'BSHM')>BSHM - Hospitality Management</option>
-                                <option value="BSTM" @selected(old('program') === 'BSTM')>BSTM - Tourism Management</option>
+                                <option value="BS IN INFORMATION TECHNOLOGY" @selected(old('program') === 'BS IN INFORMATION TECHNOLOGY')>BS IN INFORMATION TECHNOLOGY</option>
+                                <option value="BS IN BUSINESS ACCOUNTANCY" @selected(old('program') === 'BS IN BUSINESS ACCOUNTANCY')>BS IN BUSINESS ACCOUNTANCY</option>
+                                <option value="BS IN HOSPITALITY MANAGEMENT" @selected(old('program') === 'BS IN HOSPITALITY MANAGEMENT')>BS IN HOSPITALITY MANAGEMENT</option>
+                                <option value="BS IN TOURISM MANAGEMENT" @selected(old('program') === 'BS IN TOURISM MANAGEMENT')>BS IN TOURISM MANAGEMENT</option>
                             </x-SelectionLayout>
                             {{--Section--}}
                             <x-FormLayout type="text"  value="{{old('section')}}" name="section" placeholder="e.g., BT-207" label="Section">
