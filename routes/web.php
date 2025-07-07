@@ -26,15 +26,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('complaints/pending-complaint', [DashboardController::class, 'pending'])->name('complaints.pending');
     Route::get('complaints/resolved-complaint', [DashboardController::class, 'resolved'])->name('complaints.resolved');
     Route::get('dashboard/faq', [DashboardController::class, 'faq'])->name('dashboard.faq');
-    Route::get('dashboard/profile', [ChangePasswordController::class, 'profile'])->name('dashboard.profile');
-    Route::get('dashboard/change-password/{user}', [ChangePasswordController::class, 'testing'])->name('testing');
-    Route::post('dashboard/change-password/{user}', [ChangePasswordController::class, 'changePassword'])->name('changePassword');
+    Route::get('dashboard/profile', [DashboardController::class, 'profile'])->name('dashboard.profile');
+    //UNDER DEVELOPMENT CHANGING PASSWORD
+    Route::get('auth/change-password/{user}', [ChangePasswordController::class, 'testing'])->name('auth.changePassword');
+    Route::post('auth/change-password/{user}', [ChangePasswordController::class, 'changePassword'])->name('changePassword');
 });
 
 Route::middleware(['guest'])->group( function (){
-    Route::get('/welcome', [DashboardController::class, 'welcome'])->name('welcome');
-    Route::get('/register',[AuthController::class, 'showRegister'])->name('show.register');
-    Route::post('/register',[AuthController::class, 'register'])->name('register');
+    Route::get('welcome', [DashboardController::class, 'welcome'])->name('welcome');
+    Route::get('register',[AuthController::class, 'showRegister'])->name('show.register');
+    Route::post('register',[AuthController::class, 'register'])->name('register');
     Route::get('login',[AuthController::class, 'showLogin'])->name('show.login');
     Route::post('login',[AuthController::class, 'login'])->name('login');
     Route::get('terms-conditions',[DashboardController::class, 'termsConditions'])->name('terms-conditions');
