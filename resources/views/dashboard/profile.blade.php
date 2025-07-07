@@ -41,7 +41,30 @@
                             <i class="ph ph-device-mobile"></i>
                             <h1 class="">{{$authUser->contact_number}}</h1>
                         </div>
+                        <div class="mt-2 flex items-center flex-col">
+                            <span class="text-[13.5px]">Account Security</span>
+                            <a href="{{route('testing', $authUser->id)}}" class="btn btn-accent mt-2">Change Password</a>
+                        </div>
                     </div>
+                {{--Account Security Modal--}}
+                    <dialog id="accountSecurity" class="modal">
+                        <div class="modal-box">
+                            <h3 class="text-lg font-bold">Change Password</h3>
+                            <div class="modal-action flex items-center flex-col">
+                                <form action="{{route('changePassword', $authUser->id)}}" method="POST">
+                                    @csrf
+                                    <x-FormLayout type="password" name="current_password" placeholder="Enter current password" label="Current Password"/>
+                                    <x-FormLayout type="password" name="password" placeholder="Enter new password" label="New Password"/>
+                                    <x-FormLayout type="password" name="password_confirmation" placeholder="Enter current password" label="Confirm Password"/>
+                                    <button type="submit" class="btn btn-ghost" onclick="e.preventDefault()">Submit</button>
+                                </form>
+                                <form method="dialog">
+                                    <!-- if there is a button in form, it will close the modal -->
+                                    <button class="btn">Close</button>
+                                </form>
+                            </div>
+                        </div>
+                    </dialog>
                 </div>
             </div>
             @include('Components.AuthFooter')

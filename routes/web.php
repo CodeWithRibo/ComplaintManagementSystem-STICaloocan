@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChangePasswordController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SearchController;
@@ -25,7 +26,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('complaints/pending-complaint', [DashboardController::class, 'pending'])->name('complaints.pending');
     Route::get('complaints/resolved-complaint', [DashboardController::class, 'resolved'])->name('complaints.resolved');
     Route::get('dashboard/faq', [DashboardController::class, 'faq'])->name('dashboard.faq');
-    Route::get('dashboard/profile', [DashboardController::class, 'profile'])->name('dashboard.profile');
+    Route::get('dashboard/profile', [ChangePasswordController::class, 'profile'])->name('dashboard.profile');
+    Route::get('dashboard/change-password/{user}', [ChangePasswordController::class, 'testing'])->name('testing');
+    Route::post('dashboard/change-password/{user}', [ChangePasswordController::class, 'changePassword'])->name('changePassword');
 });
 
 Route::middleware(['guest'])->group( function (){
