@@ -15,10 +15,11 @@
                                   placeholder="Enter Student ID Number" label="Student ID Number"/>
                     <x-FormLayout type="password" name="password" placeholder="Enter Password" label="Password"
                                   x-bind:type="passwordShow ? 'text' : 'password'" class="relative z-0"/>
-{{--                    <div @click="passwordShow = !passwordShow" class="absolute z-50 bottom-[28.10%] left-[80%] ">--}}
-{{--                        <i class="text-base cursor-pointer " x-bind:class="passwordShow ? 'ph ph-eye' : 'ph ph-eye-slash'"></i>--}}
-{{--                    </div>--}}
-                    <a href="{{route('show.forgot-password')}}" class="text-gray-500 hover:text-gray-700 transition duration-300 hover:underline ">Forgot Password</a>
+                    <div class="flex items-center gap-2">
+                        <input type="checkbox" class="cursor-pointer" @click="passwordShow = !passwordShow" >
+                        <p class="text-gray-500">Show Password</p>
+                    </div>
+                    <a href="{{route('show.link-request-form')}}" class="text-gray-500 hover:text-gray-700 transition duration-300 hover:underline ">Forgot Password</a>
                     <button class="btn btn-neutral mt-6 w-full">Login</button>
                 </fieldset>
             </form>
