@@ -1,5 +1,5 @@
 <x-layout>
-    <header class="fixed top-0 left-0 w-full bg-white shadow-md z-50">
+    <header class="fixed top-0 left-0 w-full bg-white shadow-md z-10">
         <div class="navbar bg-[#0B5793] shadow-md py-0 w-full" x-data="{ open: false }">
             <div class="flex-1">
             <span class="flex flex-row items-center justify-center lg:justify-start">
