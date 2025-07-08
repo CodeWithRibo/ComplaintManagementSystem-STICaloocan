@@ -11,6 +11,8 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    use Notifiable;
+
     protected  $table = "users";
     protected $fillable = [
         'first_name',
@@ -39,4 +41,5 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
 }
