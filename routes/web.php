@@ -7,6 +7,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ForgotPassword;
 
 Route::get('/', function () {
     return Auth::check()
@@ -41,8 +42,8 @@ Route::middleware(['guest'])->group( function (){
     Route::get('terms-conditions',[DashboardController::class, 'termsConditions'])->name('terms-conditions');
     Route::get('privacy-policy',[DashboardController::class, 'privacyPolicy'])->name('privacy-policy');
 //FORGOT & RESET PASSWORD
-    Route::get('forgot-password',[AuthController::class, 'showForgotPassword'])->name('show.forgot-password');
-    Route::post('forgot-password',[AuthController::class, 'forgotPassword'])->name('forgot-password');
+    Route::get('forgot-password',[ForgotPassword::class, 'showForgotPassword'])->name('show.forgot-password');
+    Route::post('forgot-password',[ForgotPassword::class, 'forgotPassword'])->name('forgot-password');
 
     //RESETING PASSWORD
     Route::get('/reset-password/{token}', function (string $token) {
