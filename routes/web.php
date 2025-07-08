@@ -40,6 +40,15 @@ Route::middleware(['guest'])->group( function (){
     Route::post('login',[AuthController::class, 'login'])->name('login');
     Route::get('terms-conditions',[DashboardController::class, 'termsConditions'])->name('terms-conditions');
     Route::get('privacy-policy',[DashboardController::class, 'privacyPolicy'])->name('privacy-policy');
+//FORGOT & RESET PASSWORD
+    Route::get('forgot-password',[AuthController::class, 'showForgotPassword'])->name('show.forgot-password');
+    Route::post('forgot-password',[AuthController::class, 'forgotPassword'])->name('forgot-password');
+
+    //RESETING PASSWORD
+    Route::get('/reset-password/{token}', function (string $token) {
+        return view('auth.reset-password', ['token' => $token]);
+    })->name('password.reset');
+
 });
 
 Route::post('logout',[AuthController::class, 'logout'])->name('logout');
