@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\user;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\ComplaintRequest;
 use App\Models\Complaint;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Symfony\Component\Console\Input\Input;
 
 class ComplaintController extends Controller
 {
@@ -20,7 +19,7 @@ class ComplaintController extends Controller
 
     public function create()
     {
-        return view('complaints.submit-form');
+        return view('user.complaints.submit-form');
     }
 
     public function store(ComplaintRequest $request): RedirectResponse
@@ -79,12 +78,12 @@ class ComplaintController extends Controller
             ->complaints()
             ->orderBy('updated_at', 'desc')
             ->paginate(10);
-        return view('complaints.show-complaint', compact('complaintData'));
+        return view('user.complaints.show-complaint', compact('complaintData'));
     }
 
     public function edit(Complaint $complaint)
     {
-        return view('complaints.edit-complaint' , compact('complaint'));
+        return view('user.complaints.edit-complaint' , compact('complaint'));
     }
 
     public function update(Request $request, Complaint $complaint) : RedirectResponse

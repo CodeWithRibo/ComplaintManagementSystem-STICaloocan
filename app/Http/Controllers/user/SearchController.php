@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\user;
 
+use App\Http\Controllers\Controller;
 use App\Models\Complaint;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
 
 class SearchController extends Controller
 {
@@ -18,6 +18,6 @@ class SearchController extends Controller
             ->orWhere('complaint_tracker', 'like', '%' . $search . '%')
             ->paginate(10);
 
-        return view('complaints.list-complaint', compact('complaintData'));
+        return view('user.complaints.list-complaint', compact('complaintData'));
     }
 }

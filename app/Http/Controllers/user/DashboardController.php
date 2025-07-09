@@ -1,35 +1,33 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\user;
 
-use App\Models\Complaint;
-use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
+use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
     public function welcome()
     {
-        return view('welcome');
+        return view('user.welcome');
     }
 
     public function profile()
     {
-        return view('dashboard.profile');
+        return view('user.dashboard.profile');
     }
     public function termsConditions()
     {
-        return view('terms-conditions');
+        return view('user.terms-conditions');
     }
 
     public function privacyPolicy()
     {
-        return view('privacy-policy');
+        return view('user.privacy-policy');
     }
 
     public function faq()
     {
-        return view('dashboard.faq');
+        return view('user.dashboard.faq');
     }
     public function home()
     {
@@ -41,7 +39,7 @@ class DashboardController extends Controller
 
         $complaintData = (clone $complaints)
         ->orderBy('updated_at', 'desc')->first();
-        return view('dashboard.home', compact('countPending', 'complaintData'));
+        return view('user.dashboard.home', compact('countPending', 'complaintData'));
     }
     public function listComplaint()
     {
@@ -50,7 +48,7 @@ class DashboardController extends Controller
             ->orderBy('updated_at', 'desc')
             ->paginate(10);
 
-        return view ('complaints.list-complaint', compact('complaintData'));
+        return view ('user.complaints.list-complaint', compact('complaintData'));
     }
 
     public function pending()
@@ -60,7 +58,7 @@ class DashboardController extends Controller
             ->where('status','Pending')
             ->paginate(10);
 
-        return view('complaints.pending-complaint', compact('pending'));
+        return view('user.complaints.pending-complaint', compact('pending'));
     }
 
     public function resolved()
@@ -70,7 +68,7 @@ class DashboardController extends Controller
             ->where('status','Resolved')
             ->paginate(10);
 
-        return view('complaints.resolved-complaint', compact('resolved'));
+        return view('user.complaints.resolved-complaint', compact('resolved'));
     }
 
 }
