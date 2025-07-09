@@ -1,14 +1,14 @@
 <?php
 
-use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\user\AuthController;
+use App\Http\Controllers\user\ChangePasswordController;
+use App\Http\Controllers\user\ComplaintController;
+use App\Http\Controllers\user\DashboardController;
+use App\Http\Controllers\user\ForgotPasswordController;
+use App\Http\Controllers\user\ResetPasswordController;
+use App\Http\Controllers\user\SearchController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SearchController;
-use App\Http\Controllers\ComplaintController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ForgotPasswordController;
-use App\Http\Controllers\ResetPasswordController;
 
 Route::get('/', function () {
     return Auth::check()
