@@ -33,13 +33,14 @@ class DashboardController extends Controller
     {
         $complaints = auth()->user()->complaints();
 
-        $countPending = (clone  $complaints)
-            ->where('status', 'Pending')
-            ->count();
+        $count = [
+            'pending' => (clone $complaints)->where('status', 'Pending')->count(),
+            'resolved' => (clone $complaints)->where('status', 'Resolved')->count()
+        ];
 
         $complaintData = (clone $complaints)
         ->orderBy('updated_at', 'desc')->first();
-        return view('user.dashboard.home', compact('countPending', 'complaintData'));
+        return view('user.dashboard.home', compact('count', 'complaintData'));
     }
     public function listComplaint()
     {
