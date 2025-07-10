@@ -113,7 +113,7 @@
                     <div class="card w-full bg-base-100 card-md shadow-sm mt-10 bg-white">
                         <div class="card-body">
                             <h2 class="card-title text-button">Status (Recently updated)</h2>
-                            <p class="text-secondary-gray text-[10px] font-semibold">{{empty($complaintData) ? 'No recent updates' : 'Updated ' . Carbon::parse($complaintData->updated_at)->diffForHumans()}}</p>
+                            <p class="text-secondary-gray text-[10px] font-semibold">{{empty([$complaintData]) ? 'No recent updates' : 'Updated ' . Carbon::parse($complaintData->updated_at)->diffForHumans()}}</p>
                             <div class="w-full border-t-2 border-[#E7C01D] mb-3"></div>
                             <div class="flex flex-col sm:flex-row gap-4 justify-start items-start card-actions">
 
@@ -123,17 +123,16 @@
                                     <i class="fa-solid fa-spinner animate-spin text-lg"></i>
                                     <div class="flex flex-col">
                                         <span class="font-semibold text-sm">Pending</span>
-                                        <span class="text-xs">{{ $countPending }} complaints</span>
+                                        <span class="text-xs">{{empty($count['pending']) ? 'No Complaint' : $count['pending']. ' Complaints'}} </span>
                                     </div>
                                 </div>
-
                                 {{-- Resolved --}}
                                 <div
                                     class="flex items-center gap-3 bg-green-100 border border-green-300 text-green-800 rounded-lg px-4 py-2 shadow w-full sm:w-1/2">
                                     <i class="fa-solid fa-check text-lg"></i>
                                     <div class="flex flex-col">
                                         <span class="font-semibold text-sm">Resolved</span>
-                                        <span class="text-xs">1 complaints</span>
+                                        <span class="text-xs">{{empty($count['resolved']) ? 'No Complaint' : $count['resolved']. ' Complaints' }}</span>
                                     </div>
                                 </div>
 
