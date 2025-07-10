@@ -17,9 +17,9 @@
             </x-Search>
             <!-- 📋 Complaints Table -->
             <div x-data="{modalIsOpen: false, selectedComplaint: null}">
-                <div class="px-4">
+                <div class="px-4 overflow-x-auto">
                     <table
-                        class="w-full table-auto text-sm text-left border-separate border-spacing-y-2 overflow-x-hidden">
+                        class="w-full table-auto text-sm text-left border-separate border-spacing-y-2 overflow-x-auto">
                         <thead class="bg-gray-100 text-gray-700 uppercase text-xs tracking-wider">
                         <tr>
                             <th class="px-6 py-3 rounded-tl-md">Title</th>
@@ -27,6 +27,9 @@
                             <th class="px-6 py-3">Priority</th>
                             <th class="px-6 py-3">Submitted</th>
                             <th class="px-6 py-3 rounded-tr-md">Complaint Tracker</th>
+                            @if(!empty($resolutionNote))
+                                <th class="px-6 py-3 rounded-tr-md">{{$resolutionNote}}</th>
+                            @endif
                             <th class="px-6 py-3 rounded-tr-md">Details</th>
                         </tr>
                         </thead>
@@ -51,14 +54,17 @@
                                 <td class="px-6 py-4 text-xs font-semibold text-gray-700">{{$data->priority}}</td>
                                 <td class="px-6 py-4 text-[13px] text-gray-500">{{Carbon::parse($data->created_at)->format('F jS, Y g:i A')}}</td>
                                 <td class="px-6 py-4 italic text-[13px] text-gray-700">{{$data->complaint_tracker}}</td>
+                                @if(!empty($resolutionNote))
+                                    <td class="px-6 py-4 italic text-[13px] text-gray-700">Lorem ipsumm</td>
+                                @endif
                                 <td>
                                     <button class="btn btn-secondary px-5"
                                             @click="modalIsOpen = true; selectedComplaint = {{json_encode($data)}} "
                                             type="button">View Complaint
                                     </button>
                                 </td>
-                                @empty
-                                    @if(request()->has('search'))
+                            @empty
+                                @if(request()->has('search'))
                                         <td colspan="6" class="text-2xl text-gray-500 text-center italic">No Complaint
                                             found for <span class="text-accent">{{request()->get('search')}}</span></td>
                                     @else

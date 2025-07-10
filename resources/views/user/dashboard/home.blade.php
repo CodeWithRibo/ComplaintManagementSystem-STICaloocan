@@ -16,7 +16,7 @@
                         </div>
                     </div>
                     <div class="w-full border-t-2 border-[#E7C01D] mb-3"></div>
-                    <div class="card-body bg-white  overflow-x-hidden ">
+                    <div class="card-body bg-white  overflow-x-auto ">
                         @if(empty($complaintData))
                             <div class="text-center py-8 text-gray-500">
                                 <i class="fa-regular fa-folder-open text-3xl mb-2"></i>
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                     <div class="w-full border-t-2 border-[#E7C01D] mb-3"></div>
-                    <div class=" card-body bg-white overflow-x-hidden">
+                    <div class=" card-body bg-white overflow-x-auto">
                         <table class="w-full table-auto border-separate border-spacing-y-2 text-sm text-left">
                             <!-- Table Head -->
                             <thead class="bg-gray-100 text-gray-700 uppercase text-xs tracking-wider">
