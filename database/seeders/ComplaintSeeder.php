@@ -2,8 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Complaint;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\user\Complaint;
 use Illuminate\Database\Seeder;
 
 class ComplaintSeeder extends Seeder

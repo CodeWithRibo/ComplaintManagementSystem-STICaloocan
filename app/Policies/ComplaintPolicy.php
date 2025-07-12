@@ -2,9 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\Complaint;
-use App\Models\User;
-use Illuminate\Auth\Access\Response;
+use App\Models\user\Complaint;
+use App\Models\user\User;
 
 class ComplaintPolicy
 {

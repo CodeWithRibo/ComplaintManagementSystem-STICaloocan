@@ -2,11 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\user\Complaint;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Complaint;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Complaint>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\user\Complaint>
  */
 class ComplaintFactory extends Factory
 {
