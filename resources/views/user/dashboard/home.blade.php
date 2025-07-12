@@ -21,7 +21,8 @@
                             <div class="text-center py-8 text-gray-500">
                                 <i class="fa-regular fa-folder-open text-3xl mb-2"></i>
                                 <p class="text-sm font-medium">No complaints found.</p>
-                            </div>                        @else
+                            </div>
+                        @else
                             <table class="w-full table-auto text-sm text-left border-separate border-spacing-y-2">
                                 <!-- Table Head -->
                                 <thead class="bg-gray-100 text-gray-700 uppercase text-xs tracking-wider">
@@ -113,7 +114,7 @@
                     <div class="card w-full bg-base-100 card-md shadow-sm mt-10 bg-white">
                         <div class="card-body">
                             <h2 class="card-title text-button">Status (Recently updated)</h2>
-                            <p class="text-secondary-gray text-[10px] font-semibold">{{empty([$complaintData]) ? 'No recent updates' : 'Updated ' . Carbon::parse($complaintData->updated_at)->diffForHumans()}}</p>
+                            <p class="text-secondary-gray text-[10px] font-semibold">{{empty($complaintData) ? 'No recent updates' : 'Updated ' . Carbon::parse($complaintData->updated_at)->diffForHumans()}}</p>
                             <div class="w-full border-t-2 border-[#E7C01D] mb-3"></div>
                             <div class="flex flex-col sm:flex-row gap-4 justify-start items-start card-actions">
 
