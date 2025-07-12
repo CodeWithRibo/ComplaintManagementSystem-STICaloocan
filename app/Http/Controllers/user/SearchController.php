@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
-use App\Models\Complaint;
+use App\Models\user\Complaint;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller

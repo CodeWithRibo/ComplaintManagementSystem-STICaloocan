@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\user\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
