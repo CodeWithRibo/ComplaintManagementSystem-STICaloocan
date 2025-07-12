@@ -15,7 +15,6 @@ php artisan route:cache
 php artisan view:cache
 php artisan route:clear
 php artisan optimize:clear
-composer dump-autoload
 
 echo -e "${GREEN}${BOLD}✔ clear cache successfully"
 echo -e "🚀 You're all set, Ribo!${NC}"
