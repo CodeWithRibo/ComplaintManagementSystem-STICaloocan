@@ -1,3 +1,10 @@
+
+
+# 📋 Complaint Management System
+
+A web-based complaint management system developed for **STI College Caloocan** to streamline the process of submitting, tracking, and resolving student complaints.
+
+---
 <h1>Progress During Development</h1>
 
 During the development of this system, I experienced many struggles and moments of stress. This project was built using Laravel — a technology I was learning from scratch.
@@ -5,12 +12,7 @@ It wasn’t easy to develop this system. It took around two months to build whil
 As of July 13, 2025, the current progress is focused on improving the Admin functions, particularly in managing user complaints and maintaining the audit log system.
 I had no prior background in Laravel. But now, I’ve successfully built this system on my own. It’s more than just a working project — it’s a learning journey that helped me gain real development skills.
 
-# 📋 Complaint Management System
-
-A web-based complaint management system developed for **STI College Caloocan** to streamline the process of submitting, tracking, and resolving student complaints.
-
 ---
-
 ## 🚀 Features
 
 - Student Complaint Submission<br>
