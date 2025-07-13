@@ -38,10 +38,9 @@ A web-based complaint management system developed for **STI College Caloocan** t
 ---
 
 ## ⚙️ Installation
-
 ```bash
-git clone https://github.com/your-username/complaint-management.git
-cd complaint-management
+git clone https://github.com/CodeWithRibo/ComplaintManagementSystem-STICaloocan.git
+cd ComplaintManagementSystem-STICaloocan
 composer install
 npm install && npm run dev
 cp .env.example .env
