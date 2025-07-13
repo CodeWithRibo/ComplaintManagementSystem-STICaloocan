@@ -34,6 +34,7 @@ I had no prior background in Laravel. But now, I’ve successfully built this sy
 - <span>Laravel</span> – PHP web application framework<br>
 - <span>Blade</span> – Laravel templating engine<br>
 - <span>Tailwind CSS</span> – Utility-first CSS framework<br>
+- <span>Daisy UI</span> – Tailwind CSS Framework Library<br>
 - <span>Alpine.js</span> – Lightweight JavaScript framework<br>
 - <span>MySQL</span> – Relational database<br>
 
