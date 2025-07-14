@@ -4,10 +4,11 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\admin\User;
+use App\Models\admin\AdminUser;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\Auth\Authenticatable;
 
-class AuthController extends Controller
+class AdminAuthController extends Controller
 {
     public function showLogin()
     {
@@ -26,7 +27,7 @@ class AuthController extends Controller
             'password' => 'required|string|confirmed:repeat_password',
         ]);
 
-        $query = User::query();
+        $query = AdminUser::query();
         $query->create($validate);
 
         return redirect('admin/login');
@@ -34,17 +35,17 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $credential = $request->validate([
+        $credentials = $request->validate([
             'user_name' => 'required',
             'password' => 'required',
         ]);
 
-        if(Auth::attempt($credential))
+        if(Auth::guard('admin')->attempt($credentials))
         {
             $request->session()->regenerate();
-            return redirect('admin.login');
+            return redirect()->route('admin.index');
         }
-        return back();
+        return back()->withErrors(['user_name' => 'Your user name or password is incorrect.']);
     }
 
 }
