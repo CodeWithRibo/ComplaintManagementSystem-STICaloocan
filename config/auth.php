@@ -40,11 +40,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admin_users',
+        ],
     ],
-
     /*
     |--------------------------------------------------------------------------
-    | User Providers
+    | AdminUser Providers
     |--------------------------------------------------------------------------
     |
     | All authentication guards have a user provider, which defines how the
@@ -63,6 +66,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', \App\Models\user\User::class),
+        ],
+        'admin_users' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', \App\Models\admin\AdminUser::class),
         ],
 
         // 'users' => [
