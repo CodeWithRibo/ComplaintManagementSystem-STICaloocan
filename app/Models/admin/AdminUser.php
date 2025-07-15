@@ -13,7 +13,10 @@ class AdminUser extends Authenticatable
     protected $guarded = 'id';
 
     protected $fillable = [
-        'user_name',
+        'first_name',
+        'last_name',
+        'email',
+        'contact_number',
         'password'
     ];
     protected function casts(): array
