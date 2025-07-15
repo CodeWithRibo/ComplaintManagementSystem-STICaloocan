@@ -14,7 +14,7 @@ class ChangePasswordController extends Controller
 
     public function testing(User $user)
     {
-        return view('auth.change-password', compact('user'));
+        return view('user.auth.change-password', compact('user'));
     }
 
     public function changePassword(User $user, Request $request)
