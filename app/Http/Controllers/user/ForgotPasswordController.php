@@ -15,7 +15,7 @@ class ForgotPasswordController extends Controller
 {
     public function showLinkRequestForm()
     {
-        return view('auth.forgot-password');
+        return view('user.auth.forgot-password');
     }
 
     public function sendResetLinkEmail(Request $request)
@@ -37,7 +37,7 @@ class ForgotPasswordController extends Controller
             ]);
 
             //Send Email
-            Mail::send('auth.verify', ['token' => $token], function ($message) use ($request) {
+            Mail::send('user.auth.verify', ['token' => $token], function ($message) use ($request) {
             $message->to($request->email);
             $message->subject('Reset Your Password');
             });
