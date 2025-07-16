@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\admin\AdminUser;
 use Illuminate\Support\Facades\Auth;
@@ -67,6 +68,15 @@ class AdminAuthController extends Controller
             return redirect()->route('admin.index');
         }
         return back()->withErrors(['email' => 'Your email or password is incorrect.']);
+    }
+
+    public function logout(Request $request) : RedirectResponse
+    {
+        Auth::guard('admin')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('admin.show-login');
     }
 
 }
