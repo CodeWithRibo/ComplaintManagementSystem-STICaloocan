@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return Auth::check()
+    return Auth::guard('web')->check()
         ? redirect()->route('dashboard.home')
         : redirect()->route('welcome');
 });
@@ -54,9 +54,9 @@ Route::middleware(['guest'])->group( function (){
 
 });
 // ----------------------------- Logout --------------------------//
-Route::post('logout',[AuthController::class, 'logout'])->name('logout');
+Route::post('/logout',[AuthController::class, 'logout'])->name('logout');
 Route::get('/logout', function () {
-    Auth::logout();
+    Auth::guard('web')->logout();
     request()->session()->invalidate();
     request()->session()->regenerateToken();
     return redirect()->route('welcome');
