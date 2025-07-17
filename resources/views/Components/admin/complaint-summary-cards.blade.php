@@ -2,7 +2,7 @@
     'header' => 'Total Complaints',
     'count' => 0,
     'color' => 'red',
-    'indicator' => 'success',
+    'indicator' => 'primary',
     'icon' => 'info',
     'buttonText' => 'View Complaints',
 ])
