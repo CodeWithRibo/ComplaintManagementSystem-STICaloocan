@@ -4,7 +4,7 @@
 
 $mDropdownMenu = [
 'Complaint Management' => [
-  ['icon' => 'ph-folder', 'label' => 'All Complaints', 'route' => route('dashboard.listComplaint')],
+  ['icon' => 'ph-folder', 'label' => 'All Complaints', 'route' => route('admin.all-complaints')],
   ['icon' => 'ph-hourglass-medium', 'label' => 'Pending Complaints', 'route' => route('complaints.pending')],
   ['icon' => 'ph-seal-check', 'label' => 'Resolved Complaints', 'route' => route('complaints.resolved')],
 ],
@@ -20,7 +20,7 @@ $mDropdownMenu = [
 
 $asideMenu = [
 'Complaint Management' => [
-  ['icon' => 'ph-folder', 'label' => 'All Complaints', 'route' => route('dashboard.listComplaint')],
+  ['icon' => 'ph-folder', 'label' => 'All Complaints', 'route' => route('admin.all-complaints')],
   ['icon' => 'ph-hourglass-medium', 'label' => 'Pending Complaints', 'route' => route('complaints.pending')],
   ['icon' => 'ph-seal-check', 'label' => 'Resolved Complaints', 'route' => route('complaints.resolved')],
   ['icon' => 'ph-folder-simple-star', 'label' => 'View Complaint', 'route' => route('complaints.resolved')],
@@ -51,7 +51,7 @@ $asideMenu = [
        </span>
         </div>
         <div class="flex-1 ">
-            <a href="{{route('dashboard.home', ['page' => 'home']) }}" class="text-xl text-white">Complaint Management
+            <a href="{{route('admin.index') }}" class="text-xl text-white">Complaint Management
                 System</a>
         </div>
         <div class="dropdown flex-none hidden md:block">
