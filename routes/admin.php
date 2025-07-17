@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\admin\AdminAuthController;
 use App\Http\Controllers\admin\AdminDashboardController;
-use App\Http\Controllers\user\DashboardController;
+use App\Http\Controllers\admin\ComplaintManagementController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
@@ -22,6 +22,7 @@ Route::get('/login', [AdminAuthController::class, 'showLogin'])->name('admin.sho
 Route::middleware(['admin.auth'])->group(function () {
     // ----------------------------- Dashboard --------------------------//
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.index');
+    Route::get('/all-complaints', [ComplaintManagementController::class, 'allComplaints'])->name('admin.all-complaints');
 
 });
 
