@@ -27,6 +27,7 @@ class ComplaintRequest extends FormRequest
             'incident_time' => ['required', 'date', 'before_or_equal:' . now()->format('Y-m-d H:i:s') ],
             'priority' => ['required', 'string'],
             'image_path' =>  ['nullable', 'image', 'max:5000', 'mimes:jpg,png,jpeg'],
+            'resolution_note' => ['nullable', 'string'],
             'type_submit' => ['required', 'string'],
             'full_name' => ['nullable'],
             'student_id_number' => ['nullable'],

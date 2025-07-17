@@ -21,6 +21,7 @@ return new class extends Migration
             $table->dateTime('incident_time');
             $table->string('priority');
             $table->string('image_path')->nullable();
+            $table->string('resolution_note')->nullable();
             //Contact Information either Identified Or Anonymous
             $table->boolean('is_anonymous')->default(false);
             $table->string('type_submit');

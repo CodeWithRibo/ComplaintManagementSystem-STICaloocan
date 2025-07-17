@@ -20,6 +20,7 @@ class Complaint extends Model
         'incident_time',
         'priority',
         'image_path',
+        'resolution_note',
         'is_anonymous',
         'type_submit',
         'full_name',
