@@ -21,6 +21,8 @@
                      class="h-full w-auto object-contain cursor-zoom-in rounded"
                      @click="window.open($el.src, '_blank')">
             </x-ModalAttachedImage>
+            <x-ModalDetails label="Resolution Note"
+                            x-text="selectedComplaint?.resolution_note || '-'"/>
         </div>
         <div class="border-t pt-4">
             <h4 class="text-sm font-semibold text-gray-700 dark:text-white mb-3">Submitter
