@@ -15,13 +15,12 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('category');
-            $table->string('location')->nullable();   //Additional Question, Location Details for Facilities
+            $table->string('location')->nullable();
             $table->string('title');
             $table->text('description');
             $table->dateTime('incident_time');
             $table->string('priority');
             $table->string('image_path')->nullable();
-            $table->string('resolution_note')->nullable();
             //Contact Information either Identified Or Anonymous
             $table->boolean('is_anonymous')->default(false);
             $table->string('type_submit');
@@ -38,6 +37,9 @@ return new class extends Migration
                 ->constrained()
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
+            //Admin Access Table & Monitor
+            $table->string('resolution_note')->nullable();
+            $table->dateTime('resolved_on')->nullable();
         });
     }
 
