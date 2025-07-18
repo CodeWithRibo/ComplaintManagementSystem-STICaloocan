@@ -1,12 +1,13 @@
 <x-Layout>
     <x-admin.navigation-bar>
         <x-Section>
-            <div class="mx-auto max-w-7xl mt-20">
-                <x-Search header="All Complaints">
-
-                </x-Search>
-                <div  x-data="{modalIsOpen: false, selectedComplaint: null}">
-                    @include('Components.admin.complaint-table', ['complaints' => $allUserComplaints])
+            <div class=" mt-20">
+                <x-Search header="All Complaints"></x-Search>{{--SEARCH BAR, UNDER DEVELOPMENT--}}
+                <div x-data="{modalIsOpen: false, selectedComplaint: null}">
+                    @include('Components.admin.complaint-table',
+                    ['complaints' => $allUserComplaints,
+                     'resolutionNote' => null
+                      ])
                     <x-view-details-modal/>
                 </div>
             </div>
