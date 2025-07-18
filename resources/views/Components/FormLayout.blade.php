@@ -9,7 +9,7 @@
         <span class="label-text">{{ $label }}</span>
     </label>
     @if($inputField === 'textarea')
-        <textarea {{$attributes}} name="{{ $name }}"
+        <textarea {{$attributes}}  name="{{ $name }}"
                   class="@error($name) is-invalid @enderror textarea textarea-bordered w-full resize-none border-1 focus:border-none focus:outline-none focus:ring focus:ring-blue-400 "
                   placeholder="{{$placeholder}}">{{old($name)}}</textarea>
     @else
