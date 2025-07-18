@@ -41,7 +41,8 @@
            <div class="flex flex-col mt-20 mx-auto  max-w-7xl" x-data="{modalIsOpen: false, selectedComplaint: null}" >
                <h1 class="text-base-content text-2xl p-5 text-center lg:text-start">Recent Complaint</h1>
                 @include('Components.admin.complaint-table', [
-                'complaints' => $userComplaints
+                'complaints' => $userComplaints,
+                'resolutionNote' => null
 ])
                {{--Modal View Details--}}
                <x-view-details-modal/>
