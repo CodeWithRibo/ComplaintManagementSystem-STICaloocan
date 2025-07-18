@@ -20,9 +20,12 @@ Route::get('/login', [AdminAuthController::class, 'showLogin'])->name('admin.sho
 });
 
 Route::middleware(['admin.auth'])->group(function () {
-    // ----------------------------- Dashboard --------------------------//
-    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.index');
+    // ----------------------------- Complaint Management --------------------------//
     Route::get('/all-complaints', [ComplaintManagementController::class, 'allComplaints'])->name('admin.all-complaints');
+    Route::get('/all-complaints/{complaint}', [ComplaintManagementController::class, 'showResolutionNote'])->name('admin.show-resolution-note');
+    Route::put('/all-complaints/{complaint}', [ComplaintManagementController::class, 'resolutionNote'])->name('admin.resolution-note');
+    // ----------------------------- Overview & Reports --------------------------//
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.index');
 
 });
 
