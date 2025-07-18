@@ -28,6 +28,7 @@ class ComplaintRequest extends FormRequest
             'priority' => ['required', 'string'],
             'image_path' =>  ['nullable', 'image', 'max:5000', 'mimes:jpg,png,jpeg'],
             'resolution_note' => ['nullable', 'string'],
+            'resolved_on' => ['nullable', 'date'],
             'type_submit' => ['required', 'string'],
             'full_name' => ['nullable'],
             'student_id_number' => ['nullable'],
