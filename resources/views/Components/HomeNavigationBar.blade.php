@@ -5,8 +5,9 @@
 $mDropdownMenu = [
 'My Complaints' => [
   ['icon' => 'ph-folder', 'label' => 'All Complaints', 'route' => route('dashboard.listComplaint')],
-  ['icon' => 'ph-hourglass-medium', 'label' => 'Pending Complaints', 'route' => route('complaints.pending')],
-  ['icon' => 'ph-seal-check', 'label' => 'Resolved Complaints', 'route' => route('complaints.resolved')],
+  ['icon' => 'ph-hourglass-medium', 'label' => 'Pending Complaint', 'route' => route('complaints.pending')],
+  ['icon' => 'ph-hourglass-medium', 'label' => 'In Progress Complaint', 'route' => route('complaints.in-progress')],
+  ['icon' => 'ph-seal-check', 'label' => 'Resolved Complaint', 'route' => route('complaints.resolved')],
 ],
 'Complaint Details' => [
    ['icon' => 'ph-pencil-line', 'label' => 'Edit Complaints', 'route' => route('complaints.show')],
@@ -22,10 +23,12 @@ $asideMenu = [
 'My Complaints' => [
   ['icon' => 'ph-folder', 'label' => 'All Complaints', 'route' => route('dashboard.listComplaint')],
   ['icon' => 'ph-hourglass-medium', 'label' => 'Pending Complaints', 'route' => route('complaints.pending')],
+  ['icon' => 'ph-spinner-gap', 'label' => 'In Progress Complaints', 'route' => route('complaints.in-progress')],
   ['icon' => 'ph-seal-check', 'label' => 'Resolved Complaints', 'route' => route('complaints.resolved')],
+  ['icon' => 'ph-archive', 'label' => 'Archive Complaints', 'route' => route('complaints.archive')],
 ],
 'Complaint Details' => [
-  ['icon' => 'ph-pencil-line', 'label' => 'Edit Complaints', 'route' => route('complaints.show')],
+  ['icon' => 'ph-pencil-line', 'label' => 'Edit Complaint', 'route' => route('complaints.show')],
 ],
 'Others' => [
   ['icon' => 'ph-seal-question', 'label' => 'FAQ', 'route' => route('dashboard.faq')],
