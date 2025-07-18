@@ -83,6 +83,10 @@ class ComplaintController extends Controller
 
     public function edit(Complaint $complaint)
     {
+        if ($complaint->status === 'Resolved')
+        {
+            return redirect()->back()->with('error', 'Resolved complaints cannot be edited.');
+        }
         return view('user.complaints.edit-complaint' , compact('complaint'));
     }
 
