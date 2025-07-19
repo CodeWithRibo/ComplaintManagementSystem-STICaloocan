@@ -39,6 +39,7 @@ return new class extends Migration
                 ->cascadeOnDelete();
             //Admin Access Table & Monitor
             $table->string('resolution_note')->nullable();
+            $table->string('progress_note')->nullable();
             $table->dateTime('resolved_on')->nullable();
         });
     }
