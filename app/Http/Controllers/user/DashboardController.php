@@ -37,13 +37,14 @@ class DashboardController extends Controller
             'pending' => (clone $complaints)->where('status', 'Pending')->count(),
             'resolved' => (clone $complaints)->where('status', 'Resolved')->count(),
             'inProgress' => (clone $complaints)->where('status', 'In Progress')->count(),
-            'archive' => (clone $complaints)->where('status', 'Archive')->count()
+            'archive' => (clone $complaints)->where('status', 'Archived')->count()
         ];
 
         $complaintData = [
-            'latestComplaint' => (clone $complaints)->orderBy('updated_at', 'desc')->first(),
-            'resolvedComplaint' => (clone $complaints)->where('status', 'Resolved')->first()
+            'latestComplaint' => (clone $complaints)->orderBy('created_at', 'desc')->first(),
+            'resolvedComplaint' => (clone $complaints)->orderBy('updated_at', 'desc')->where('status','Resolved')->first()
         ];
+
         return view('user.dashboard.home', compact('count', 'complaintData'));
     }
     public function listComplaint()
@@ -86,14 +87,14 @@ class DashboardController extends Controller
         return view('user.complaints.resolved-complaint', compact('resolved'));
     }
 
-    public function archive()
+    public function archived()
     {
-        $archive = auth()->user()
+        $archived = auth()->user()
             ->complaints()
-            ->where('status','Archive')
+            ->where('status','Archived')
             ->paginate(10);
 
-        return view('user.complaints.archive-complaint', compact('archive'));
+        return view('user.complaints.archive-complaint', compact('archived'));
     }
 
 

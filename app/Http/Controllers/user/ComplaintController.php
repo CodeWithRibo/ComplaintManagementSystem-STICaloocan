@@ -87,6 +87,11 @@ class ComplaintController extends Controller
         {
             return redirect()->back()->with('error', 'Resolved complaints cannot be edited.');
         }
+
+        if ($complaint->status === 'Archived')
+        {
+            return redirect()->back()->with('error', 'Archived complaints cannot be edited.');
+        }
         return view('user.complaints.edit-complaint' , compact('complaint'));
     }
 
