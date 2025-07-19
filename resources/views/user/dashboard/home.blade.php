@@ -130,7 +130,7 @@
                                     {{empty($count['inProgress']) ? 'No Complaint' : $count['inProgress']. ' Complaints'}}
                                 </x-CountLayout>
 
-                                <x-CountLayout label="Archive" class="bg-gray-100 border border-gray-300 text-gray-800 flex-1" icon="archive">
+                                <x-CountLayout label="Archived" class="bg-gray-100 border border-gray-300 text-gray-800 flex-1" icon="archive">
                                     {{empty($count['archive']) ? 'No Complaint' : $count['archive']. ' Complaints'}}
                                 </x-CountLayout>
 
