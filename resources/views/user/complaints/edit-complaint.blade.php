@@ -30,7 +30,7 @@
                     </div>
                     {{-- Location --}}
                         <span x-show="open">
-                        <x-EditFormLayout label="Location" name="location" value="{{old('location', $complaint->location) }}"/>
+                        <x-EditFormLayout label="Location" name="location" placeholder="e.g., Computer Laboratory 601" value="{{old('location', $complaint->location) }}"/>
                         </span>
                     {{-- Description --}}
                     <div>
