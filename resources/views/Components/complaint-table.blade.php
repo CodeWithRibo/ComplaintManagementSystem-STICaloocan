@@ -27,8 +27,12 @@
                             <th class="px-6 py-3">Priority</th>
                             <th class="px-6 py-3">Submitted</th>
                             <th class="px-6 py-3 rounded-tr-md">Complaint Tracker</th>
-                            @if(!empty($resolutionNote))
-                                <th class="px-6 py-3 rounded-tr-md">{{$resolutionNote}}</th>
+                            @if(!empty($resolutionNote || $progressNote))
+                                <th class="px-6 py-3 rounded-tr-md">{{$resolutionNote}} {{$progressNote}}</th>
+                            @endif
+
+                            @if(!empty($accessArchived))
+                                <th class="px-6 py-3 rounded-tr-md">{{$accessArchived}}</th>
                             @endif
                             <th class="px-6 py-3 rounded-tr-md">{{!empty($action) ? 'Action' : 'Details'}}</th>
                         </tr>
@@ -51,8 +55,8 @@
                                             <x-StatusLayout label="In Progress" icon="resolved"
                                                             class="bg-blue-100 text-blue-800"/>
                                             @break
-                                        @case($data->status === 'Archive')
-                                            <x-StatusLayout label="Archive" icon="archive"
+                                        @case($data->status === 'Archived')
+                                            <x-StatusLayout label="Archived" icon="archive"
                                                             class="bg-gray-100 text-gray-800"/>
                                             @break
                                     @endswitch
@@ -60,9 +64,14 @@
                                 <td class="px-6 py-4 text-xs font-semibold text-gray-700">{{$data->priority}}</td>
                                 <td class="px-6 py-4 text-[13px] text-gray-500">{{Carbon::parse($data->created_at)->format('F jS, Y g:i A')}}</td>
                                 <td class="px-6 py-4 italic text-[13px] text-gray-700">{{$data->complaint_tracker}}</td>
-                                @if(!empty($resolutionNote))
-                                    <td class="px-6 py-4 italic text-[13px] text-gray-700">{{$data->resolution_note}}</td>
+                                @if(!empty($resolutionNote) || !empty($progressNote))
+                                    <td class="px-6 py-4 italic text-[13px] text-gray-700">{{$data->resolution_note}} {{$data->progress_note}}</td>
                                 @endif
+                                <td class="px-6 py-4">
+                                    @if(!empty($accessArchived))
+                                        <x-admin.manage-form route="{{route('admin.archived', $data->id)}}" action="update" value="Mark as Archived" class="text-white btn btn-secondary  list-none cursor-pointer "/>
+                                    @endif
+                                </td>
                                 <td>
                                     @if(!empty($action))
                                         <a href="{{route('complaints.edit', $data->id)}}">
