@@ -12,6 +12,7 @@
             <x-ModalDetails label="Status" x-text="selectedComplaint?.status || '-'"/>
             <x-ModalDetails label="Complaint Tracker"
                             x-text="selectedComplaint?.complaint_tracker || '-'"/>
+
             {{--Image--}}
             <x-ModalAttachedImage label="Attached Image"
                                   x-text="selectedComplaint?.image_path || 'No Attached Image'">
@@ -21,8 +22,17 @@
                      class="h-full w-auto object-contain cursor-zoom-in rounded"
                      @click="window.open($el.src, '_blank')">
             </x-ModalAttachedImage>
-            <x-ModalDetails label="Resolution Note"
-                            x-text="selectedComplaint?.resolution_note || '-'"/>
+        </div>
+        <div class="border-t pt-4">
+            <h4 class="text-sm font-semibold text-gray-700 dark:text-white mb-3">Admin Response</h4>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <x-ModalDetails label="Resolution Note"
+                              x-text="selectedComplaint?.resolution_note || '-'"/>
+            <div class="md:col-span-2">
+                <x-ModalDetails label="Progress Note"
+                                x-text="selectedComplaint?.progress_note || '-'"/>
+            </div>
+          </div>
         </div>
         <div class="border-t pt-4">
             <h4 class="text-sm font-semibold text-gray-700 dark:text-white mb-3">Submitter
@@ -45,5 +55,7 @@
                 <p class="text-gray-500 italic">This complaint was submitted anonymously.</p>
             </div>
         </div>
+
     </div>
+
 </x-ModalHeader>

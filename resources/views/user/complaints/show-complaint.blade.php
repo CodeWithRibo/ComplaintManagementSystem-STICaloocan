@@ -1,8 +1,9 @@
 @include('Components.complaint-table',[
 'complaints' => $complaintData,
-'header' => 'In Progress Complaints',
+'header' => 'Edit Complaint',
 'resolutionNote' => null,
-'noComplaintFound' => 'No complaints are currently in progress.',
+'progressNote' => null,
+'noComplaintFound' => 'No complaints are currently edit.',
 'action' => true
 ])
 @include('Components.AuthFooter')

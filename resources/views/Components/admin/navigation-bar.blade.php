@@ -5,28 +5,40 @@
 $mDropdownMenu = [
 'Complaint Management' => [
   ['icon' => 'ph-folder', 'label' => 'All Complaints', 'route' => route('admin.all-complaints')],
-  ['icon' => 'ph-hourglass-medium', 'label' => 'Pending Complaints', 'route' => route('complaints.pending')],
-  ['icon' => 'ph-seal-check', 'label' => 'Resolved Complaints', 'route' => route('complaints.resolved')],
+  ['icon' => 'ph-hourglass-medium', 'label' => 'Pending Complaints', 'route' => route('admin.pending-complaints')],
+  ['icon' => 'ph-seal-check', 'label' => 'Resolved Complaints', 'route' => route('admin.resolved-complaints')],
+  ['icon' => 'ph-spinner-gap', 'label' => 'In Progress Complaints', 'route' => route('admin.in-progress-complaints')],
+  ['icon' => 'ph-archive', 'label' => 'Archived Complaints', 'route' => route('admin.archived-complaints')],
+  ['icon' => 'ph-folder-simple-star', 'label' => 'View Complaint', 'route' => route('complaints.resolved')],
 ],
-'Complaint Details' => [
-   ['icon' => 'ph-pencil-line', 'label' => 'Edit Complaints', 'route' => route('complaints.show')],
+'Overview & Reports' => [
+  ['icon' => 'ph-trend-up ', 'label' => 'Dashboard', 'route' => route('admin.index')],
+  ['icon' => 'ph-notebook', 'label' => 'Complaint Logs', 'route' => route('complaints.show')],
 ],
-'Others' => [
-  ['icon' => 'ph-seal-question', 'label' => 'FAQ', 'route' => route('dashboard.faq')],
-  ['icon' => 'ph-address-book-tabs', 'label' => 'Contact Us'],
-  ['icon' => 'ph-sign-out', 'label' => 'Logout', 'route' => route('logout')],
+'User Management' => [
+  ['icon' => 'ph-user', 'label' => 'Student Accounts ', 'route' => route('dashboard.faq')],
+  ['icon' => 'ph-lock-key', 'label' => 'Admin Accounts ', 'route' => route('dashboard.faq')],
+],
+'System Controls' => [
+  ['icon' => 'ph-binoculars', 'label' => 'Audit Logs', 'route' => route('dashboard.faq')],
+],
+
+'System Settings' => [
+  ['icon' => 'ph-lock-laminated', 'label' => 'Change Password', 'route' => route('dashboard.faq')],
 ],
 ];
 
 $asideMenu = [
 'Complaint Management' => [
   ['icon' => 'ph-folder', 'label' => 'All Complaints', 'route' => route('admin.all-complaints')],
-  ['icon' => 'ph-hourglass-medium', 'label' => 'Pending Complaints', 'route' => route('complaints.pending')],
-  ['icon' => 'ph-seal-check', 'label' => 'Resolved Complaints', 'route' => route('complaints.resolved')],
+  ['icon' => 'ph-hourglass-medium', 'label' => 'Pending Complaints', 'route' => route('admin.pending-complaints')],
+  ['icon' => 'ph-seal-check', 'label' => 'Resolved Complaints', 'route' => route('admin.resolved-complaints')],
+  ['icon' => 'ph-spinner-gap', 'label' => 'In Progress Complaints', 'route' => route('admin.in-progress-complaints')],
+  ['icon' => 'ph-archive', 'label' => 'Archived Complaints', 'route' => route('admin.archived-complaints')],
   ['icon' => 'ph-folder-simple-star', 'label' => 'View Complaint', 'route' => route('complaints.resolved')],
 ],
 'Overview & Reports' => [
-  ['icon' => 'ph-trend-up ', 'label' => 'Dashboard', 'route' => route('complaints.show')],
+  ['icon' => 'ph-trend-up ', 'label' => 'Dashboard', 'route' => route('admin.index')],
   ['icon' => 'ph-notebook', 'label' => 'Complaint Logs', 'route' => route('complaints.show')],
 ],
 'User Management' => [

@@ -1,8 +1,10 @@
 @include('Components.complaint-table',
 ['complaints' => $resolved,
 'header' => 'Resolved Complaint',
-'resolutionNote' => 'Resolution Note',
 'noComplaintFound' => 'No complaints have been resolved yet.',
+'resolutionNote' => 'Resolution Note',
+'progressNote' => null,
+'accessArchived' => 'Action'
 ])
 
 @include('Components.AuthFooter')

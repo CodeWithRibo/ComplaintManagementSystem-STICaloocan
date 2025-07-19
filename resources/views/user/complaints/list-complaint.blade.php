@@ -3,6 +3,7 @@
 @include('Components.complaint-table',[
 'complaints' => $complaintData,
 'header' => 'All Complaints',
-'resolutionNote' => null
+'resolutionNote' => null,
+'progressNote' => null
 ])
 @include('Components.AuthFooter')
