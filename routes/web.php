@@ -29,7 +29,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('complaints/pending-complaint', [DashboardController::class, 'pending'])->name('complaints.pending');
     Route::get('complaints/in-progress-complaint', [DashboardController::class, 'inProgress'])->name('complaints.in-progress');
     Route::get('complaints/resolved-complaint', [DashboardController::class, 'resolved'])->name('complaints.resolved');
-    Route::get('complaints/archive-complaint', [DashboardController::class, 'archive'])->name('complaints.archive');
+    Route::get('complaints/archived-complaint', [DashboardController::class, 'archived'])->name('complaints.archived');
     Route::get('dashboard/faq', [DashboardController::class, 'faq'])->name('dashboard.faq');
     Route::get('dashboard/profile', [DashboardController::class, 'profile'])->name('dashboard.profile');
     // ----------------------------- Change Password --------------------------//
