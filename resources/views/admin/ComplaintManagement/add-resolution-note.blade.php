@@ -19,14 +19,6 @@
                                       rows="5">
                         </x-FormLayout>
                         <div>
-                            <x-SelectionLayout type="select" name="status" label="Update Status"
-                                               disabledOption="Select status">
-                                <option value="Resolved" @selected(old('status') === 'Resolved')>Resolved</option>
-                                <option value="In Progress" @selected(old('status') === 'In Progress')>In Progress</option>
-                                <option value="Archive" @selected(old('status') === 'Archive')>Archive</option>
-                            </x-SelectionLayout>
-                        </div>
-                        <div>
                             <x-FormLayout type="datetime-local"
                                           name="resolved_on"
                                           label="Resolved On"/>
