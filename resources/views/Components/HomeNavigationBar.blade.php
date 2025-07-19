@@ -25,7 +25,7 @@ $asideMenu = [
   ['icon' => 'ph-hourglass-medium', 'label' => 'Pending Complaints', 'route' => route('complaints.pending')],
   ['icon' => 'ph-spinner-gap', 'label' => 'In Progress Complaints', 'route' => route('complaints.in-progress')],
   ['icon' => 'ph-seal-check', 'label' => 'Resolved Complaints', 'route' => route('complaints.resolved')],
-  ['icon' => 'ph-archive', 'label' => 'Archive Complaints', 'route' => route('complaints.archive')],
+  ['icon' => 'ph-archive', 'label' => 'Archived Complaints', 'route' => route('complaints.archived')],
 ],
 'Complaint Details' => [
   ['icon' => 'ph-pencil-line', 'label' => 'Edit Complaint', 'route' => route('complaints.show')],
