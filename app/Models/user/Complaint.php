@@ -21,6 +21,7 @@ class Complaint extends Model
         'priority',
         'image_path',
         'resolution_note',
+        'progress_note',
         'resolved_on',
         'is_anonymous',
         'type_submit',
