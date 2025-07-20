@@ -12,7 +12,7 @@ class AdminDashboardController extends Controller
 {
     public function index()
     {
-        $userComplaints = Complaint::with('user')->orderBy('created_at', 'desc')->take(5)->get();
-        return view('admin.dashboard.index', compact('userComplaints') );
+        $userComplaints = Complaint::with('user')->orderBy('created_at', 'desc')->take(5)->paginate(10);
+        return view('admin.dashboard.index', compact('userComplaints'));
     }
 }
