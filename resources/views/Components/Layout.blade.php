@@ -17,6 +17,8 @@
         type="text/css"
         href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
     />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <title>CMS</title>
 </head>
 <body class="font-display">
