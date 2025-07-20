@@ -9,7 +9,6 @@ $mDropdownMenu = [
   ['icon' => 'ph-seal-check', 'label' => 'Resolved Complaints', 'route' => route('admin.resolved-complaints')],
   ['icon' => 'ph-spinner-gap', 'label' => 'In Progress Complaints', 'route' => route('admin.in-progress-complaints')],
   ['icon' => 'ph-archive', 'label' => 'Archived Complaints', 'route' => route('admin.archived-complaints')],
-  ['icon' => 'ph-folder-simple-star', 'label' => 'View Complaint', 'route' => route('complaints.resolved')],
 ],
 'Overview & Reports' => [
   ['icon' => 'ph-trend-up ', 'label' => 'Dashboard', 'route' => route('admin.index')],
@@ -35,15 +34,14 @@ $asideMenu = [
   ['icon' => 'ph-seal-check', 'label' => 'Resolved Complaints', 'route' => route('admin.resolved-complaints')],
   ['icon' => 'ph-spinner-gap', 'label' => 'In Progress Complaints', 'route' => route('admin.in-progress-complaints')],
   ['icon' => 'ph-archive', 'label' => 'Archived Complaints', 'route' => route('admin.archived-complaints')],
-  ['icon' => 'ph-folder-simple-star', 'label' => 'View Complaint', 'route' => route('complaints.resolved')],
 ],
 'Overview & Reports' => [
   ['icon' => 'ph-trend-up ', 'label' => 'Dashboard', 'route' => route('admin.index')],
   ['icon' => 'ph-notebook', 'label' => 'Complaint Logs', 'route' => route('complaints.show')],
 ],
 'User Management' => [
-  ['icon' => 'ph-user', 'label' => 'Student Accounts ', 'route' => route('dashboard.faq')],
-  ['icon' => 'ph-lock-key', 'label' => 'Admin Accounts ', 'route' => route('dashboard.faq')],
+  ['icon' => 'ph-user', 'label' => 'Student Accounts ', 'route' => route('admin.student-accounts')],
+  ['icon' => 'ph-lock-key', 'label' => 'Admin Accounts ', 'route' => route('admin.admin-accounts')],
 ],
 'System Controls' => [
   ['icon' => 'ph-binoculars', 'label' => 'Audit Logs', 'route' => route('dashboard.faq')],
