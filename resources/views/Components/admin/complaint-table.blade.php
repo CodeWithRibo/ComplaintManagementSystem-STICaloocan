@@ -82,8 +82,7 @@
                     </div>
                 </td>
                 @empty
-                    <td colspan="6" class="text-2xl text-gray-500 text-center italic"> {{$noComplaintFound}}
-                    </td>
+                    <td colspan="10" class="text-2xl text-gray-500 text-center italic"> {{$noComplaintFound}}</td>
             </tr>
             </tbody>
         @endforelse

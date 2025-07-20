@@ -18,7 +18,7 @@
     $theme = $colorVariants[$color] ?? $colorVariants['red'];
 @endphp
 
-<div {{$attributes->merge(['class' => 'card w-96 border shadow-md card-md ' . $theme   ])}}>
+<div {{$attributes->merge(['class' => 'card w-full border shadow-md card-md ' . $theme   ])}}>
     <div class="card-body">
         <h2 class="card-title text-{{$color}}-700">
            @switch($icon)
