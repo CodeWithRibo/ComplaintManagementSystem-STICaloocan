@@ -9,8 +9,5 @@
                     type="submit" {{$attributes->merge(['class' => ' cursor-pointer text-sm px-2 py-1 text-base-content font-bold'])}}>
             </form>
             @break
-        @case('store')
-
-            @break
     @endswitch
 </li>
