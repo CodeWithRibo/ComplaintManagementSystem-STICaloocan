@@ -26,7 +26,7 @@ class UserManagementController extends Controller
 
         public function showUserProfile(User $user) : View
         {
-            return view('admin.UserManagement.user-profile', compact('user'));
+            return view('admin.UserManagement.user-edit-profile', compact('user'));
         }
 
         public function editUserProfile(User $user, Request $request) : RedirectResponse
