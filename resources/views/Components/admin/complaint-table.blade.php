@@ -1,7 +1,7 @@
 @php use Illuminate\Support\Carbon; @endphp
-<div class="rounded-lg shadow-md overflow-x-auto overflow-visible">
-    <table class="table w-full text-sm text-left text-gray-700">
-        <thead class="bg-gray-100 text-gray-700 uppercase">
+<div class="overflow-x-auto overflow-visible">
+    <table class="table table-md text-sm text-left text-gray-700">
+        <thead class="uppercase">
         <tr>
             <th class="px-6 py-4">Author</th>
             <th class="px-6 py-4">Title</th>

@@ -7,12 +7,13 @@ use App\Models\user\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\View\View;
 
 class ChangePasswordController extends Controller
 {
 
 
-    public function testing(User $user)
+    public function showChangePassword(User $user) : View
     {
         return view('user.auth.change-password', compact('user'));
     }
