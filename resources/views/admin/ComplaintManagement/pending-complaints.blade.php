@@ -13,7 +13,7 @@
                 {{--Modal View Details--}}
                 <x-view-details-modal/>
             </div>
-
+            @include('Components.AuthFooter')
         </x-Section>
     </x-admin.navigation-bar>
 </x-Layout>
