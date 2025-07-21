@@ -27,8 +27,8 @@ class AuthController extends Controller
         noty()
             ->timeout(2000)
             ->theme('relax')
-            ->success('Registration complete! You can now log in to your account.');
-        return redirect()->route('show.login');
+            ->success('Add Student complete!');
+        return redirect()->route('admin.student-accounts');
     }
 
     public function showLogin()
