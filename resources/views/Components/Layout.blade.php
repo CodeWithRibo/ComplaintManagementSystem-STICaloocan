@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     @vite('resources/css/app.css')
-    @vite('resources/js/app.js')
+
     <link
         rel="stylesheet"
         type="text/css"
@@ -25,5 +25,8 @@
     <div>
         {{ $slot }}
     </div>
+    @vite('resources/js/app.js')
 </body>
+
+
 </html>

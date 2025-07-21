@@ -4,6 +4,7 @@
 'complaints' => $complaintData,
 'header' => 'All Complaints',
 'resolutionNote' => null,
-'progressNote' => null
+'progressNote' => null,
+'noComplaintFound' => 'No currently summited complaint yet '
 ])
 @include('Components.AuthFooter')
