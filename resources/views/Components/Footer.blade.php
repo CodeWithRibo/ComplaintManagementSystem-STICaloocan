@@ -7,9 +7,7 @@
     </nav>
     <nav>
         <h6 class="footer-title">Quick Links</h6>
-        <a class="link link-hover">View Status</a>
         <a href="{{route('show.login')}}" class="link link-hover">Login</a>
-        <a href="{{route('show.register')}}" class="link link-hover">Signup</a>
     </nav>
     <nav>
         <h6 class="footer-title">Legal</h6>
