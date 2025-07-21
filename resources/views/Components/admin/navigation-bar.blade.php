@@ -73,7 +73,7 @@ $asideMenu = [
                     <a href="#">{{ $convertToUpperCase }}</a>
                 </li>
                 <li>
-                    <a href="#">Logout</a>
+                    <a href="{{route('admin.logout')}}">Logout</a>
                 </li>
             </ul>
         </div>

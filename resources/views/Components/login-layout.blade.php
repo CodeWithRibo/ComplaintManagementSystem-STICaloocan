@@ -8,8 +8,10 @@
                         <img src="{{asset('image/STI_LOGO_for_eLMS.png')}}" class="w-20" alt="">
                         <div class="w-full border-t-2 border-base-300 my-3"></div>
                         <h2 class="text-2xl text-base-content font-semibold">{{$header}}</h2>
-                        <p class="text-base-content"> Doesn’t have an account yet? <a href="{{$link}}"
-                                                                                      class="underline">Signup</a></p>
+                       @if(!empty($adminAccess))
+                            <p class="text-base-content"> Doesn’t have an account yet? <a href="{{$link}}"
+                                                                                          class="underline">Signup</a></p>
+                       @endif
                     </div>
                     <x-FormLayout type="text" name="{{$name}}"
                                   placeholder="{{$placeholder}}" label="{{$label}}"/>
