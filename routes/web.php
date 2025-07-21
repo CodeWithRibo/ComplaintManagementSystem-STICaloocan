@@ -33,15 +33,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('dashboard/faq', [DashboardController::class, 'faq'])->name('dashboard.faq');
     Route::get('dashboard/profile', [DashboardController::class, 'profile'])->name('dashboard.profile');
     // ----------------------------- Change Password --------------------------//
-    Route::get('auth/change-password/{user}', [ChangePasswordController::class, 'testing'])->name('auth.changePassword');
+    Route::get('auth/change-password/{user}', [ChangePasswordController::class, 'showChangePassword'])->name('auth.changePassword');
     Route::post('auth/change-password/{user}', [ChangePasswordController::class, 'changePassword'])->name('changePassword');
 });
 
 Route::middleware(['guest'])->group( function (){
     Route::get('welcome', [DashboardController::class, 'welcome'])->name('welcome');
-    // ----------------------------- Register --------------------------//
-    Route::get('register',[AuthController::class, 'showRegister'])->name('show.register');
-    Route::post('register',[AuthController::class, 'register'])->name('register');
     // ----------------------------- Login --------------------------//
     Route::get('login',[AuthController::class, 'showLogin'])->name('show.login');
     Route::post('login',[AuthController::class, 'login'])->name('login');
