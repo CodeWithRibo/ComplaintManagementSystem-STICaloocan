@@ -67,8 +67,8 @@
                                 @if(!empty($resolutionNote) || !empty($progressNote))
                                     <td class="px-6 py-4 italic text-[13px] text-gray-700">{{$data->resolution_note}} {{$data->progress_note}}</td>
                                 @endif
+                                @if(!empty($accessArchived))
                                 <td class="px-6 py-4">
-                                    @if(!empty($accessArchived))
                                         <x-admin.manage-form route="{{route('admin.archived', $data->id)}}" action="update" value="Mark as Archived" class="text-white btn btn-secondary  list-none cursor-pointer "/>
                                     @endif
                                 </td>
@@ -91,7 +91,7 @@
                                         <td colspan="6" class="text-2xl text-gray-500 text-center italic">No Complaint
                                             found for <span class="text-accent">{{request()->get('search')}}</span></td>
                                     @else
-                                        <td colspan="6" class="text-2xl text-gray-500 text-center italic">
+                                        <td colspan="10" class="text-2xl text-gray-500 text-center italic">
                                             {{$noComplaintFound}}
                                         </td>
                                     @endif

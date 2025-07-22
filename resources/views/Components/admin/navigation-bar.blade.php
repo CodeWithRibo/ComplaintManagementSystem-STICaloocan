@@ -12,18 +12,11 @@ $mDropdownMenu = [
 ],
 'Overview & Reports' => [
   ['icon' => 'ph-trend-up ', 'label' => 'Dashboard', 'route' => route('admin.index')],
-  ['icon' => 'ph-notebook', 'label' => 'Complaint Logs', 'route' => route('complaints.show')],
+  ['icon' => 'ph-notebook', 'label' => 'Complaint Logs', 'route' => route('admin.activity-logs')],
 ],
 'User Management' => [
   ['icon' => 'ph-user', 'label' => 'Student Accounts ', 'route' => route('dashboard.faq')],
   ['icon' => 'ph-lock-key', 'label' => 'Admin Accounts ', 'route' => route('dashboard.faq')],
-],
-'System Controls' => [
-  ['icon' => 'ph-binoculars', 'label' => 'Audit Logs', 'route' => route('dashboard.faq')],
-],
-
-'System Settings' => [
-  ['icon' => 'ph-lock-laminated', 'label' => 'Change Password', 'route' => route('dashboard.faq')],
 ],
 ];
 
@@ -37,18 +30,11 @@ $asideMenu = [
 ],
 'Overview & Reports' => [
   ['icon' => 'ph-trend-up ', 'label' => 'Dashboard', 'route' => route('admin.index')],
-  ['icon' => 'ph-notebook', 'label' => 'Complaint Logs', 'route' => route('complaints.show')],
+  ['icon' => 'ph-notebook', 'label' => 'Complaint Logs', 'route' => route('admin.activity-logs')],
 ],
 'User Management' => [
   ['icon' => 'ph-user', 'label' => 'Student Accounts ', 'route' => route('admin.student-accounts')],
   ['icon' => 'ph-lock-key', 'label' => 'Admin Accounts ', 'route' => route('admin.admin-accounts')],
-],
-'System Controls' => [
-  ['icon' => 'ph-binoculars', 'label' => 'Audit Logs', 'route' => route('dashboard.faq')],
-],
-
-'System Settings' => [
-  ['icon' => 'ph-lock-laminated', 'label' => 'Change Password', 'route' => route('dashboard.faq')],
 ],
 ];
 
