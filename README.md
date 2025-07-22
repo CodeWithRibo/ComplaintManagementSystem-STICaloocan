@@ -95,7 +95,7 @@ Admins are authorized to update or change the status of student complaints.
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/dde81035-21e6-457f-8529-2d8ab32cd1f2" />
  -Once the complaint is in the in-progress mode, admin can add Progress note 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0b5b93ba-e3ed-4a25-b264-7935aeefd2dc" />
--After the in-progress mode, admin can manipulate the status and mark as resolved (added resolution note)
+-After the in-progress mode, admin can manipulate the status and marked as resolved (added resolution note)
 <img width="1920" height="1079" alt="image" src="https://github.com/user-attachments/assets/ae1f6d7f-3649-4e0c-b104-296e4b19dff8" />
 
 
