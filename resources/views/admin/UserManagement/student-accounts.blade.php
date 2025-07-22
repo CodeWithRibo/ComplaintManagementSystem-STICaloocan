@@ -3,7 +3,6 @@
     <x-admin.navigation-bar>
         <x-Section>
             <div class="overflow-x-auto bg-white px-5 py-5 mt-10 mx-6 shadow-md rounded-md">
-                <x-Search></x-Search>{{--SEARCH BAR, UNDER DEVELOPMENT--}}
                 <a href="{{route('show.register')}}" class="btn btn-accent text-white">Add Student</a>
                 <h1 class="text-base-content text-2xl p-2 my-5 text-center xl:text-start border-l-4 border-primary bg-base-100 shadow-sm rounded-r-lg w-auto xl:w-96"> Student Account</h1>
                 <table class="table table-md">
