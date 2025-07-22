@@ -64,8 +64,16 @@ class ComplaintController extends Controller
         }
 
         $query = Complaint::query();
-        $query->create(['user_id' => auth()->id(),
+        $complaints = $query->create(['user_id' => auth()->id(),
             ... $validated]);
+        $userIdentity = $request->input('type_submit') != 'Identified'
+            ? 'Anonymous submitted a complaint' : $complaints->full_name .' '.  "submitted a complaint";
+
+        //Logs
+        activity()
+            ->performedOn($complaints)
+            ->causedBy(auth()->user())
+            ->log($userIdentity);
         noty()
             ->theme('relax')
             ->success('Complaint submitted! We’ve received your report and will take action as soon as possible.');
