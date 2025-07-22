@@ -71,6 +71,9 @@ Students can submit complaints to help the school identify issues more efficient
 Upon submission, they can choose to submit the complaint either with their identity or anonymously.
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a3b62ef8-d352-488b-bc51-e70076c350ca" />
 
+Limited Sumbit Complaint - Students allowed 3 complaints submitted per day
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/160ed58b-a027-48e4-9484-a65b4babd437" />
+
 Tracking Complaints –
 Students can view all their submitted complaints along with detailed information and submitter data.
 <img width="1919" height="1080" alt="image" src="https://github.com/user-attachments/assets/01788d1b-7321-48ee-8bda-d29434c526fb" />
