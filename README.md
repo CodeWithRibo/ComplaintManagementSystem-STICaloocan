@@ -26,7 +26,7 @@ The system is now fully functional and was built completely from scratch.
 ---
 ## 🚀 Features
 
-- Student Complaint Submission<br>
+- Student Complaint Submission (3 complaints per day)<br>
 - Admin Complaint Management<br>
 - Complaint Logging<br>
 - Role-based Access (Student & Admin)<br>
