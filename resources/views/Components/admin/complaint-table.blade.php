@@ -1,5 +1,18 @@
 @php use Illuminate\Support\Carbon; @endphp
 <div class="overflow-x-auto overflow-visible">
+    <!-- 🔍 Filters with Search Bar -->
+    <x-Search :header="$header">
+        <form action="{{route('admin-search')}}" method="GET">
+            @csrf
+            <div class="relative">
+                <input type="text" id="search" name="search"
+                       value="{{request()->get('search')}}"
+                       class="input input-bordered w-full pl-10 text-sm focus:outline-none focus:ring focus:ring-blue-400"
+                       placeholder="Search by title or tracker...">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-gray-400 text-sm"></i>
+            </div>
+        </form>
+    </x-Search>
     <table class="table table-md text-sm text-left text-gray-700">
         <thead class="uppercase">
         <tr>
@@ -10,7 +23,6 @@
             <th class="px-6 py-4">Submitted</th>
             <th class="px-6 py-4">Complaint Tracker</th>
             <th class="px-6 py-4">Manage</th>
-
         </tr>
         </thead>
         @forelse($complaints as $complaint)
