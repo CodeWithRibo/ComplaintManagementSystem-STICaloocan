@@ -50,7 +50,7 @@ The system is now fully functional and was built completely from scratch.
 - <span>MySQL</span> – Relational database<br>
 
 ---
-##SYSTEM
+## SYSTEM
 STUDENTS OVERVIEW
 
 Student Login –
