@@ -4,16 +4,15 @@
             <div class="flex flex-col bg-white shadow-md rounded-md px-5 py-5 mt-20 mx-10"
                  x-data="{modalIsOpen: false, selectedComplaint: null}">
 
-                <h1 class="text-base-content text-2xl p-2 my-5 text-center xl:text-start border-l-4 border-primary bg-base-100 shadow-sm rounded-r-lg w-auto xl:w-96">All Complaints</h1>
                 @include('Components.admin.complaint-table',
                                ['complaints' => $allUserComplaints,
                                 'resolutionNote' => null,
                                 'noComplaintFound' => 'No Complaint Found',
+                                'header' => 'All Complaints'
                                  ])
                 {{--Modal View Details--}}
                 <x-view-details-modal/>
             </div>
-
         </x-Section>
     </x-admin.navigation-bar>
 </x-Layout>
