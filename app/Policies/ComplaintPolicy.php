@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\user\Complaint;
 use App\Models\user\User;
+use Illuminate\Auth\Access\Response;
 
 class ComplaintPolicy
 {
@@ -12,7 +13,7 @@ class ComplaintPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+      return false;
     }
 
     /**
@@ -31,12 +32,17 @@ class ComplaintPolicy
         return false;
     }
 
+    public function edit(User $user, Complaint $complaint): bool
+    {
+        return $user->id === $complaint->user_id;
+    }
+
     /**
      * Determine whether the user can update the model.
      */
     public function update(User $user, Complaint $complaint): bool
     {
-        return false;
+        return $user->id === $complaint->user_id;
     }
 
     /**

@@ -12,7 +12,7 @@ $mDropdownMenu = [
 ],
 'Overview & Reports' => [
   ['icon' => 'ph-trend-up ', 'label' => 'Dashboard', 'route' => route('admin.index')],
-  ['icon' => 'ph-notebook', 'label' => 'Complaint Logs', 'route' => route('admin.activity-logs')],
+  ['icon' => 'ph-notebook', 'label' => 'Complaint Logs',],
 ],
 'User Management' => [
   ['icon' => 'ph-user', 'label' => 'Student Accounts ', 'route' => route('dashboard.faq')],
@@ -30,7 +30,7 @@ $asideMenu = [
 ],
 'Overview & Reports' => [
   ['icon' => 'ph-trend-up ', 'label' => 'Dashboard', 'route' => route('admin.index')],
-  ['icon' => 'ph-notebook', 'label' => 'Complaint Logs', 'route' => route('admin.activity-logs')],
+  ['icon' => 'ph-notebook', 'label' => 'Complaint Logs'],
 ],
 'User Management' => [
   ['icon' => 'ph-user', 'label' => 'Student Accounts ', 'route' => route('admin.student-accounts')],

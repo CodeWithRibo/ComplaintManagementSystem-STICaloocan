@@ -2,7 +2,7 @@
 <div class="overflow-x-auto overflow-visible">
     <!-- 🔍 Filters with Search Bar -->
     <x-Search :header="$header">
-        <form action="{{route('admin-search')}}" method="GET">
+        <form action="" method="GET">
             @csrf
             <div class="relative">
                 <input type="text" id="search" name="search"

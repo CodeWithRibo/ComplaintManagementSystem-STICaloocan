@@ -8,7 +8,7 @@ use App\Models\user\Complaint;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-
+use \Illuminate\Support\Facades\Gate;
 class ComplaintController extends Controller
 {
 
@@ -64,16 +64,8 @@ class ComplaintController extends Controller
         }
 
         $query = Complaint::query();
-        $complaints = $query->create(['user_id' => auth()->id(),
+        $query->create(['user_id' => auth()->id(),
             ... $validated]);
-        $userIdentity = $request->input('type_submit') != 'Identified'
-            ? 'Anonymous submitted a complaint' : $complaints->full_name .' '.  "submitted a complaint";
-
-        //Logs
-        activity()
-            ->performedOn($complaints)
-            ->causedBy(auth()->user())
-            ->log($userIdentity);
         noty()
             ->theme('relax')
             ->success('Complaint submitted! We’ve received your report and will take action as soon as possible.');
@@ -91,6 +83,8 @@ class ComplaintController extends Controller
 
     public function edit(Complaint $complaint)
     {
+        Gate::authorize('update', $complaint);
+
         if ($complaint->status === 'Resolved')
         {
             return redirect()->back()->with('error', 'Resolved complaints cannot be edited.');
@@ -105,6 +99,8 @@ class ComplaintController extends Controller
 
     public function update(Request $request, Complaint $complaint) : RedirectResponse
     {
+        Gate::authorize('update', $complaint);
+
         $validated = $request->validate([
             'category' => ['required', 'string'],
             'location' => ['nullable', 'string', 'min:6', 'max:50', 'regex:/^[a-zA-Z0-9\s]+$/'],
