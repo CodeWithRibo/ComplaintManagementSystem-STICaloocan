@@ -38,7 +38,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['guest'])->group( function (){
-    Route::get('welcome', [DashboardController::class, 'welcome'])->name('welcome');
+    Route::get('/', [DashboardController::class, 'welcome'])->name('welcome');
     // ----------------------------- Login --------------------------//
     Route::get('login',[AuthController::class, 'showLogin'])->name('show.login');
     Route::post('login',[AuthController::class, 'login'])->name('login');
