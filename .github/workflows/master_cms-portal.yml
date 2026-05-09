@@ -23,16 +23,19 @@ jobs:
         with:
           php-version: '8.2'
 
-      - name: Check if composer.json exists
-        id: check_files
-        uses: andstor/file-existence-action@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          files: 'composer.json'
+          node-version: '18'   # or 20 if your project requires
 
-      - name: Run composer install if composer.json exists
-        if: steps.check_files.outputs.files_exists == 'true'
-        run: composer validate --no-check-publish && composer install --prefer-dist --no-progress
+      - name: Install PHP dependencies
+        run: composer install --no-dev --optimize-autoloader
 
+      - name: Install Node dependencies
+        run: npm install
+
+      - name: Build frontend assets
+        run: npm run build
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -67,11 +70,3 @@ jobs:
           app-name: 'cms-portal'
           slot-name: 'Production'
           package: .
-      
-      - name: 'Clear corrupted cache post-deployment'
-        uses: azure/CLI@v2
-        with:
-          azcliversion: latest
-          inlineScript: |
-            az webapp ssh --resource-group cms-portal --name cms-portal --command "rm -rf /home/site/wwwroot/bootstrap/cache/*"
-          
