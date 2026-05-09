@@ -10,11 +10,17 @@ echo -e "${CYAN}${BOLD}╔══════════════════
 echo -e "║  Clearing Cache... ║"
 echo -e "╚════════════════════════════╝${NC}"
 
+# DELETE corrupted cache first
+rm -rf bootstrap/cache/*
+
+# Then regenerate fresh cache
+php artisan config:clear
 php artisan config:cache
-php artisan route:cache
-php artisan view:cache
 php artisan route:clear
+php artisan route:cache
+php artisan view:clear
+php artisan view:cache
 php artisan optimize:clear
 
-echo -e "${GREEN}${BOLD}✔ clear cache successfully"
+echo -e "${GREEN}${BOLD}✔ Cache cleared and regenerated successfully"
 echo -e "🚀 You're all set, Ribo!${NC}"
