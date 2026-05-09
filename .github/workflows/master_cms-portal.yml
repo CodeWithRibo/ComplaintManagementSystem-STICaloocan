@@ -70,10 +70,3 @@ jobs:
           app-name: 'cms-portal'
           slot-name: 'Production'
           package: .
-      
-      - name: 'Clear corrupted cache post-deployment'
-        uses: azure/CLI@v2
-        with:
-          azcliversion: latest
-          inlineScript: |
-            az webapp ssh --resource-group cms-portal --name cms-portal --command "rm -rf /home/site/wwwroot/bootstrap/cache/*"
